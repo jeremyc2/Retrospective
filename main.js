@@ -16,6 +16,11 @@ function addCard(column) {
     deleteButton.innerHTML = "remove";
     detailsButton.innerHTML = "details";
 
+    deleteButton.addEventListener("click", function() {
+        var card = this.parentNode.parentNode;
+        card.parentNode.removeChild(card);
+    });
+
     cardActions.append(deleteButton, detailsButton);
     card.append(textarea, cardActions);
 
