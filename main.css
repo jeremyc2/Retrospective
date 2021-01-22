@@ -109,7 +109,6 @@ button.card-action:hover {
 button.bottom {
     position: absolute;
     bottom: 10px;
-    transform: translateX(-50%);
 
     background: black;
     color: white;
@@ -123,11 +122,13 @@ button.bottom {
 
 button.bottom:nth-child(1) {
     left: 25%;
+    transform: translateX(-50%);
 }
 
 
 button.bottom:nth-child(2) {
-    left: 75%;
+    right: 25%;
+    transform: translateX(50%) rotate(45deg);
 }
 
 button.bottom:hover {
