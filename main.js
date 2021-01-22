@@ -59,7 +59,15 @@ function appendCardToDOM(column, index) {
 
     deleteButton.addEventListener("click", function() {
         var card = this.parentNode.parentNode;
+
+        var child = card,
+            i = 0;
+        while( (child = child.previousSibling) != null ) 
+            i++;
+
         card.parentNode.removeChild(card);
+
+        cards[column] = cards[column].splice(i, 1);
     });
 
     // Fill in props
