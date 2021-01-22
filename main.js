@@ -23,16 +23,15 @@ function updateURL() {
 
 // A new card
 function appendCard(column, updateDOM, props) {
-    var index = cards[column].length;
     cards[column].push(props);
 
     if(updateDOM != null && updateDOM == true) {
-        appendCardToDOM(column, index);
+        appendCardToDOM(column);
     }
 }
 
 // Append card that already exists in "cards" to the DOM
-function appendCardToDOM(column, index) {
+function appendCardToDOM(column) {
 
     var card = document.createElement("div"),
         textarea = document.createElement("textarea"),
@@ -83,8 +82,10 @@ function appendCardToDOM(column, index) {
         cards[column].splice(i, 1);
     });
 
+    container = document.querySelector(`#${column} .cards`)
+
     // Fill in props
-    var props = cards[column][index];
+    var props = cards[column][container.children.length];
     if(props.content != null) {
         textarea.value = props.content;
     }
@@ -92,7 +93,7 @@ function appendCardToDOM(column, index) {
     cardActions.append(deleteButton, detailsButton);
     card.append(textarea, cardActions);
 
-    document.querySelector(`#${column} .cards`).append(card);
+    container.append(card);
 
     return card;
 
