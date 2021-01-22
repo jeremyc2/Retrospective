@@ -60,8 +60,6 @@ function appendCardToDOM(column) {
         }
 
         var props = cards[column][i];
-
-        console.log(props, this.value);
         
         props.content = this.value;
     });
