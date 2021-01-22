@@ -60,10 +60,10 @@ function appendCardToDOM(column, index) {
     deleteButton.addEventListener("click", function() {
         var card = this.parentNode.parentNode;
 
-        var child = card,
+        var sibling = card,
             i = 0;
-        while( (child = child.previousElementSibling) != null ) {
-            if(child.classList.contains("card")) {
+        while( (sibling = child.previousElementSibling) != null ) {
+            if(sibling.classList.contains("card")) {
                 i++;
             }
         }
