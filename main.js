@@ -8,8 +8,12 @@ var cards = {
     )
 }
 
-function appendCard(column, props) {
+function appendCard(column, updateDOM, props) {
     cards[column].push(props);
+
+    if(updateDOM != null && updateDOM == true) {
+        appendCardToDOM(column, props);
+    }
 }
 
 function appendCardToDOM(column, props) {
