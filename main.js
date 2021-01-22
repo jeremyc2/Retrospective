@@ -1,6 +1,12 @@
 var searchParams = new URLSearchParams(document.location.search);
 
-function addCard(column) {
+var positiveCards = searchParams.getAll("positiveCard");
+var negativeCards = searchParams.getAll("negativeCard");
+
+positiveCards.map(card => JSON.parse(card));
+negativeCards.map(card => JSON.parse(card));
+
+function appendCard(column) {
 
     var card = document.createElement("div"),
         textarea = document.createElement("textarea"),
@@ -26,10 +32,21 @@ function addCard(column) {
 
     document.querySelector(`#${column} .cards`).append(card);
 
+    return card;
+
+}
+
+function loadCard(card) {
+    var newCard = appendCard(card.type);
+    newCard.querySelector("textarea").value = card.content;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    console.log(state.getAll("positive"));
-    console.log(state.getAll("negative"));
-    
+    positiveCards.forEach(card => {
+        loadCard(card);
+    });
+
+    negativeCards.forEach(card => {
+        loadCard(card);
+    });
 });
