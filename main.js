@@ -1,4 +1,4 @@
-var state = new State(document.location.search);
+var searchParams = new URLSearchParams(document.location.search);
 
 function addCard(column) {
 
