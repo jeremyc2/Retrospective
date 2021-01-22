@@ -85,7 +85,7 @@ function appendCardToDOM(column) {
     container = document.querySelector(`#${column} .cards`)
 
     // Fill in props
-    var props = cards[column][container.children.length];
+    var props = cards[column][container.children.length - 1];
     if(props.content != null) {
         textarea.value = props.content;
     }
