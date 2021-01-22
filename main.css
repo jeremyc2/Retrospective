@@ -64,6 +64,10 @@ h1 {
     background: var(--background-light);
 }
 
+.card:last-child {
+    margin-bottom: 50px;
+}
+
 .card textarea {
     appearance: none;
     border: none;
