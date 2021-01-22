@@ -28,6 +28,8 @@ function appendCard(column, updateDOM, props) {
     if(updateDOM != null && updateDOM == true) {
         appendCardToDOM(column);
     }
+
+    updateURL();
 }
 
 function updateCard(column, card, field, value) {
@@ -42,6 +44,8 @@ function updateCard(column, card, field, value) {
 
     var props = cards[column][i];
     props[field] = value;
+
+    updateURL();
 }
 
 function deleteCard(column, card) {
@@ -56,6 +60,8 @@ function deleteCard(column, card) {
     card.parentNode.removeChild(card);
 
     cards[column].splice(i, 1);
+
+    updateURL();
 }
 
 // Append new card that already exists in "cards" to the DOM
