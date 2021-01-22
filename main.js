@@ -21,15 +21,18 @@ function updateURL() {
     history.replaceState({}, "", `?${params.toString()}`);
 }
 
+// A new card
 function appendCard(column, updateDOM, props) {
+    var index = cards[column].length;
     cards[column].push(props);
 
     if(updateDOM != null && updateDOM == true) {
-        appendCardToDOM(column, props);
+        appendCardToDOM(column, index);
     }
 }
 
-function appendCardToDOM(column, props) {
+// Append card that already exists in "cards" to the DOM
+function appendCardToDOM(column, index) {
 
     var card = document.createElement("div"),
         textarea = document.createElement("textarea"),
@@ -46,7 +49,12 @@ function appendCardToDOM(column, props) {
     detailsButton.innerHTML = "details";
 
     textarea.addEventListener("input", function() {
+
+        var props = cards[column][index];
+
+        console.log(props, this.value);
         
+        props.content = this.value;
     });
 
     deleteButton.addEventListener("click", function() {
@@ -55,10 +63,9 @@ function appendCardToDOM(column, props) {
     });
 
     // Fill in props
-    if(props != null) {
-        if(props.content != null) {
-            textarea.value = props.content;
-        }
+    var props = cards[column][index];
+    if(props.content != null) {
+        textarea.value = props.content;
     }
 
     cardActions.append(deleteButton, detailsButton);
@@ -71,11 +78,13 @@ function appendCardToDOM(column, props) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    var i = 0;
     cards.positive.forEach(card => {
-        appendCardToDOM('positive', card);
+        appendCardToDOM('positive', i++);
     });
 
+    i = 0;
     cards.negative.forEach(card => {
-        appendCardToDOM('negative', card);
+        appendCardToDOM('negative', i++);
     });
 });
