@@ -64,6 +64,15 @@ function deleteCard(column, card) {
     updateURL();
 }
 
+function clearColumn(column) {
+    cards[column] = [];
+    [...document.querySelectorAll(`#${column} .card`)].forEach(card => {
+        card.parentNode.removeChild(card);
+    });
+
+    updateURL();
+}
+
 // Append new card that already exists in "cards" to the DOM
 function appendCardToDOM(column) {
 
@@ -92,7 +101,7 @@ function appendCardToDOM(column) {
     container = document.querySelector(`#${column} .cards`)
 
     // Fill in props
-    var props = cards[column][container.children.length - 1];
+    var props = cards[column][container.querySelectorAll(".card").length];
     if(props.content != null) {
         textarea.value = props.content;
     }
