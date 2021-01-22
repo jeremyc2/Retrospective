@@ -30,7 +30,7 @@ function appendCard(column, updateDOM, props) {
     }
 }
 
-// Append card that already exists in "cards" to the DOM
+// Append new card that already exists in "cards" to the DOM
 function appendCardToDOM(column) {
 
     var card = document.createElement("div"),
