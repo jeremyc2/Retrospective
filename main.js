@@ -73,6 +73,10 @@ function clearColumn(column) {
     updateURL();
 }
 
+function showDetailsPane() {
+    // TODO
+}
+
 // Append new card that already exists in "cards" to the DOM
 function appendCardToDOM(column) {
 
@@ -96,6 +100,10 @@ function appendCardToDOM(column) {
 
     deleteButton.addEventListener("click", function() {
         deleteCard(column, this.parentNode.parentNode);
+    });
+
+    detailsButton.addEventListener("click", function() {
+        showDetailsPane();
     });
 
     container = document.querySelector(`#${column} .cards`)
