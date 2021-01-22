@@ -28,7 +28,11 @@ class State {
         return this.params.has(key);
     }
 
-    get(key) {
+    getFirst(key) {
+        return this.params.get(key);
+    }
+
+    getAll(key) {
         return this.params.getAll(key);
     }
 
