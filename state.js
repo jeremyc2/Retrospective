@@ -2,22 +2,15 @@ class State {
     
     constructor(init) {
         this.params = new URLSearchParams(init);
-
-        var self = this;
-        document.addEventListener('DOMContentLoaded', () => self.save());
+        this.save();
     }
 
     save() {
         
     }
 
-    add(key, value) {
-        if(this.params.has(key)) {
-            this.params.set(key, value);
-        } else {
-            this.params.append(key, value);
-        }
-
+    append(key, value) {
+        this.params.append(key, value);
         this.save();
     }
 
