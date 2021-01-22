@@ -4,20 +4,11 @@ class State {
         this.params = new URLSearchParams(init);
 
         var self = this;
-        document.addEventListener('DOMContentLoaded', () => self.updateDocumentLinks());
+        document.addEventListener('DOMContentLoaded', () => self.save());
     }
 
-    updateDocumentLinks() {
-        [...document.links].forEach(link => {
-            var queryString = '?' + this.toString();
-
-            if(link.href.lastIndexOf("?") != -1) {
-                link.href = link.href.replace(/\?.*/,queryString);
-            } else {
-                link.href += queryString;
-            }
-
-        })
+    save() {
+        
     }
 
     add(key, value) {
@@ -27,12 +18,12 @@ class State {
             this.params.append(key, value);
         }
 
-        this.updateDocumentLinks();
+        this.save();
     }
 
     remove(key) {
         this.params.delete(key);
-        this.updateDocumentLinks();
+        this.save();
     }
 
     has(key) {
