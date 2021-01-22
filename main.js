@@ -44,6 +44,20 @@ function updateCard(column, card, field, value) {
     props[field] = value;
 }
 
+function deleteCard(column, card) {
+    var sibling = card,
+        i = 0;
+    while( (sibling = sibling.previousElementSibling) != null ) {
+        if(sibling.classList.contains("card")) {
+            i++;
+        }
+    }
+
+    card.parentNode.removeChild(card);
+
+    cards[column].splice(i, 1);
+}
+
 // Append new card that already exists in "cards" to the DOM
 function appendCardToDOM(column) {
 
@@ -66,19 +80,7 @@ function appendCardToDOM(column) {
     });
 
     deleteButton.addEventListener("click", function() {
-        var card = this.parentNode.parentNode;
-
-        var sibling = card,
-            i = 0;
-        while( (sibling = sibling.previousElementSibling) != null ) {
-            if(sibling.classList.contains("card")) {
-                i++;
-            }
-        }
-
-        card.parentNode.removeChild(card);
-
-        cards[column].splice(i, 1);
+        deleteCard(column, this.parentNode.parentNode);
     });
 
     container = document.querySelector(`#${column} .cards`)
