@@ -6,7 +6,7 @@ class State {
     }
 
     save() {
-        
+        history.replaceState({}, "", `?${this.toString()}`);
     }
 
     append(key, value) {
@@ -28,7 +28,7 @@ class State {
         return this.params.has(key);
     }
 
-    getFirst(key) {
+    get(key) {
         return this.params.get(key);
     }
 
