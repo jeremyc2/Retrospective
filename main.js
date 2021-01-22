@@ -1,12 +1,18 @@
 var searchParams = new URLSearchParams(document.location.search);
+var cards = {
+    positive: searchParams.getAll("positiveCard").map(
+        card => JSON.parse(card)
+    ),
+    negative: searchParams.getAll("negativeCard").map(
+        card => JSON.parse(card)
+    )
+}
 
-var positiveCards = searchParams.getAll("positiveCard");
-var negativeCards = searchParams.getAll("negativeCard");
+function appendCard(column, props) {
+    cards[column].push(props);
+}
 
-positiveCards.map(card => JSON.parse(card));
-negativeCards.map(card => JSON.parse(card));
-
-function appendCard(column) {
+function appendCardToDOM(column, props) {
 
     var card = document.createElement("div"),
         textarea = document.createElement("textarea"),
@@ -27,6 +33,13 @@ function appendCard(column) {
         card.parentNode.removeChild(card);
     });
 
+    // Fill in props
+    if(props != null) {
+        if(props.content != null) {
+            textarea.value = props.content;
+        }
+    }
+
     cardActions.append(deleteButton, detailsButton);
     card.append(textarea, cardActions);
 
@@ -36,17 +49,12 @@ function appendCard(column) {
 
 }
 
-function loadCard(card) {
-    var newCard = appendCard(card.type);
-    newCard.querySelector("textarea").value = card.content;
-}
-
 document.addEventListener("DOMContentLoaded", () => {
-    positiveCards.forEach(card => {
-        loadCard(card);
+    cards.positive.forEach(card => {
+        appendCardToDOM('positive', card);
     });
 
-    negativeCards.forEach(card => {
-        loadCard(card);
+    cards.negative.forEach(card => {
+        appendCardToDOM('negative', card);
     });
 });
