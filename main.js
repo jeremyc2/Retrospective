@@ -98,12 +98,12 @@ function appendCardToDOM(column) {
 
 document.addEventListener("DOMContentLoaded", () => {
     var i = 0;
-    cards.positive.forEach(card => {
+    cards.positive.forEach(() => {
         appendCardToDOM('positive', i++);
     });
 
     i = 0;
-    cards.negative.forEach(card => {
+    cards.negative.forEach(() => {
         appendCardToDOM('negative', i++);
     });
 });
