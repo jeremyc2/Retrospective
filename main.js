@@ -62,10 +62,14 @@ function appendCardToDOM(column, index) {
 
         var child = card,
             i = 0;
-        while( (child = child.previousSibling) != null ) 
-            i++;
+        while( (child = child.previousElementSibling) != null ) {
+            if(child.classList.contains("card")) {
+                i++;
+            }
+        }
 
         card.parentNode.removeChild(card);
+        debugger
 
         cards[column] = cards[column].splice(i, 1);
     });
