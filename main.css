@@ -18,11 +18,13 @@ body {
 }
 
 #positive {
-    --background: #F1F8E9;
+    --background-light: hsl(88, 52%, 94%);
+    --background-dark: hsl(88, 52%, 84%);
 }
 
 #negative {
-    --background: #FFEBEE;
+    --background-light: hsl(351, 100%, 96%);
+    --background-dark: hsl(351, 100%, 86%);
 }
 
 h1 {
@@ -33,7 +35,7 @@ h1 {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 
-    background: var(--background);
+    background: var(--background-light);
 
     text-align: center;
     font-family: cursive;
@@ -59,7 +61,7 @@ h1 {
 
     width: 90%;
     height: 90px;
-    background: var(--background);
+    background: var(--background-light);
 }
 
 .card textarea {
@@ -82,6 +84,11 @@ h1 {
     justify-content: space-evenly;
 }
 
+button {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
 button.card-action {
     text-transform: uppercase;
     margin: 5px;
@@ -89,6 +96,10 @@ button.card-action {
     border: solid black 1px;
     border-radius: 5px;
     width: 100px;
+}
+
+button.card-action:hover {
+    background: var(--background-dark);
 }
 
 button.add-card {
@@ -104,4 +115,8 @@ button.add-card {
 
     height: 40px;
     width: 40px;
+}
+
+button.add-card:hover {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8);
 }
