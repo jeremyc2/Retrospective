@@ -69,7 +69,6 @@ function appendCardToDOM(column, index) {
         }
 
         card.parentNode.removeChild(card);
-        debugger
 
         cards[column] = cards[column].splice(i, 1);
     });
