@@ -14,6 +14,11 @@ class State {
         this.save();
     }
 
+    replace(key, value) {
+        this.params.replace(key, value);
+        this.save();
+    }
+
     remove(key) {
         this.params.delete(key);
         this.save();
@@ -24,7 +29,7 @@ class State {
     }
 
     get(key) {
-        return this.params.get(key);
+        return this.params.getAll(key);
     }
 
     toString() {
