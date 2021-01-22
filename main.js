@@ -30,6 +30,20 @@ function appendCard(column, updateDOM, props) {
     }
 }
 
+function updateCard(column, card, field, value) {
+
+    var sibling = card,
+        i = 0;
+    while( (sibling = sibling.previousElementSibling) != null ) {
+        if(sibling.classList.contains("card")) {
+            i++;
+        }
+    }
+
+    var props = cards[column][i];
+    props[field] = value;
+}
+
 // Append new card that already exists in "cards" to the DOM
 function appendCardToDOM(column) {
 
@@ -48,19 +62,7 @@ function appendCardToDOM(column) {
     detailsButton.innerHTML = "details";
 
     textarea.addEventListener("input", function() {
-
-        var card = this.parentNode;
-
-        var sibling = card,
-            i = 0;
-        while( (sibling = sibling.previousElementSibling) != null ) {
-            if(sibling.classList.contains("card")) {
-                i++;
-            }
-        }
-
-        var props = cards[column][i];
-        props.content = this.value;
+        updateCard(column, this.parentElement, "content", this.value);
     });
 
     deleteButton.addEventListener("click", function() {
