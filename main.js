@@ -8,6 +8,19 @@ var cards = {
     )
 }
 
+function updateURL() {
+
+    var params = new URLSearchParams();
+    cards.positive.forEach(card => {
+        params.append("positiveCard", JSON.stringify(card));
+    });
+    cards.negative.forEach(card => {
+        params.append("negativeCard", JSON.stringify(card));
+    });
+
+    history.replaceState({}, "", `?${params.toString()}`);
+}
+
 function appendCard(column, updateDOM, props) {
     cards[column].push(props);
 
@@ -31,6 +44,10 @@ function appendCardToDOM(column, props) {
     
     deleteButton.innerHTML = "remove";
     detailsButton.innerHTML = "details";
+
+    textarea.addEventListener("input", function() {
+        
+    });
 
     deleteButton.addEventListener("click", function() {
         var card = this.parentNode.parentNode;
