@@ -50,7 +50,17 @@ function appendCardToDOM(column, index) {
 
     textarea.addEventListener("input", function() {
 
-        var props = cards[column][index];
+        var card = this.parentNode;
+
+        var sibling = card,
+            i = 0;
+        while( (sibling = sibling.previousElementSibling) != null ) {
+            if(sibling.classList.contains("card")) {
+                i++;
+            }
+        }
+
+        var props = cards[column][i];
 
         console.log(props, this.value);
         
@@ -62,7 +72,7 @@ function appendCardToDOM(column, index) {
 
         var sibling = card,
             i = 0;
-        while( (sibling = child.previousElementSibling) != null ) {
+        while( (sibling = sibling.previousElementSibling) != null ) {
             if(sibling.classList.contains("card")) {
                 i++;
             }
@@ -70,7 +80,7 @@ function appendCardToDOM(column, index) {
 
         card.parentNode.removeChild(card);
 
-        cards[column] = cards[column].splice(i, 1);
+        cards[column].splice(i, 1);
     });
 
     // Fill in props
