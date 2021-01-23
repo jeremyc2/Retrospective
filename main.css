@@ -38,7 +38,7 @@ h1 {
     background: var(--background-light);
 
     text-align: center;
-    font-family: cursive;
+    font-family: 'Permanent Marker', cursive;
     text-transform: uppercase;
 
 }
