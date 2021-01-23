@@ -1,5 +1,6 @@
 function showDetailsPane() {
     // TODO
+    
 }
 
 // Append new card that already exists in "cards" to the DOM
