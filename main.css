@@ -128,7 +128,7 @@ button.bottom:nth-child(1) {
 
 button.bottom:nth-child(2) {
     right: 25%;
-    transform: translateX(50%) rotate(45deg);
+    transform: translateX(50%);
 }
 
 button.bottom:hover {
