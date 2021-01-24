@@ -66,6 +66,11 @@ function appendCardToDOM(column) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    document.querySelector(".modal-content").addEventListener("click", function(e) {
+        e.stopPropagation();
+    });
+
     var i = 0;
     cards.positive.forEach(() => {
         appendCardToDOM('positive', i++);

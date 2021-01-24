@@ -41,8 +41,12 @@
 }
 
 .modal h1, .modal h2, .modal h3 {
-    text-align: center;
     margin: 0px;
+    text-align: center;
+}
+
+.modal h1 {
+    margin-bottom: 30px;
 }
 
 .modal textarea {
