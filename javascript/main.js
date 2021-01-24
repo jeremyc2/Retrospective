@@ -1,6 +1,10 @@
-function showDetailsPane() {
+function showDetails() {
     // TODO
-    
+    document.querySelector("#").classList.add("hide");
+}
+
+function closeModal() {
+    document.querySelector("#").classList.remove("hide");
 }
 
 // Append new card that already exists in "cards" to the DOM
@@ -29,7 +33,7 @@ function appendCardToDOM(column) {
     });
 
     detailsButton.addEventListener("click", function() {
-        showDetailsPane();
+        showDetails();
     });
 
     container = document.querySelector(`#${column} .cards`)
