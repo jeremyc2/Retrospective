@@ -45,6 +45,6 @@
     margin: 0px;
 }
 
-textarea {
+.modal textarea {
     border: 1px solid black;
 }
