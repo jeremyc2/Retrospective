@@ -32,8 +32,7 @@ function appendCard(column, updateDOM, props) {
     updateURL();
 }
 
-function updateCard(column, card, field, value) {
-
+function getCardIndex(card) {
     var sibling = card,
         i = 0;
     while( (sibling = sibling.previousElementSibling) != null ) {
@@ -41,6 +40,12 @@ function updateCard(column, card, field, value) {
             i++;
         }
     }
+
+    return i;
+}
+
+function updateCard(column, card, field, value) {
+    var i = getCardIndex(card);
 
     var props = cards[column][i];
     props[field] = value;
@@ -49,13 +54,7 @@ function updateCard(column, card, field, value) {
 }
 
 function deleteCard(column, card) {
-    var sibling = card,
-        i = 0;
-    while( (sibling = sibling.previousElementSibling) != null ) {
-        if(sibling.classList.contains("card")) {
-            i++;
-        }
-    }
+    var i = getCardIndex(card);
 
     card.parentNode.removeChild(card);
 
