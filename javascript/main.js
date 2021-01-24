@@ -1,10 +1,22 @@
 function showDetails() {
-    // TODO
-    document.querySelector("#").classList.add("hide");
+    
+    
+
+    openModal();
+}
+
+function openModal() {
+    var detailsModal = document.querySelector("#details-modal");
+
+    animateCSS(detailsModal.querySelector(".modal-content"), "backInUp");
+    detailsModal.style.display = "block";
 }
 
 function closeModal() {
-    document.querySelector("#").classList.remove("hide");
+    var detailsModal = document.querySelector("#details-modal");
+
+    animateCSS(detailsModal.querySelector(".modal-content"), "backOutDown", 
+        () => detailsModal.style.display = "none");
 }
 
 // Append new card that already exists in "cards" to the DOM
