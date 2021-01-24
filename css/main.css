@@ -68,13 +68,16 @@ body {
     margin-bottom: 50px;
 }
 
-.card textarea {
+textarea {
     appearance: none;
     border: none;
     resize: none;
 
     width: 100%;
     background: white;
+}
+
+.card textarea {
     height: calc(100% - 30px);
 }
 
