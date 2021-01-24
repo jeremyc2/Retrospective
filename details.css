@@ -39,3 +39,8 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+.modal h1 {
+    text-align: center;
+    margin: 0px;
+}
