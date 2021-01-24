@@ -1,6 +1,15 @@
-function showDetails() {
-    
-    
+function showDetails(column, card) {
+    var modalContent = document.querySelector("#details-modal .modal-content"),
+        i = getCardIndex(card),
+        props = cards[column][i];
+
+    if(column == "positive") {
+        modalContent.style.backgroundColor = "hsl(88, 52%, 94%)";
+        modalContent.querySelector("textarea").style.borderColor = "hsl(88, 52%, 84%)";
+    } else if(column == "negative") {
+        modalContent.style.backgroundColor = "hsl(351, 100%, 96%)";
+        modalContent.querySelector("textarea").style.borderColor = "hsl(351, 100%, 86%)";
+    }
 
     openModal();
 }
@@ -45,7 +54,7 @@ function appendCardToDOM(column) {
     });
 
     detailsButton.addEventListener("click", function() {
-        showDetails();
+        showDetails(column, this.parentNode.parentNode);
     });
 
     container = document.querySelector(`#${column} .cards`)
