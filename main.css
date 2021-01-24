@@ -27,7 +27,7 @@ body {
     --background-dark: hsl(351, 100%, 86%);
 }
 
-h1 {
+.section-header {
     width: 100%;
     height: fit-content;
     margin: 0px;
