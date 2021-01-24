@@ -40,7 +40,7 @@
     cursor: pointer;
 }
 
-.modal h1 {
+.modal h1, .modal h2, .modal h3 {
     text-align: center;
     margin: 0px;
 }
