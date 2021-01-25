@@ -1,4 +1,4 @@
-function addDetailsField(column, card, div, headingText, borderColor, props, propName) {
+function addDetailsField(column, card, div, headingText, props, propName) {
     var heading = document.createElement("h3"),
         textarea = document.createElement("textarea");
 
@@ -12,27 +12,27 @@ function addDetailsField(column, card, div, headingText, borderColor, props, pro
         updateCard(column, card, propName, this.value);
     });
 
-    textarea.style.borderColor = borderColor;
-
     div.appendChild(heading);
     div.appendChild(textarea);
 }
 
 function showDetails(column, card) {
 
-    var modalContent = document.querySelector("#details-modal .modal-content"),
-        mainDiv = modalContent.querySelector("div"),
+    var modal = document.querySelector("#details-modal"),
+        mainDiv = modal.querySelector(".modal-content div"),
         i = getCardIndex(card),
         props = cards[column][i];
 
     mainDiv.innerHTML = "";
 
     if(column == "positive") {
-        modalContent.style.backgroundColor = "hsl(88, 52%, 94%)";
+        modal.style.setProperty("--background-color", "hsl(88, 52%, 94%)");
+        modal.style.setProperty("--border-color", "hsl(88, 52%, 84%)");
     } else if(column == "negative") {
-        modalContent.style.backgroundColor = "hsl(351, 100%, 96%)";
+        modal.style.setProperty("--background-color", "hsl(351, 100%, 96%)");
+        modal.style.setProperty("--border-color", "hsl(351, 100%, 86%)");
 
-        addDetailsField(column, card, mainDiv, "Action Items", "hsl(351, 100%, 86%)", props, "actions");
+        addDetailsField(column, card, mainDiv, "Action Items", props, "actions");
 
     }
 

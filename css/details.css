@@ -16,7 +16,7 @@
 /* Modal Content */
 .modal-content {
     position: relative;
-    background-color: #fefefe;
+    background-color: var(--background-color);
     margin: auto;
     padding: 12px;
     width: 300px;
@@ -51,6 +51,8 @@
 }
 
 .modal textarea {
-    border: .1px solid #dfe1e5;
+    border: .1px solid;
+    border-color: var(--border-color);
+    height: 150px;
     border-radius: 5px;
 }
