@@ -16,6 +16,8 @@ function addDetailsInput(column, card, div, headingText, propName) {
 
     div.appendChild(heading);
     div.appendChild(input);
+
+    return input;
 }
 
 function addDetailsField(column, card, div, headingText, propName) {
@@ -36,6 +38,8 @@ function addDetailsField(column, card, div, headingText, propName) {
 
     div.appendChild(heading);
     div.appendChild(textarea);
+
+    return textarea;
 }
 
 function showDetails(column, card) {
@@ -45,20 +49,21 @@ function showDetails(column, card) {
 
     mainDiv.innerHTML = "";
 
+    var sprintInput = addDetailsInput(column, card, mainDiv, "Sprint", "sprint");
+
     if(column == "positive") {
         modal.style.setProperty("--background-color", "hsl(88, 52%, 94%)");
         modal.style.setProperty("--border-color", "hsl(88, 52%, 84%)");
-
-        addDetailsInput(column, card, mainDiv, "Sprint", "sprint");
 
     } else if(column == "negative") {
         modal.style.setProperty("--background-color", "hsl(351, 100%, 96%)");
         modal.style.setProperty("--border-color", "hsl(351, 100%, 86%)");
 
-        addDetailsInput(column, card, mainDiv, "Sprint", "sprint");
         addDetailsField(column, card, mainDiv, "Action Items", "actions");
-
     }
+
+    sprintInput.size = "3"
+    sprintInput.maxLength = "3";
 
     openModal();
 }
