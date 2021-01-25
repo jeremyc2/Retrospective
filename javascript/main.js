@@ -147,4 +147,12 @@ document.addEventListener("DOMContentLoaded", () => {
     cards.negative.forEach(() => {
         appendCardToDOM('negative', i++);
     });
+
+    document.addEventListener('keydown', function(e) {
+        if(e.code == "Escape") {
+            if(document.querySelector("#details-modal").style.display == "block") {
+                closeModal();
+            }
+        }
+    });
 });
