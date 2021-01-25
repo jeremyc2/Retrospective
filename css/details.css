@@ -21,6 +21,8 @@
     padding: 12px;
     width: 300px;
     border-radius: 5px;
+
+    --animate-duration: 500ms;
 }
 
 .modal-content div {
