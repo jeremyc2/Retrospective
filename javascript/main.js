@@ -21,17 +21,16 @@ function addDetailsField(column, card, div, headingText, borderColor, props, pro
 function showDetails(column, card) {
 
     var modalContent = document.querySelector("#details-modal .modal-content"),
+        mainDiv = modalContent.querySelector("div"),
         i = getCardIndex(card),
         props = cards[column][i];
 
+    mainDiv.innerHTML = "";
+
     if(column == "positive") {
-        var mainDiv = modalContent.querySelector("div");
         modalContent.style.backgroundColor = "hsl(88, 52%, 94%)";
-        mainDiv.innerHTML = "";
     } else if(column == "negative") {
-        var mainDiv = modalContent.querySelector("div");
         modalContent.style.backgroundColor = "hsl(351, 100%, 96%)";
-        mainDiv.innerHTML = "";
 
         addDetailsField(column, card, mainDiv, "Action Items", "hsl(351, 100%, 86%)", props, "actions");
 
