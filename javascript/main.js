@@ -1,34 +1,36 @@
+function addDetailsField(div, headingText, props, propName, borderColor) {
+    var heading = document.createElement("h3"),
+        textArea = document.createElement("textarea");
+
+    heading.innerHTML = headingText;
+
+    if(props[propName] != null) {
+        textArea.innerHTML = props[propName];
+    }
+
+    textArea.style.borderColor = borderColor;
+
+    div.appendChild(heading);
+    div.appendChild(textArea);
+}
+
 function showDetails(column, card) {
-
-    // TODO SWITCH COLORS AND LOGIC 
-
 
     var modalContent = document.querySelector("#details-modal .modal-content"),
         i = getCardIndex(card),
         props = cards[column][i];
 
     if(column == "positive") {
+        var mainDiv = modalContent.querySelector("div");
         modalContent.style.backgroundColor = "hsl(88, 52%, 94%)";
-
-        var mainDiv = modalContent.querySelector("div"),
-            heading = document.createElement("h3"),
-            textArea = document.createElement("textarea");
-
         mainDiv.innerHTML = "";
-        heading.innerHTML = "Action Items";
-
-        if(props.actions != null) {
-            textArea.innerHTML = props.actions;
-        }
-
-        textArea.style.borderColor = "hsl(88, 52%, 84%)";
-
-        mainDiv.appendChild(heading);
-        mainDiv.appendChild(textArea);
-
     } else if(column == "negative") {
+        var mainDiv = modalContent.querySelector("div");
         modalContent.style.backgroundColor = "hsl(351, 100%, 96%)";
-        modalContent.querySelector("textarea").style.borderColor = "hsl(351, 100%, 86%)";
+        mainDiv.innerHTML = "";
+
+        addDetailsField(mainDiv, "Action Items", props, "actions", "hsl(351, 100%, 86%)");
+
     }
 
     openModal();
