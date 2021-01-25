@@ -76,7 +76,7 @@ function openModal() {
     var detailsModal = document.querySelector("#details-modal");
 
     animateCSS(detailsModal.querySelector(".modal-content"), "backInUp");
-    detailsModal.style.display = "block";
+    detailsModal.style.display = "flex";
 }
 
 function closeModal() {
@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.addEventListener('keydown', function(e) {
         if(e.code == "Escape") {
-            if(document.querySelector("#details-modal").style.display == "block") {
+            if(document.querySelector("#details-modal").style.display == "flex") {
                 closeModal();
             }
         }

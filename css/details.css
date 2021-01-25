@@ -3,7 +3,6 @@
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 50px; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -21,6 +20,7 @@
     padding: 12px;
     width: 300px;
     border-radius: 5px;
+    text-align: center;
 
     --animate-duration: 500ms;
 }
