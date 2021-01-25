@@ -62,6 +62,7 @@ function showDetails(column, card) {
         addDetailsField(column, card, mainDiv, "Action Items", "actions");
     }
 
+    sprintInput.type = "number";
     sprintInput.size = "3"
     sprintInput.maxLength = "3";
 
