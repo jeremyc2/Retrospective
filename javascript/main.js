@@ -55,11 +55,15 @@ function showDetails(column, card) {
         modal.style.setProperty("--background-color", "hsl(88, 52%, 94%)");
         modal.style.setProperty("--border-color", "hsl(88, 52%, 84%)");
 
+        addDetailsField(column, card, mainDiv, "Comments", "comments");
+
     } else if(column == "negative") {
         modal.style.setProperty("--background-color", "hsl(351, 100%, 96%)");
         modal.style.setProperty("--border-color", "hsl(351, 100%, 86%)");
 
         addDetailsField(column, card, mainDiv, "Action Items", "actions");
+        addDetailsField(column, card, mainDiv, "Comments", "comments");
+
     }
 
     sprintInput.size = 3;
