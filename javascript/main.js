@@ -1,11 +1,31 @@
 function showDetails(column, card) {
+
+    // TODO SWITCH COLORS AND LOGIC 
+
+
     var modalContent = document.querySelector("#details-modal .modal-content"),
         i = getCardIndex(card),
         props = cards[column][i];
 
     if(column == "positive") {
         modalContent.style.backgroundColor = "hsl(88, 52%, 94%)";
-        modalContent.querySelector("textarea").style.borderColor = "hsl(88, 52%, 84%)";
+
+        var mainDiv = modalContent.querySelector("div"),
+            heading = document.createElement("h3"),
+            textArea = document.createElement("textarea");
+
+        mainDiv.innerHTML = "";
+        heading.innerHTML = "Action Items";
+
+        if(props.actions != null) {
+            textArea.innerHTML = props.actions;
+        }
+
+        textArea.style.borderColor = "hsl(88, 52%, 84%)";
+
+        mainDiv.appendChild(heading);
+        mainDiv.appendChild(textArea);
+
     } else if(column == "negative") {
         modalContent.style.backgroundColor = "hsl(351, 100%, 96%)";
         modalContent.querySelector("textarea").style.borderColor = "hsl(351, 100%, 86%)";
