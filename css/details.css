@@ -42,12 +42,21 @@
 }
 
 .modal h1, .modal h2, .modal h3 {
-    margin: 0px;
+    margin: 10px 0px 2px 0px;
     text-align: center;
+    font-family: Helvetica, sans-serif;
 }
 
 .modal h1 {
-    margin-bottom: 30px;
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+
+.modal input {
+    border: .1px solid;
+    border-color: var(--border-color);
+    border-radius: 5px;
+    width: 100%;
 }
 
 .modal textarea {

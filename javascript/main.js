@@ -1,3 +1,23 @@
+function addDetailsInput(column, card, div, headingText, propName) {
+    var heading = document.createElement("h3"),
+        input = document.createElement("input"),
+        i = getCardIndex(card),
+        props = cards[column][i];
+
+    heading.innerHTML = headingText;
+
+    if(props[propName] != null) {
+        input.value = props[propName];
+    }
+
+    input.addEventListener("input", function() {
+        updateCard(column, card, propName, this.value);
+    });
+
+    div.appendChild(heading);
+    div.appendChild(input);
+}
+
 function addDetailsField(column, card, div, headingText, propName) {
     var heading = document.createElement("h3"),
         textarea = document.createElement("textarea"),
@@ -28,10 +48,14 @@ function showDetails(column, card) {
     if(column == "positive") {
         modal.style.setProperty("--background-color", "hsl(88, 52%, 94%)");
         modal.style.setProperty("--border-color", "hsl(88, 52%, 84%)");
+
+        addDetailsInput(column, card, mainDiv, "Sprint", "sprint");
+
     } else if(column == "negative") {
         modal.style.setProperty("--background-color", "hsl(351, 100%, 96%)");
         modal.style.setProperty("--border-color", "hsl(351, 100%, 86%)");
 
+        addDetailsInput(column, card, mainDiv, "Sprint", "sprint");
         addDetailsField(column, card, mainDiv, "Action Items", "actions");
 
     }
