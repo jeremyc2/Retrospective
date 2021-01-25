@@ -1,17 +1,21 @@
-function addDetailsField(div, headingText, props, propName, borderColor) {
+function addDetailsField(column, card, div, headingText, borderColor, props, propName) {
     var heading = document.createElement("h3"),
-        textArea = document.createElement("textarea");
+        textarea = document.createElement("textarea");
 
     heading.innerHTML = headingText;
 
     if(props[propName] != null) {
-        textArea.innerHTML = props[propName];
+        textarea.innerHTML = props[propName];
     }
 
-    textArea.style.borderColor = borderColor;
+    textarea.addEventListener("input", function() {
+        updateCard(column, card, propName, this.value);
+    });
+
+    textarea.style.borderColor = borderColor;
 
     div.appendChild(heading);
-    div.appendChild(textArea);
+    div.appendChild(textarea);
 }
 
 function showDetails(column, card) {
@@ -29,7 +33,7 @@ function showDetails(column, card) {
         modalContent.style.backgroundColor = "hsl(351, 100%, 96%)";
         mainDiv.innerHTML = "";
 
-        addDetailsField(mainDiv, "Action Items", props, "actions", "hsl(351, 100%, 86%)");
+        addDetailsField(column, card, mainDiv, "Action Items", "hsl(351, 100%, 86%)", props, "actions");
 
     }
 
