@@ -1,6 +1,8 @@
-function addDetailsField(column, card, div, headingText, props, propName) {
+function addDetailsField(column, card, div, headingText, propName) {
     var heading = document.createElement("h3"),
-        textarea = document.createElement("textarea");
+        textarea = document.createElement("textarea"),
+        i = getCardIndex(card),
+        props = cards[column][i];
 
     heading.innerHTML = headingText;
 
@@ -19,9 +21,7 @@ function addDetailsField(column, card, div, headingText, props, propName) {
 function showDetails(column, card) {
 
     var modal = document.querySelector("#details-modal"),
-        mainDiv = modal.querySelector(".modal-content div"),
-        i = getCardIndex(card),
-        props = cards[column][i];
+        mainDiv = modal.querySelector(".modal-content div");
 
     mainDiv.innerHTML = "";
 
@@ -32,7 +32,7 @@ function showDetails(column, card) {
         modal.style.setProperty("--background-color", "hsl(351, 100%, 96%)");
         modal.style.setProperty("--border-color", "hsl(351, 100%, 86%)");
 
-        addDetailsField(column, card, mainDiv, "Action Items", props, "actions");
+        addDetailsField(column, card, mainDiv, "Action Items", "actions");
 
     }
 
