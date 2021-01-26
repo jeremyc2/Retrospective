@@ -163,7 +163,6 @@ button.bottom:hover {
 }
 
 .resolved {
-    display: none;
     position: absolute;
     background: #FFF59D;
     top: -10;
@@ -179,7 +178,11 @@ button.bottom:hover {
     cursor: pointer;
 }
 
-.resolved:hover {
+.resolved:not(.active) {
+    display: none;
+}
+
+.resolved:hover, .resolved.active {
     opacity: 100%;
 }
 
