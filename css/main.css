@@ -75,6 +75,7 @@ body {
 
 .card {
 
+    position: relative;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     border-radius: 5px;
@@ -100,6 +101,7 @@ textarea {
 
 .card textarea {
     height: calc(100% - 30px);
+    padding: 10px;
 }
 
 .card:hover {
@@ -157,4 +159,19 @@ button.bottom:nth-child(2) {
 
 button.bottom:hover {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8);
+}
+
+.resolved {
+    display: none;
+    position: absolute;
+    background: #FFF59D;
+    top: -10;
+    left: 0px;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    padding: 3px;
+    border-style: solid;
+    border-color: #FFEE58;
+    border-width: 1px;
+    color: #BF360C;
 }
