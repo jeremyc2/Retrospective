@@ -97,11 +97,12 @@ textarea {
 
     width: 100%;
     background: white;
+    outline: none;
+    padding: 11px;
 }
 
 .card textarea {
     height: calc(100% - 30px);
-    padding: 11px;
 }
 
 .card:hover {
@@ -174,4 +175,14 @@ button.bottom:hover {
     border-color: #FFEE58;
     border-width: 1px;
     color: #BF360C;
+    opacity: 50%;
+    cursor: pointer;
+}
+
+.resolved:hover {
+    opacity: 100%;
+}
+
+.card:hover .resolved {
+    display: block;
 }
