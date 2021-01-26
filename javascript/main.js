@@ -128,6 +128,14 @@ function appendCardToDOM(column) {
         textarea.value = props.content;
     }
 
+    // Add one more for negative columns
+    if(column == "negative") {
+        var resolvedIcon = document.createElement("div");
+        resolvedIcon.classList.add("resolved");
+        resolvedIcon.innerHTML = "&#9733;";
+        card.append(resolvedIcon);
+    }
+
     cardActions.append(deleteButton, detailsButton);
     card.append(textarea, cardActions);
 
