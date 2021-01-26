@@ -53,7 +53,7 @@ function showDetails(column, card) {
 
     if(column == "positive") {
         modal.style.setProperty("--background-color", "hsl(88, 52%, 94%)");
-        modal.style.setProperty("--border-color", "hsl(88, 52%, 84%)");
+        modal.style.setProperty("--border-color", "hsl(88, 52%, 64%)");
 
         addDetailsField(column, card, mainDiv, "Comments", "comments");
 
@@ -68,8 +68,11 @@ function showDetails(column, card) {
 
     sprintInput.size = 3;
     sprintInput.maxLength = 3;
-    sprintInput.previousElementSibling.style.display = "inline";
-    sprintInput.previousElementSibling.style.marginRight = "10px";
+    sprintInput.style.verticalAlign = "top";
+
+    var sprintLabel = sprintInput.previousElementSibling;
+    sprintLabel.style.display = "inline";
+    sprintLabel.style.marginRight = "10px";
 
     openModal();
 }
