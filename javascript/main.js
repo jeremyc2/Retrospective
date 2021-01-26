@@ -68,6 +68,7 @@ function showDetails(column, card) {
 
     sprintInput.size = 3;
     sprintInput.maxLength = 3;
+    sprintInput.previousElementSibling.style.display = "inline";
 
     openModal();
 }
