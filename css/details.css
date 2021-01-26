@@ -99,4 +99,5 @@ input[type=number] {
     margin-top: 10px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    border-top: solid 1px var(--border-color);
 }
