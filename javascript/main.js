@@ -133,8 +133,12 @@ function appendCardToDOM(column) {
         var resolvedIcon = document.createElement("div");
         resolvedIcon.classList.add("resolved");
         resolvedIcon.innerHTML = "&#9733;";
+        if(props.resolved != null && props.resolved != false) {
+            this.classList.toggle("active");
+        }
         resolvedIcon.addEventListener("click", function() {
             this.classList.toggle("active");
+            updateCard(column, card, "resolved", this.classList.has("active"));
         });
         card.append(resolvedIcon);
     }
