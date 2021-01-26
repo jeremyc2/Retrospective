@@ -39,7 +39,7 @@ body {
 
 #positive {
     --background-light: hsl(88, 52%, 94%);
-    --background-dark: hsl(88, 52%, 84%);
+    --background-dark: hsl(88, 52%, 64%);
 }
 
 #negative {
