@@ -40,6 +40,9 @@ body {
 .container {
     position: relative;
 
+    display: flex;
+    flex-direction: column;
+
     border: .1px solid #dfe1e5;
     border-radius: 5px;
     height: calc(100vh - 42px);
@@ -84,7 +87,6 @@ body {
     padding-top: 10px;
 
     overflow-y: scroll;
-    height: calc(100% - 57px);
     background-color: white;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
