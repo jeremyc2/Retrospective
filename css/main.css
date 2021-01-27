@@ -7,6 +7,14 @@
     width: 0px;
 }
 
+:root::-webkit-scrollbar {
+    width: 0px;
+}
+
+body::-webkit-scrollbar {
+    width: 0px;
+}
+
 ::-webkit-scrollbar-track {
   background-color: transparent;
 }
@@ -30,6 +38,7 @@
 body {
     margin: 0px;
     min-width: 550px;
+    overflow-y: hidden;
 }
 
 * {
