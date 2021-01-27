@@ -15,10 +15,12 @@
             What Went Well
         </h1>
         <div class="cards">
-            <button class="bottom" onclick="appendCard('positive', true, {})">+</button>
-            <button class="bottom" onclick="clearColumn('positive')">
-                <div style="transform: rotate(45deg)">+</div>
-            </button>
+            <div class="bottom">
+                <button onclick="appendCard('positive', true, {})">+</button>
+                <button onclick="clearColumn('positive')">
+                    <div style="transform: rotate(45deg)">+</div>
+                </button>
+            </div>
         </div>
     </div>
     <div class="container" id="negative">
@@ -26,10 +28,12 @@
             Improvement Needed
         </h1>
         <div class="cards">
-            <button class="bottom" onclick="appendCard('negative', true, {})">+</button>
-            <button class="bottom" onclick="clearColumn('negative')">
-                <div style="transform: rotate(45deg)">+</div>
-            </button>
+            <div class="bottom">
+                <button onclick="appendCard('negative', true, {})">+</button>
+                <button onclick="clearColumn('negative')">
+                    <div style="transform: rotate(45deg)">+</div>
+                </button>
+            </div>
         </div>
     </div>
 </div>
