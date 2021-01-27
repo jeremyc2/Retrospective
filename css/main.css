@@ -170,6 +170,7 @@ button.card-action:hover {
     background-color: var(--background-light);
     border: 1px solid #dfe1e5;
     margin-left: calc(5% - 1px);
+    box-shadow: 0 0px 8px 0 rgba(0,0,0,0.2);
 
 }
 
