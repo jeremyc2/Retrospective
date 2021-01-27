@@ -3,6 +3,10 @@
   width: 20px;
 }
 
+.cards::-webkit-scrollbar {
+    width: 0px;
+}
+
 ::-webkit-scrollbar-track {
   background-color: transparent;
 }
@@ -92,10 +96,6 @@ body {
     border-bottom-right-radius: 5px;
 }
 
-.cards > * {
-    transform: translateX(10px);
-}
-
 .card {
 
     position: relative;
@@ -165,7 +165,7 @@ button.card-action:hover {
     margin: 5px 10px 5px 10px;
     padding: 5px 0px 5px 0px;
     border-radius: 5px;
-    width: calc(90% - 20px);
+    width: 90%;
     left: 0;
     justify-content: space-evenly;
 
