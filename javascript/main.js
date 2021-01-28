@@ -154,6 +154,10 @@ function appendCardToDOM(column, initialLoad) {
 
     container.insertBefore(card, container.firstElementChild);
 
+    if(initialLoad == false) {
+        textarea.focus();
+    }
+
     return card;
 
 }
