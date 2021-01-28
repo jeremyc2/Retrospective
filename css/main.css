@@ -118,6 +118,21 @@ body {
     background: var(--background-light);
 }
 
+.card.expand {
+    animation: expand .5s cubic-bezier(0, 0.5, 0, 1) 0s 1 normal forwards;
+}
+
+@keyframes expand {
+    from {
+        opacity: 0;
+        height: 0px;
+    }
+    to {
+        opacity: 1;
+        height: 90px;
+    }
+}
+
 .card:nth-last-child(2) {
     margin-bottom: 70px;
 }

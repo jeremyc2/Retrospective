@@ -26,7 +26,7 @@ function appendCard(column, updateDOM, props) {
     cards[column].push(props);
 
     if(updateDOM != null && updateDOM == true) {
-        appendCardToDOM(column);
+        appendCardToDOM(column, false);
     }
 
     updateURL();

@@ -92,7 +92,7 @@ function closeModal() {
 }
 
 // Append new card that already exists in "cards" to the DOM
-function appendCardToDOM(column) {
+function appendCardToDOM(column, initialLoad) {
 
     var card = document.createElement("div"),
         textarea = document.createElement("textarea"),
@@ -107,6 +107,13 @@ function appendCardToDOM(column) {
     
     deleteButton.innerHTML = "remove";
     detailsButton.innerHTML = "details";
+
+    if(initialLoad == false) {
+        card.classList.add("expand");
+        card.addEventListener('animationend', () => {
+            card.classList.remove("expand");
+        }, {once: true});
+    }
 
     textarea.addEventListener("input", function() {
         updateCard(column, this.parentElement, "content", this.value);
@@ -159,12 +166,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     var i = 0;
     cards.positive.forEach(() => {
-        appendCardToDOM('positive', i++);
+        appendCardToDOM('positive', true);
+        i++;
     });
 
     i = 0;
     cards.negative.forEach(() => {
-        appendCardToDOM('negative', i++);
+        appendCardToDOM('negative', true);
+        i++;
     });
 
     document.addEventListener('keydown', function(e) {
