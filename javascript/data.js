@@ -10,6 +10,7 @@ var cards = {
 
 function updateURL() {
 
+    // TODO Fix Save. It shuffles cards
     var params = new URLSearchParams();
     cards.positive.forEach(card => {
         params.append("positiveCard", JSON.stringify(card));
