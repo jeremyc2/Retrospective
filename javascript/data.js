@@ -36,7 +36,7 @@ function appendCard(column, updateDOM, props) {
 function getCardIndex(card) {
     var sibling = card,
         i = 0;
-    while( (sibling = sibling.previousElementSibling) != null ) {
+    while( (sibling = sibling.nextElementSibling) != null ) {
         if(sibling.classList.contains("card")) {
             i++;
         }
