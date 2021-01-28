@@ -45,6 +45,14 @@ body {
     outline: none;
 }
 
+header {
+    background: black;
+    padding: 5px;
+    height: auto;
+    text-align: center;
+    font-family: "permanent marker";
+}
+
 #app {
     display: flex;
     overflow: hidden;
@@ -58,7 +66,7 @@ body {
 
     border: .1px solid #dfe1e5;
     border-radius: 5px;
-    height: calc(100vh - 42px);
+    height: calc(100vh - 72px);
     width: 50%;
     margin: 20px;
 
