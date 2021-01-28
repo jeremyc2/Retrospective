@@ -145,6 +145,8 @@ function appendCardToDOM(column) {
     cardActions.append(deleteButton, detailsButton);
     card.append(textarea, cardActions);
 
+    // TODO FIXME
+    //     container.insertBefore(card, container.firstElementChild);
     container.append(card);
 
     return card;
