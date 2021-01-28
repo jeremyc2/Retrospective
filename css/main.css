@@ -118,7 +118,7 @@ body {
     background: var(--background-light);
 }
 
-.card:last-of-type {
+.card:nth-last-child(2) {
     margin-bottom: 70px;
 }
 
