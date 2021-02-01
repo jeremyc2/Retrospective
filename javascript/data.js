@@ -13,6 +13,7 @@ function updateURL() {
     var params = new URLSearchParams();
     params.append("a", JSON.stringify(cards));
 
+    // Shorten the param so we don't run out of space
     var string = params.toString();
     string = string.replaceAll("%22", "\"");
     string = string.replaceAll("%7B", "{");
@@ -24,8 +25,8 @@ function updateURL() {
 
     history.replaceState({}, "", `?${string}`);
 
-    var percent = `${(document.location.search.length / 8203) * 100}`;
-    console.log(percent.substring(0, percent.lastIndexOf(".") + 3) + "%");
+    var percent = document.location.search.length / 8203 * 100;
+    console.log(`${percent}`.substring(0, `${percent}`.lastIndexOf(".") + 3) + "%");
 
 }
 
