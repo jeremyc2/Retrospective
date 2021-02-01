@@ -39,13 +39,8 @@ function loadData() {
 
 }
 
-function updateURL() {
+function condenseURL(string) {
 
-    var params = new URLSearchParams();
-    params.append("a", JSON.stringify(cards));
-
-    // Shorten the param so we don't run out of space
-    var string = params.toString();
     string = string.replaceAll("%22", "\"");
     string = string.replaceAll("%7B", "{");
     string = string.replaceAll("%7D", "}");
@@ -54,10 +49,30 @@ function updateURL() {
     string = string.replaceAll("%2C", ",");
     string = string.replaceAll("%3A", ":");
 
+    return string;
+}
+
+function updateURL() {
+
+    var params = new URLSearchParams();
+    params.append("a", JSON.stringify(cards));
+
+    // Shorten the param so we don't run out of space
+    var string = condenseURL(params.toString());
+
     history.replaceState({}, "", `?${string}`);
 
     verifyContentLength();
 
+}
+
+function copyURL() {
+    var input = document.createElement("textarea");
+    input.innerHTML = condenseURL(window.location.href);
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand("copy");
+    document.body.removeChild(input);
 }
 
 // A new card
