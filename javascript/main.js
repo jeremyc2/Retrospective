@@ -168,6 +168,10 @@ document.addEventListener("DOMContentLoaded", () => {
         e.stopPropagation();
     });
 
+    if(searchParams.has("load")) {
+        document.querySelector("#load-data").style.display = "block";
+    }
+
     var i = 0;
     cards.positive.forEach(() => {
         appendCardToDOM('positive', true);
