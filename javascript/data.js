@@ -26,6 +26,11 @@ function updateURL() {
     history.replaceState({}, "", `?${string}`);
 
     var percent = document.location.search.length / 8203 * 100;
+
+    if(percent > 100) {
+        alert("Query string too long!");
+    }
+
     console.log(`${percent}`.substring(0, `${percent}`.lastIndexOf(".") + 3) + "%");
 
 }
