@@ -6,6 +6,18 @@ var cards = {
 
 if(searchParams.has("a")) {
     cards = JSON.parse(searchParams.get("a"));
+    verifyContentLength();
+}
+
+function verifyContentLength() {
+    var percent = document.location.search.length / 8203 * 100;
+    var percentString = `${percent}`.substring(0, `${percent}`.lastIndexOf(".") + 3) + "%";
+
+    if(percent > 100) {
+        alert(`Storage limit exceeded. Currently at ${percentString} capacity.`);
+    }
+
+    console.log(`Currently at ${percentString} capacity`);
 }
 
 function updateURL() {
@@ -25,14 +37,7 @@ function updateURL() {
 
     history.replaceState({}, "", `?${string}`);
 
-    var percent = document.location.search.length / 8203 * 100;
-    var percentString = `${percent}`.substring(0, `${percent}`.lastIndexOf(".") + 3) + "%";
-
-    if(percent > 100) {
-        alert(`Storage limit exceeded. Currently at ${percentString} capacity.`);
-    }
-
-    console.log(`Currently at ${percentString} capacity`);
+    verifyContentLength();
 
 }
 
