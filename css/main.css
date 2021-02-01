@@ -69,18 +69,25 @@ header {
     text-align: center;
 }
 
-#load-data > div input {
-    border-radius: 5px;
-    margin: 20px;
-    padding: 10px;
-    height: 35px;
-}
-
 #load-data > div label {
     position: relative;
     color: white;
     font-size: 35px;
     top: 9px;
+}
+
+#load-data > div input {
+    border-radius: 5px;
+    margin: 20 0 20 20;
+    padding: 10px;
+    height: 35px;
+}
+
+#load-data > div button {
+    border-radius: 5px;
+    padding: 10px;
+    height: 35px;
+    margin: 20 0 20 0;
 }
 
 #app {
