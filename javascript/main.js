@@ -49,20 +49,20 @@ function showDetails(column, card) {
 
     mainDiv.innerHTML = "";
 
-    var sprintInput = addDetailsInput(column, card, mainDiv, "Sprint", "sprint");
+    var sprintInput = addDetailsInput(column, card, mainDiv, "Sprint", "s");
 
     if(column == "positive") {
         modal.style.setProperty("--background-color", "hsl(88, 52%, 94%)");
         modal.style.setProperty("--border-color", "hsl(88, 52%, 64%)");
 
-        addDetailsField(column, card, mainDiv, "Comments", "comments");
+        addDetailsField(column, card, mainDiv, "Comments", "m");
 
     } else if(column == "negative") {
         modal.style.setProperty("--background-color", "hsl(351, 100%, 96%)");
         modal.style.setProperty("--border-color", "hsl(351, 100%, 86%)");
 
-        addDetailsField(column, card, mainDiv, "Action Items", "actions");
-        addDetailsField(column, card, mainDiv, "Comments", "comments");
+        addDetailsField(column, card, mainDiv, "Action Items", "a");
+        addDetailsField(column, card, mainDiv, "Comments", "m");
 
     }
 
@@ -116,7 +116,7 @@ function appendCardToDOM(column, initialLoad) {
     }
 
     textarea.addEventListener("input", function() {
-        updateCard(column, this.parentElement, "content", this.value);
+        updateCard(column, this.parentElement, "c", this.value);
     });
 
     deleteButton.addEventListener("click", function() {
@@ -131,20 +131,20 @@ function appendCardToDOM(column, initialLoad) {
 
     // Fill in props
     var props = cards[column][container.querySelectorAll(".card").length];
-    if(props.content != null) {
-        textarea.value = props.content;
+    if(props.c != null) {
+        textarea.value = props.c;
     }
 
     // Add one more for negative columns
     if(column == "negative") {
         var resolvedIcon = document.createElement("div");
         resolvedIcon.classList.add("resolved");
-        if(props.resolved != null && props.resolved != false) {
+        if(props.r != null && props.r != false) {
             resolvedIcon.classList.toggle("active");
         }
         resolvedIcon.addEventListener("click", function() {
             this.classList.toggle("active");
-            updateCard(column, card, "resolved", this.classList.contains("active"));
+            updateCard(column, card, "r", this.classList.contains("active"));
         });
         card.append(resolvedIcon);
     }

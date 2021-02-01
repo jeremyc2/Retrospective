@@ -1,24 +1,32 @@
 var searchParams = new URLSearchParams(document.location.search);
 var cards = {
-    positive: searchParams.getAll("positiveCard").map(
-        card => JSON.parse(card)
-    ),
-    negative: searchParams.getAll("negativeCard").map(
-        card => JSON.parse(card)
-    )
+    positive: [],
+    negative: []
+}
+
+if(searchParams.has("a")) {
+    cards = JSON.parse(searchParams.get("a"));
 }
 
 function updateURL() {
 
     var params = new URLSearchParams();
-    cards.positive.forEach(card => {
-        params.append("positiveCard", JSON.stringify(card));
-    });
-    cards.negative.forEach(card => {
-        params.append("negativeCard", JSON.stringify(card));
-    });
+    params.append("a", JSON.stringify(cards));
 
-    history.replaceState({}, "", `?${params.toString()}`);
+    var string = params.toString();
+    string = string.replaceAll("%22", "\"");
+    string = string.replaceAll("%7B", "{");
+    string = string.replaceAll("%7D", "}");
+    string = string.replaceAll("%5B", "[");
+    string = string.replaceAll("%5D", "]");
+    string = string.replaceAll("%2C", ",");
+    string = string.replaceAll("%3A", ":");
+
+    history.replaceState({}, "", `?${string}`);
+
+    var percent = `${(document.location.search.length / 8203) * 100}`;
+    console.log(percent.substring(0, percent.lastIndexOf(".") + 3) + "%");
+
 }
 
 // A new card
