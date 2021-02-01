@@ -20,6 +20,10 @@ function verifyContentLength() {
     console.log(`Currently at ${percentString} capacity`);
 }
 
+function loadData() {
+    
+}
+
 function updateURL() {
 
     var params = new URLSearchParams();
