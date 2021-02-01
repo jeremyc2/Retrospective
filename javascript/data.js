@@ -4,6 +4,8 @@ var cards = {
     negative: []
 }
 
+var alertTriggered = false;
+
 if(searchParams.has("a")) {
     cards = JSON.parse(searchParams.get("a"));
     verifyContentLength();
@@ -13,7 +15,8 @@ function verifyContentLength() {
     var percent = document.location.search.length / 8203 * 100;
     var percentString = `${percent}`.substring(0, `${percent}`.lastIndexOf(".") + 3) + "%";
 
-    if(percent > 100) {
+    if(percent > 100 && !alertTriggered) {
+        alertTriggered = true;
         alert(`Storage limit exceeded. Currently at ${percentString} capacity.`);
     }
 
