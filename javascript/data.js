@@ -67,12 +67,14 @@ function updateURL() {
 }
 
 function copyURL() {
-    var input = document.createElement("textarea");
-    input.innerHTML = condenseURL(window.location.href);
+    var input = document.createElement("textarea"),
+        string = condenseURL(window.location.href);
+    input.innerHTML = string;
     document.body.appendChild(input);
     input.select();
     document.execCommand("copy");
     document.body.removeChild(input);
+    return string;
 }
 
 // A new card
