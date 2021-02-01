@@ -1,4 +1,5 @@
 <script>
-    window.location.href = window.location.origin + window.location.pathname + "?load";
+    window.location.href = window.location.origin + 
+        window.location.pathname.substring(0, window.location.pathname.length - 11) + "index.html?load";
 </script>
 <a href="index.html?load">Load by URL (when the URL is too large to load like normal in the browser)</a>
