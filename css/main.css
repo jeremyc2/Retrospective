@@ -99,6 +99,15 @@ header {
     overflow: hidden;
 }
 
+.copy {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.copy:hover {
+    opacity: 1;
+}
+
 .container {
     position: relative;
 
