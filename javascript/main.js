@@ -162,15 +162,15 @@ function appendCardToDOM(column, initialLoad) {
 
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+function loadCards() {
 
-    document.querySelector(".modal-content").addEventListener("click", function(e) {
-        e.stopPropagation();
+    [...document.querySelectorAll(`#positive .card`)].forEach(card => {
+        card.parentNode.removeChild(card);
     });
 
-    if(searchParams.has("load")) {
-        document.querySelector("#load-data").style.display = "block";
-    }
+    [...document.querySelectorAll(`#negative .card`)].forEach(card => {
+        card.parentNode.removeChild(card);
+    });
 
     var i = 0;
     cards.positive.forEach(() => {
@@ -183,6 +183,20 @@ document.addEventListener("DOMContentLoaded", () => {
         appendCardToDOM('negative', true);
         i++;
     });
+
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    document.querySelector(".modal-content").addEventListener("click", function(e) {
+        e.stopPropagation();
+    });
+
+    if(searchParams.has("load")) {
+        document.querySelector("#load-data").style.display = "block";
+    }
+
+    loadCards();
 
     document.addEventListener('keydown', function(e) {
         if(e.code == "Escape") {
