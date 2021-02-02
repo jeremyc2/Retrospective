@@ -9,9 +9,17 @@
 <script src="javascript/animate.js"></script>
 <script src="javascript/data.js"></script>
 <script src="javascript/main.js"></script>
+<script src="javascript/fs-helpers.js"></script>
+<script src="javascript/menu.js"></script>
 <header>
-    <span class="title" style="color: white;">The Fast and the Curious </span><span class="title" style="color: red;">Retrospective</span>
+    <span class="title" style="color: white; cursor: context-menu;">The Fast and the Curious </span><span class="title" style="color: red; cursor: context-menu;">Retrospective</span>
     <img class="copy" style="float: right; height: 15;" src="copy.svg" onclick="copyURL()">
+    <div class="menu">
+        <div id="butNew" onclick="newFile()">New</div>
+        <div id="butOpen" onclick="openFile()">Open</div>
+        <div id="butSave" onclick="saveFile()">Save</div>
+        <div id="butSaveAs" onclick="saveFileAs()">Save As</div>
+    </div>
 </header>
 <div id="load-data">
     <div>
