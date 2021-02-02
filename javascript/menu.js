@@ -38,6 +38,7 @@ var newFile = () => {
  * @param {FileSystemFileHandle} fileHandle File handle to read from.
  */
 var openFile = async (fileHandle) => {
+  console.log("Opening file...");
   if (!hasFSAccess) {
     console.error("No filesystem access in browser");
     return;
@@ -91,6 +92,7 @@ var read = async (file, fileHandle) => {
  * Saves a file to disk.
  */
 var saveFile = async () => {
+  console.log("Saving file...");
   try {
     if (!file.handle) {
       return await saveFileAs();
@@ -107,6 +109,7 @@ var saveFile = async () => {
  * Saves a new file to disk.
  */
 var saveFileAs = async () => {
+  console.log("Saving file...");
   if (!hasFSAccess) {
     console.error("No filesystem access in browser");
     return;
