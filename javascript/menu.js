@@ -97,11 +97,11 @@ var read = async (file, fileHandle) => {
  * Saves a file to disk.
  */
 var saveFile = async () => {
-  console.log("Saving file...");
   try {
     if (!file.handle) {
       return await saveFileAs();
     }
+    console.log("Saving file...");
     await writeFile(file.handle, getText());
   } catch (ex) {
     const msg = 'Unable to save file';
