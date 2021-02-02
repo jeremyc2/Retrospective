@@ -73,7 +73,11 @@ header {
     cursor: pointer;
 }
 
-.menu div:hover {
+.menu div.switch {
+    cursor: context-menu;
+}
+
+.menu div:hover:not(.switch) {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
@@ -126,6 +130,10 @@ header {
 .copy {
     opacity: 0.7;
     cursor: pointer;
+    float: right;
+    height: 15;
+    position: relative;
+    top: 2px;
 }
 
 .copy:hover {

@@ -6,7 +6,12 @@ if(!hasFSAccess) {
     "chrome://flags/#native-file-system-api");
 }
 
+var autosaveEnabled = false;
 var file = {};
+
+function toggleAutosave() {
+  autosaveEnabled ^= 1;
+}
 
 function getText() {
   return JSON.stringify(cards);
