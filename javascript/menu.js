@@ -10,7 +10,7 @@ var autosaveEnabled = false;
 var file = {};
 
 function toggleAutosave() {
-  autosaveEnabled = document.getElementById("autosave").checked
+  autosaveEnabled = !document.getElementById("autosave").checked;
 }
 
 function getText() {
