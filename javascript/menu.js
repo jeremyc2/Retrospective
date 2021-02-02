@@ -10,7 +10,15 @@ var autosaveEnabled = false;
 var file = {};
 
 function toggleAutosave() {
-  autosaveEnabled = !document.getElementById("autosave").checked;
+
+  var checked = document.getElementById("autosave").checked;
+
+  if(!checked && file.fileHandle == null) {
+    saveFile();
+  }
+
+  // The checkbox will not be toggled until after this function call
+  autosaveEnabled = !checked;
 }
 
 function getText() {
