@@ -43,8 +43,8 @@ function getNewFileHandle() {
   if ('showSaveFilePicker' in window) {
     const opts = {
       types: [{
-        description: 'Text file',
-        accept: {'text/plain': ['.txt']},
+        description: 'JSON',
+        accept: {'application/json': ['.json']},
       }],
     };
     return window.showSaveFilePicker(opts);
@@ -53,9 +53,9 @@ function getNewFileHandle() {
   const opts = {
     type: 'save-file',
     accepts: [{
-      description: 'Text file',
-      extensions: ['txt'],
-      mimeTypes: ['text/plain'],
+      description: 'JSON',
+      extensions: ['json'],
+      mimeTypes: ['application/json'],
     }],
   };
   return window.chooseFileSystemEntries(opts);
