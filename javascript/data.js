@@ -23,15 +23,19 @@ function verifyContentLength() {
     console.log(`Currently at ${percentString} capacity`);
 }
 
+function setData(data) {
+    cards = JSON.parse(data);
+    verifyContentLength();
+    loadCards();
+    updateURL();
+}
+
 function loadData() {
     var urlInput = document.querySelector("#data-url");
     var params = new URLSearchParams(urlInput.value.substring(urlInput.value.indexOf("?"), urlInput.length));
 
     if(params.has("a")) {
-        cards = JSON.parse(params.get("a"));
-        verifyContentLength();
-        loadCards();
-        updateURL();
+        setData(params.get("a"));
     }
 
     urlInput.parentElement.parentElement.style.display = "none";

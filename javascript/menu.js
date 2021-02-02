@@ -3,6 +3,20 @@ var hasFSAccess = 'chooseFileSystemEntries' in window ||
 
 var file = {};
 
+function getText() {
+  return JSON.stringify(cards);
+}
+
+function setFile(fileHandle) {
+  if (fileHandle && fileHandle.name) {
+    file.handle = fileHandle;
+    file.name = fileHandle.name;
+  } else {
+    file.handle = null;
+    file.name = fileHandle;
+  }
+};
+
 /**
  * Creates an empty notepad with no details in it.
  */
@@ -53,7 +67,7 @@ var openFile = async (fileHandle) => {
     return;
   }
   const file = await fileHandle.getFile();
-  readFile(file, fileHandle);
+  read(file, fileHandle);
 };
 
 /**
@@ -62,9 +76,10 @@ var openFile = async (fileHandle) => {
  *  @param {File} file File to read from.
  *  @param {FileSystemFileHandle} fileHandle File handle to read from.
  */
-var readFile = async (file, fileHandle) => {
+var read = async (file, fileHandle) => {
   try {
-
+    setData(await readFile(file));
+    setFile(fileHandle || file.name);
   } catch (ex) {
     const msg = `An error occured reading ${fileName}`;
     console.error(msg, ex);
