@@ -1,6 +1,11 @@
 var hasFSAccess = 'chooseFileSystemEntries' in window ||
     'showOpenFilePicker' in window;
 
+if(!hasFSAccess) {
+  alert("Please enable File System Access to save your work.\n" + 
+    "chrome://flags/#native-file-system-api");
+}
+
 var file = {};
 
 function getText() {
