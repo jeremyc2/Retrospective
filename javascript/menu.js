@@ -7,7 +7,14 @@ var file = {};
  * Creates an empty notepad with no details in it.
  */
 var newFile = () => {
-  
+    cards.positive = [];
+    cards.negative = [];
+
+    loadCards();
+    updateURL();
+
+    file = {};
+
 };
 
 
