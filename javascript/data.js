@@ -23,7 +23,6 @@ function verifyContentLength() {
         alert(`URL max length exceeded. Currently at ${percentString} capacity.`);
     }
 
-    console.log(`Currently at ${percentString} capacity`);
 }
 
 function setData(data) {
