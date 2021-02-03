@@ -14,8 +14,8 @@ function reflectChanges() {
     }
 }
 
-function verifyContentLength() {
-    var percent = document.location.search.length / 8203 * 100;
+function verifyContentLength(url) {
+    var percent = url.length / 8203 * 100;
     var percentString = `${percent}`.substring(0, `${percent}`.lastIndexOf(".") + 3) + "%";
 
     if(percent > 100) {
@@ -96,10 +96,12 @@ function condenseURL(string) {
 
 function copyURL() {
 
-    verifyContentLength();
+    var params = new URLSearchParams(window.location.search);
+    params.append("a", JSON.stringify(cards));
 
     var input = document.createElement("textarea"),
-        string = condenseURL(window.location.href);
+        string = condenseURL(window.location.href + `?${params.toString()}`);
+    verifyContentLength(string);
     input.innerHTML = string;
     document.body.appendChild(input);
     input.select();
