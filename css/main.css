@@ -140,8 +140,10 @@ header {
     cursor: pointer;
     float: right;
     height: 15;
-    position: relative;
-    top: 2px;
+    
+    position: absolute;
+    top: 6px;
+    right: 2px;
 }
 
 .copy:hover {
