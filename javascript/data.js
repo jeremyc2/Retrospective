@@ -28,12 +28,18 @@ function verifyContentLength() {
 function updateFooter(text) {
     var footer = document.querySelector("footer");
     if(text == null) {
-        text = `Filename: ${file.handle.name} `;
-        text += "Last Saved: " + 
-            new Date(Date.now()).toLocaleTimeString();
-    }
+        var filenameDiv = document.createElement("div"),
+            timestampDiv = document.createElement("div"),
+            time = new Date(Date.now()).toLocaleTimeString();
 
-    footer.innerHTML = text;
+        filenameDiv.innerHTML = `Filename: ${file.handle.name}`;
+        timestampDiv.innerHTML = `Last Saved: ${time}`;
+
+        footer.innerHTML = "";
+        footer.append(filenameDiv, timestampDiv);
+    } else {
+        footer.innerHTML = text;
+    }
 
 }
 
