@@ -11,6 +11,13 @@ if(searchParams.has("a")) {
     verifyContentLength();
 }
 
+function reflectChanges() {
+    updateURL();
+    if(autosaveEnabled) {
+        saveFile();
+    }
+}
+
 function verifyContentLength() {
     var percent = document.location.search.length / 8203 * 100;
     var percentString = `${percent}`.substring(0, `${percent}`.lastIndexOf(".") + 3) + "%";
@@ -27,7 +34,7 @@ function setData(data) {
     cards = JSON.parse(data);
     verifyContentLength();
     loadCards();
-    updateURL();
+    reflectChanges();
 }
 
 function loadData() {
@@ -89,7 +96,7 @@ function appendCard(column, updateDOM, props) {
         appendCardToDOM(column, false);
     }
 
-    updateURL();
+    reflectChanges();
 }
 
 function getCardIndex(card) {
@@ -110,7 +117,7 @@ function updateCard(column, card, field, value) {
     var props = cards[column][i];
     props[field] = value;
 
-    updateURL();
+    reflectChanges();
 }
 
 function deleteCard(column, card) {
@@ -120,7 +127,7 @@ function deleteCard(column, card) {
 
     cards[column].splice(i, 1);
 
-    updateURL();
+    reflectChanges();
 }
 
 function clearColumn(column) {
@@ -129,5 +136,5 @@ function clearColumn(column) {
         card.parentNode.removeChild(card);
     });
 
-    updateURL();
+    reflectChanges();
 }
