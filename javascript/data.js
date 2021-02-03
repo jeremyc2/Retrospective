@@ -25,15 +25,32 @@ function verifyContentLength() {
 
 }
 
+window.setInterval(() => {
+    var timestampDiv = document.getElementById("last-save");
+
+    if(timestampDiv != null) {
+        var timestamp = parseInt(timestampDiv.getAttribute("data-last-save")),
+            old = new Date(timestamp),
+            current = new Date(),
+            timedif = Math.round((current.getTime() - old.getTime()) / 1000);
+
+        timestampDiv.innerHTML = `Last Saved: ${timedif} Seconds Ago`;
+    }
+
+}, 1000);
+
 function updateFooter(text) {
     var footer = document.querySelector("footer");
     if(text == null) {
         var filenameDiv = document.createElement("div"),
             timestampDiv = document.createElement("div"),
-            time = new Date(Date.now()).toLocaleTimeString();
+            time = new Date();
+
+        timestampDiv.id = "last-save";
+        timestampDiv.setAttribute("data-last-save", time.valueOf());
 
         filenameDiv.innerHTML = `Filename: ${file.handle.name}`;
-        timestampDiv.innerHTML = `Last Saved: ${time}`;
+        timestampDiv.innerHTML = "Last Saved: 0 Seconds Ago";
 
         footer.innerHTML = "";
         footer.append(filenameDiv, timestampDiv);

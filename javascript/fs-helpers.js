@@ -110,7 +110,7 @@ async function writeFile(fileHandle, contents) {
     await writer.write(0, contents);
     // Close the file and write the contents to disk
     await writer.close();
-    console.log("File Saved", new Date(Date.now()).toLocaleTimeString());
+    console.log("File Saved", new Date().toLocaleTimeString());
     updateFooter();
     return;
   }
@@ -121,7 +121,7 @@ async function writeFile(fileHandle, contents) {
   await writable.write(contents);
   // Close the file and write the contents to disk.
   await writable.close();
-  console.log("File Saved", new Date(Date.now()).toLocaleTimeString());
+  console.log("File Saved", new Date().toLocaleTimeString());
   updateFooter();
 }
 
