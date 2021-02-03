@@ -79,6 +79,7 @@ var openFile = async (fileHandle) => {
       fileHandle = await getFileHandle();
     } catch (ex) {
       if (ex.name === 'AbortError') {
+        updateFooter("");
         return;
       }
       const msg = 'An error occured trying to open the file.';
@@ -142,6 +143,7 @@ var saveFileAs = async () => {
   } catch (ex) {
     if (ex.name === 'AbortError') {
       disableAutosave();
+      updateFooter("");
       return;
     }
     const msg = 'An error occured trying to open the file.';
