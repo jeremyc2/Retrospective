@@ -32,9 +32,12 @@ window.setInterval(() => {
         var timestamp = parseInt(timestampDiv.getAttribute("data-last-save")),
             old = new Date(timestamp),
             current = new Date(),
-            timedif = Math.round((current.getTime() - old.getTime()) / 1000);
+            mindif = Math.round((current.getTime() - old.getTime()) / 60000);
 
-        timestampDiv.innerHTML = `Last Saved: ${timedif} Seconds Ago`;
+        if(mindif == 0)
+            return;
+            
+        timestampDiv.innerHTML = `Last saved ${mindif} minute${mindif > 1? "s": ""} ago`;
     }
 
 }, 1000);
@@ -50,7 +53,7 @@ function updateFooter(text) {
         timestampDiv.setAttribute("data-last-save", time.valueOf());
 
         filenameDiv.innerHTML = `Filename: ${file.handle.name}`;
-        timestampDiv.innerHTML = "Last Saved: 0 Seconds Ago";
+        timestampDiv.innerHTML = "Last saved less than a minute ago";
 
         footer.innerHTML = "";
         footer.append(filenameDiv, timestampDiv);
