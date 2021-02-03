@@ -50,7 +50,6 @@ var newFile = () => {
     cards.negative = [];
 
     loadCards();
-    updateURL();
     updateFooter("New File");
 
     file = {};

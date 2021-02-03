@@ -9,7 +9,6 @@ if(searchParams.has("a")) {
 }
 
 function reflectChanges() {
-    updateURL();
     if(autosaveEnabled) {
         saveFile();
     }
@@ -93,18 +92,6 @@ function condenseURL(string) {
     string = string.replaceAll("%3A", ":");
 
     return string;
-}
-
-function updateURL() {
-
-    var params = new URLSearchParams();
-    params.append("a", JSON.stringify(cards));
-
-    // Shorten the param so we don't run out of space
-    var string = condenseURL(params.toString());
-
-    history.replaceState({}, "", `?${string}`);
-
 }
 
 function copyURL() {
