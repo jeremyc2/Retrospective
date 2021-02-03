@@ -65,7 +65,6 @@ var openFile = async (fileHandle) => {
   console.log("Opening file...");
   if (!hasFSAccess) {
     console.error("No filesystem access in browser");
-    disableAutosave();
     return;
   }
 
@@ -74,7 +73,6 @@ var openFile = async (fileHandle) => {
   if (fileHandle) {
     if (await verifyPermission(fileHandle, true) === false) {
       console.error(`User did not grant permission to '${fileHandle.name}'`);
-      disableAutosave();
       return;
     }
   } else {
@@ -82,12 +80,10 @@ var openFile = async (fileHandle) => {
       fileHandle = await getFileHandle();
     } catch (ex) {
       if (ex.name === 'AbortError') {
-        disableAutosave();
         return;
       }
       const msg = 'An error occured trying to open the file.';
       console.error(msg, ex);
-      disableAutosave();
       alert(msg);
     }
   }
@@ -112,7 +108,6 @@ var read = async (file, fileHandle) => {
   } catch (ex) {
     const msg = `An error occured reading ${fileName}`;
     console.error(msg, ex);
-    disableAutosave();
     alert(msg);
   }
 };
