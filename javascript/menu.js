@@ -50,6 +50,7 @@ var newFile = () => {
 
     loadCards();
     updateURL();
+    updateFooter("New File");
 
     file = {};
 

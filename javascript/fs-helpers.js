@@ -69,6 +69,7 @@ function getNewFileHandle() {
  */
 function readFile(file) {
   console.log("File Opened");
+  updateFooter();
   // If the new .text() reader is available, use it.
   if (file.text) {
     return file.text();
