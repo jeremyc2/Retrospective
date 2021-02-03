@@ -13,13 +13,14 @@ function toggleAutosave() {
 
   var checked = document.getElementById("autosave").checked;
 
+  // Let's do the initial save
   if(!checked && file.fileHandle == null) {
     saveFile();
   }
 
   // The checkbox will not be toggled until after this function call
   autosaveEnabled = !checked;
-  
+
 }
 
 function getText() {
