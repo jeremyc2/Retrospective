@@ -20,7 +20,7 @@ function verifyContentLength() {
     var percentString = `${percent}`.substring(0, `${percent}`.lastIndexOf(".") + 3) + "%";
 
     if(percent > 100 && !alertTriggered) {
-        alert(`Storage limit exceeded. Currently at ${percentString} capacity.`);
+        alert(`Safe URL length exceeded. Currently at ${percentString} capacity.`);
     }
 
     console.log(`Currently at ${percentString} capacity`);
