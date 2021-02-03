@@ -75,8 +75,14 @@ header {
 
 .menu div.switch {
     cursor: default;
-    border-right: solid 1px rgb(226, 226, 226);
     text-transform: unset
+}
+
+.menu div.switch::after {
+    content: "";
+    border-right: solid 1px rgb(226, 226, 226);
+    position: relative;
+    right: -58px;
 }
 
 .menu div:hover:not(.switch) {
