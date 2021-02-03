@@ -9,6 +9,10 @@ if(!hasFSAccess) {
 var autosaveEnabled = false;
 var file = {};
 
+function disableAutosave() {
+  autosaveEnabled = document.getElementById("autosave").checked = false;
+}
+
 function toggleAutosave() {
 
   var checked = document.getElementById("autosave").checked;
@@ -61,6 +65,7 @@ var openFile = async (fileHandle) => {
   console.log("Opening file...");
   if (!hasFSAccess) {
     console.error("No filesystem access in browser");
+    disableAutosave();
     return;
   }
 
@@ -69,6 +74,7 @@ var openFile = async (fileHandle) => {
   if (fileHandle) {
     if (await verifyPermission(fileHandle, true) === false) {
       console.error(`User did not grant permission to '${fileHandle.name}'`);
+      disableAutosave();
       return;
     }
   } else {
@@ -80,6 +86,7 @@ var openFile = async (fileHandle) => {
       }
       const msg = 'An error occured trying to open the file.';
       console.error(msg, ex);
+      disableAutosave();
       alert(msg);
     }
   }
@@ -104,6 +111,7 @@ var read = async (file, fileHandle) => {
   } catch (ex) {
     const msg = `An error occured reading ${fileName}`;
     console.error(msg, ex);
+    disableAutosave();
     alert(msg);
   }
 };
@@ -121,6 +129,7 @@ var saveFile = async () => {
   } catch (ex) {
     const msg = 'Unable to save file';
     console.error(msg, ex);
+    disableAutosave();
     alert(msg);
   }
 };
@@ -132,6 +141,7 @@ var saveFileAs = async () => {
   console.log("Saving file...");
   if (!hasFSAccess) {
     console.error("No filesystem access in browser");
+    disableAutosave();
     return;
   }
   let fileHandle;
@@ -143,6 +153,7 @@ var saveFileAs = async () => {
     }
     const msg = 'An error occured trying to open the file.';
     console.error(msg, ex);
+    disableAutosave();
     alert(msg);
     return;
   }
@@ -152,6 +163,7 @@ var saveFileAs = async () => {
   } catch (ex) {
     const msg = 'Unable to save file.';
     console.error(msg, ex);
+    disableAutosave();
     alert(msg);
     return;
   }
