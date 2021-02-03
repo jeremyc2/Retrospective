@@ -14,7 +14,7 @@ function toggleAutosave() {
   var checked = document.getElementById("autosave").checked;
 
   // Let's do the initial save
-  if(!checked && file.fileHandle == null) {
+  if(!checked) {
     saveFile();
   }
 
