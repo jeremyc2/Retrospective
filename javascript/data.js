@@ -19,7 +19,7 @@ function verifyContentLength() {
     var percent = document.location.search.length / 8203 * 100;
     var percentString = `${percent}`.substring(0, `${percent}`.lastIndexOf(".") + 3) + "%";
 
-    if(percent > 100 && !alertTriggered) {
+    if(percent > 100) {
         alert(`URL max length exceeded. Currently at ${percentString} capacity.`);
     }
 
