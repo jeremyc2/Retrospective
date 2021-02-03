@@ -39,7 +39,7 @@ window.setInterval(() => {
         if(mindif == 0)
             return;
             
-        timestampDiv.innerHTML = `Last saved ${mindif} minute${mindif > 1? "s": ""} ago`;
+        timestampDiv.innerHTML = `Saved ${mindif} minute${mindif > 1? "s": ""} ago`;
     }
 
 }, 1000);
@@ -55,7 +55,7 @@ function updateFooter(text) {
         timestampDiv.setAttribute("data-last-save", time.valueOf());
 
         filenameDiv.innerHTML = `Filename: ${file.handle.name}`;
-        timestampDiv.innerHTML = "Last saved less than a minute ago";
+        timestampDiv.innerHTML = "Saved less than a minute ago";
 
         footer.innerHTML = "";
         footer.append(filenameDiv, timestampDiv);
