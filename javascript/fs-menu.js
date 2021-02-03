@@ -126,6 +126,7 @@ var saveFile = async () => {
     console.error(msg, ex);
     disableAutosave();
     alert(msg);
+    // TODO Revert back to previous footer
   }
 };
 
@@ -141,12 +142,14 @@ var saveFileAs = async () => {
   } catch (ex) {
     if (ex.name === 'AbortError') {
       disableAutosave();
+      // TODO Revert back to previous footer
       return;
     }
     const msg = 'An error occured trying to open the file.';
     console.error(msg, ex);
     disableAutosave();
     alert(msg);
+    // TODO Revert back to previous footer
     return;
   }
   try {
@@ -157,6 +160,7 @@ var saveFileAs = async () => {
     console.error(msg, ex);
     disableAutosave();
     alert(msg);
+    // TODO Revert back to previous footer
     return;
   }
 };
