@@ -63,16 +63,13 @@ var newFile = () => {
  */
 var openFile = async (fileHandle) => {
   console.log("Opening file...");
-  if (!hasFSAccess) {
-    console.error("No filesystem access in browser");
-    return;
-  }
 
   // If a fileHandle is provided, verify we have permission to read/write it,
   // otherwise, show the file open prompt and allow the user to select the file.
   if (fileHandle) {
     if (await verifyPermission(fileHandle, true) === false) {
       console.error(`User did not grant permission to '${fileHandle.name}'`);
+      alert(`Please grant read/write permission to '${fileHandle.name}'`);
       return;
     }
   } else {
@@ -135,11 +132,6 @@ var saveFile = async () => {
  */
 var saveFileAs = async () => {
   console.log("Saving file...");
-  if (!hasFSAccess) {
-    console.error("No filesystem access in browser");
-    disableAutosave();
-    return;
-  }
   let fileHandle;
   try {
     fileHandle = await getNewFileHandle();
