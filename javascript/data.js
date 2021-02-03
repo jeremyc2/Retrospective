@@ -4,11 +4,8 @@ var cards = {
     negative: []
 }
 
-var alertTriggered = false;
-
 if(searchParams.has("a")) {
     cards = JSON.parse(searchParams.get("a"));
-    verifyContentLength();
 }
 
 function reflectChanges() {
@@ -23,7 +20,6 @@ function verifyContentLength() {
     var percentString = `${percent}`.substring(0, `${percent}`.lastIndexOf(".") + 3) + "%";
 
     if(percent > 100 && !alertTriggered) {
-        alertTriggered = true;
         alert(`Storage limit exceeded. Currently at ${percentString} capacity.`);
     }
 
@@ -32,7 +28,6 @@ function verifyContentLength() {
 
 function setData(data) {
     cards = JSON.parse(data);
-    verifyContentLength();
     loadCards();
     reflectChanges();
 }
@@ -73,11 +68,12 @@ function updateURL() {
 
     history.replaceState({}, "", `?${string}`);
 
-    verifyContentLength();
-
 }
 
 function copyURL() {
+
+    verifyContentLength();
+
     var input = document.createElement("textarea"),
         string = condenseURL(window.location.href);
     input.innerHTML = string;
