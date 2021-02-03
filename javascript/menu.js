@@ -19,6 +19,7 @@ function toggleAutosave() {
 
   // The checkbox will not be toggled until after this function call
   autosaveEnabled = !checked;
+  
 }
 
 function getText() {
