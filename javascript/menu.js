@@ -72,6 +72,7 @@ var openFile = async (fileHandle) => {
     if (await verifyPermission(fileHandle, true) === false) {
       console.error(`User did not grant permission to '${fileHandle.name}'`);
       alert(`Please grant read/write permission to '${fileHandle.name}'`);
+      updateFooter("");
       return;
     }
   } else {
@@ -85,6 +86,7 @@ var openFile = async (fileHandle) => {
       const msg = 'An error occured trying to open the file.';
       console.error(msg, ex);
       alert(msg);
+      updateFooter("");
     }
   }
 
@@ -109,6 +111,7 @@ var read = async (file, fileHandle) => {
     const msg = `An error occured reading ${file.name}`;
     console.error(msg, ex);
     alert(msg);
+    updateFooter("");
   }
 };
 
@@ -128,6 +131,7 @@ var saveFile = async () => {
     console.error(msg, ex);
     disableAutosave();
     alert(msg);
+    updateFooter("");
   }
 };
 
@@ -150,6 +154,7 @@ var saveFileAs = async () => {
     console.error(msg, ex);
     disableAutosave();
     alert(msg);
+    updateFooter("");
     return;
   }
   try {
@@ -160,6 +165,7 @@ var saveFileAs = async () => {
     console.error(msg, ex);
     disableAutosave();
     alert(msg);
+    updateFooter("");
     return;
   }
 };
