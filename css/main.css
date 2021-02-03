@@ -75,6 +75,8 @@ header {
 
 .menu div.switch {
     cursor: default;
+    border-right: solid 1px rgb(226, 226, 226);
+    text-transform: unset
 }
 
 .menu div:hover:not(.switch) {

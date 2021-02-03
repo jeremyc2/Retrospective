@@ -1,6 +1,6 @@
 .switch {
     position: relative;
-    padding-left: 45px !important;
+    padding-right: 60px !important;
 }
 
 .switch label {
@@ -9,7 +9,7 @@
   width: 34px;
   height: 15px;
   bottom: 5px;
-  left: 5px;
+  right: 15px;
 }
 
 /* Hide default HTML checkbox */
