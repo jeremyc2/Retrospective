@@ -39,6 +39,7 @@ function setFile(fileHandle) {
     file.handle = null;
     file.name = fileHandle;
   }
+  updateFooter();
 };
 
 /**
@@ -104,7 +105,7 @@ var read = async (file, fileHandle) => {
     setData(await readFile(file));
     setFile(fileHandle || file.name);
   } catch (ex) {
-    const msg = `An error occured reading ${fileName}`;
+    const msg = `An error occured reading ${file.name}`;
     console.error(msg, ex);
     alert(msg);
   }

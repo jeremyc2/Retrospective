@@ -26,12 +26,15 @@ function verifyContentLength() {
 }
 
 function updateFooter(text) {
+    var footer = document.querySelector("footer");
     if(text == null) {
-        document.querySelector("footer").innerHTML = "Last Saved: " + 
+        text = `Filename: ${file.handle.name} `;
+        text += "Last Saved: " + 
             new Date(Date.now()).toLocaleTimeString();
-    } else {
-        document.querySelector("footer").innerHTML = text;
     }
+
+    footer.innerHTML = text;
+
 }
 
 function setData(data) {
