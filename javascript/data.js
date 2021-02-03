@@ -20,7 +20,10 @@ function verifyContentLength(url) {
 
     if(percent > 100) {
         alert(`URL max length exceeded. Currently at ${percentString} capacity.`);
+        return false;
     }
+
+    return true;
 
 }
 
@@ -101,13 +104,18 @@ function copyURL() {
 
     var input = document.createElement("textarea"),
         string = condenseURL(window.location.href + `?${params.toString()}`);
-    verifyContentLength(string);
-    input.innerHTML = string;
-    document.body.appendChild(input);
-    input.select();
-    document.execCommand("copy");
-    document.body.removeChild(input);
-    return string;
+
+    if(verifyContentLength(string)) {
+
+        input.innerHTML = string;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("copy");
+        document.body.removeChild(input);
+        return string;
+        
+    }
+
 }
 
 // A new card
