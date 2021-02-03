@@ -88,17 +88,3 @@ input[type=number] {
 .modal-content > *:nth-last-child(2) {
     margin-bottom: 30px;
 }
-
-.modal-content .footer {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    background-color: white;
-    position: absolute;
-    width: 100%;
-    left: 0;
-    bottom: 0px;
-    margin-top: 10px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-top: solid 1px var(--border-color);
-}
