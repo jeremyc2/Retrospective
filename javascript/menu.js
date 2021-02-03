@@ -118,6 +118,7 @@ var saveFile = async () => {
       return await saveFileAs();
     }
     console.log("Saving file...");
+    updateFooter("Saving...");
     await writeFile(file.handle, getText());
   } catch (ex) {
     const msg = 'Unable to save file';
@@ -132,6 +133,7 @@ var saveFile = async () => {
  */
 var saveFileAs = async () => {
   console.log("Saving file...");
+  updateFooter("Saving...");
   let fileHandle;
   try {
     fileHandle = await getNewFileHandle();

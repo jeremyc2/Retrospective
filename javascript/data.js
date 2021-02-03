@@ -25,9 +25,13 @@ function verifyContentLength() {
 
 }
 
-function updateFooter() {
-    document.querySelector("footer").innerHTML = "Last Saved: " + 
-        new Date(Date.now()).toLocaleTimeString();
+function updateFooter(text) {
+    if(text == null) {
+        document.querySelector("footer").innerHTML = "Last Saved: " + 
+            new Date(Date.now()).toLocaleTimeString();
+    } else {
+        document.querySelector("footer").innerHTML = text;
+    }
 }
 
 function setData(data) {
