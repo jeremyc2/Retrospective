@@ -34,7 +34,7 @@ window.setInterval(() => {
         var timestamp = parseInt(timestampDiv.getAttribute("data-last-save")),
             old = new Date(timestamp),
             current = new Date(),
-            mindif = Math.round((current.getTime() - old.getTime()) / 60000);
+            mindif = Math.floor((current.getTime() - old.getTime()) / 60000);
 
         if(mindif == 0)
             return;
