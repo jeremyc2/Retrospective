@@ -25,6 +25,11 @@ function verifyContentLength() {
 
 }
 
+function updateFooter() {
+    document.querySelector("footer").innerHTML = "Last Saved: " + 
+        new Date(Date.now()).toLocaleTimeString();
+}
+
 function setData(data) {
     cards = JSON.parse(data);
     loadCards();
