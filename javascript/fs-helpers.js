@@ -41,13 +41,20 @@ function getFileHandle() {
 function getNewFileHandle() {
   // For Chrome 86 and later...
   if ('showSaveFilePicker' in window) {
-    const opts = {
+    var opts = {
       types: [{
         description: 'JSON',
         accept: {'application/json': ['json']},
       }],
     };
-    return window.showSaveFilePicker(opts);
+    var fileHandle;
+    try {
+      fileHandle = window.showSaveFilePicker(opts);
+    } catch {
+      opts.types.accept['application/json'] = ['.json'];
+      fileHandle = window.showSaveFilePicker(opts);
+    }
+    return fileHandle;
   }
   // For Chrome 85 and earlier...
   const opts = {
