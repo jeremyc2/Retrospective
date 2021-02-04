@@ -1,0 +1,161 @@
+.cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 10px;
+
+    overflow-y: scroll;
+    background-color: white;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.card {
+
+    position: relative;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    margin-top: 10px;
+
+    width: -webkit-fill-available;
+    margin-left: 15px;
+    margin-right: 15px;
+
+    height: 90px;
+    background: var(--background-light);
+}
+
+.card.expand {
+    animation: expand .5s cubic-bezier(0, 0.5, 0, 1) 0s 1 normal forwards;
+}
+
+@keyframes expand {
+    from {
+        opacity: 0;
+        height: 0px;
+    }
+    to {
+        opacity: 1;
+        height: 90px;
+    }
+}
+
+.card:nth-last-child(2) {
+    margin-bottom: 70px;
+}
+
+textarea {
+    appearance: none;
+    border: none;
+    resize: none;
+
+    width: 100%;
+    background: white;
+    outline: none;
+    padding: 11px;
+}
+
+.card textarea {
+    height: calc(100% - 30px);
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card-actions {
+    height: 30px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button.card-action {
+    text-transform: uppercase;
+    margin: 5px;
+    background: transparent;
+    border: solid black 1px;
+    border-radius: 5px;
+    width: 100px;
+}
+
+button.card-action:hover {
+    background: var(--background-dark);
+}
+
+.bottom {
+    position: absolute;
+    display: flex;
+    z-index: 1;
+    bottom: 0px;
+
+    margin: 5px 10px 5px 10px;
+    padding: 5px 0px 5px 0px;
+    border-radius: 5px;
+    width: 90%;
+    left: 0;
+    justify-content: space-evenly;
+
+    background-color: var(--background-light);
+    border: 1px solid #dfe1e5;
+    margin-left: calc(5% - 1px);
+    box-shadow: 0 0px 8px 0 rgba(0,0,0,0.2);
+
+}
+
+.bottom button {
+    background: black;
+    color: white;
+    font-size: 30px;
+    border: 1px solid black;
+    border-radius: 50%;
+
+    height: 40px;
+    width: 40px;
+
+    z-index: 2;
+}
+
+.bottom button:hover {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8);
+}
+
+.resolved {
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    background: #FFF59D;
+    top: -10;
+    left: 0px;
+    transform: translateX(-50%);
+    padding: 3px;
+    border-style: solid;
+    border-color: #BF360C;
+    border-width: 1px;
+    color: #BF360C;
+    opacity: 50%;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23BF360C' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    background-size: 70%;
+}
+
+.resolved:not(.active) {
+    display: none;
+}
+
+.resolved:hover, .resolved.active {
+    opacity: 100%;
+}
+
+.card:hover .resolved {
+    display: block;
+}
