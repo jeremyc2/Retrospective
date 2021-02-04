@@ -54,7 +54,7 @@ function calculateTimeDiff(element) {
 
 window.setInterval(calculateTimeDiff, 1000);
 
-function updateFooter(text, filename, updateLastSave) {
+function updateFooter(text, filename, resetLastSave) {
     var footer = document.querySelector("footer");
     if(text == null) {
         var filenameDiv = document.createElement("div"),
@@ -68,7 +68,7 @@ function updateFooter(text, filename, updateLastSave) {
             filenameDiv.innerHTML = "File: " + filename.substring(0, filename.lastIndexOf(".json"));
         }
 
-        if(updateLastSave) {
+        if(resetLastSave) {
             file.lastSave = new Date();
             timestampDiv.innerHTML = "Saved less than a minute ago";
         } else {
