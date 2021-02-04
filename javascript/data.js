@@ -36,12 +36,12 @@ function calculateTimeDiff(element) {
     if(element != null) {
 
         var current = new Date(),
-            mindiff = Math.floor((current.getTime() - file.lastSave.getTime()) / 60000);
+            minDiff = Math.floor((current.getTime() - file.lastSave.getTime()) / 60000);
 
-        if(mindiff == 0) {
+        if(minDiff == 0) {
             element.innerHTML = "Saved less than a minute ago";
         } else {
-            element.innerHTML = `Saved ${mindiff} minute${mindiff > 1? "s": ""} ago`;
+            element.innerHTML = `Saved ${minDiff} minute${minDiff > 1? "s": ""} ago`;
         }
             
     }
