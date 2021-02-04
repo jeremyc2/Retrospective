@@ -57,7 +57,7 @@ function getNewFileHandle() {
     return fileHandle;
   }
   // For Chrome 85 and earlier...
-  const opts = {
+  var opts = {
     type: 'save-file',
     accepts: [{
       description: 'JSON',
