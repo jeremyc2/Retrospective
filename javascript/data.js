@@ -37,17 +37,19 @@ function calculateTimeDiff(element) {
         var current = new Date(),
             mindif = Math.floor((current.getTime() - file.lastSave.getTime()) / 60000);
 
-        if(mindif == 0)
-            return;
+        if(mindif == 0) {
+            element.innerHTML = "Saved less than a minute ago";
+        } else {
+            element.innerHTML = `Saved ${mindif} minute${mindif > 1? "s": ""} ago`;
+        }
             
-        element.innerHTML = `Saved ${mindif} minute${mindif > 1? "s": ""} ago`;
     }
 
 }
 
 window.setInterval(calculateTimeDiff, 1000);
 
-function updateFooter(text, updateLastSave) {
+function updateFooter(text, filename, updateLastSave) {
     var footer = document.querySelector("footer");
     if(text == null) {
         var filenameDiv = document.createElement("div"),
@@ -55,13 +57,17 @@ function updateFooter(text, updateLastSave) {
 
         timestampDiv.id = "last-save";
 
-        filenameDiv.innerHTML = "File: " + file.handle.name.substring(0, file.handle.name.lastIndexOf(".json"));
+        if(filename == null) {
+            filenameDiv.innerHTML = "File Not Saved";
+        } else {
+            filenameDiv.innerHTML = "File: " + filename.substring(0, filename.lastIndexOf(".json"));
+        }
 
         if(updateLastSave) {
             file.lastSave = new Date();
             timestampDiv.innerHTML = "Saved less than a minute ago";
         } else {
-            calculateTimeDiff();
+            calculateTimeDiff(timestampDiv);
         }
 
         footer.innerHTML = "";

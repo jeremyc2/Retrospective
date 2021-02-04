@@ -39,7 +39,7 @@ function setFile(fileHandle) {
     file.handle = null;
     file.name = fileHandle;
   }
-  updateFooter(null, true);
+  updateFooter(null, file.name, true);
 };
 
 /**
@@ -50,7 +50,7 @@ var newFile = () => {
     cards.negative = [];
 
     loadCards();
-    updateFooter("New File");
+    updateFooter("File Not Saved");
 
     file = {};
 
@@ -126,7 +126,7 @@ var saveFile = async () => {
     console.error(msg, ex);
     disableAutosave();
     alert(msg);
-    updateFooter(null, false);
+    updateFooter(null, file.name, false);
   }
 };
 
@@ -142,14 +142,14 @@ var saveFileAs = async () => {
   } catch (ex) {
     if (ex.name === 'AbortError') {
       disableAutosave();
-      updateFooter(null, false);
+      updateFooter(null, file.name, false);
       return;
     }
     const msg = 'An error occured trying to open the file.';
     console.error(msg, ex);
     disableAutosave();
     alert(msg);
-    updateFooter(null, false);
+    updateFooter(null, file.name, false);
     return;
   }
   try {
@@ -160,7 +160,7 @@ var saveFileAs = async () => {
     console.error(msg, ex);
     disableAutosave();
     alert(msg);
-    updateFooter(null, false);
+    updateFooter(null, file.name, false);
     return;
   }
 };

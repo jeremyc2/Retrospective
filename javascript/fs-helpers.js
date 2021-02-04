@@ -111,7 +111,7 @@ async function writeFile(fileHandle, contents) {
     // Close the file and write the contents to disk
     await writer.close();
     console.log("File Saved", new Date().toLocaleTimeString());
-    updateFooter(null, true);
+    updateFooter(null, fileHandle.name, true);
     return;
   }
   // For Chrome 83 and later.
@@ -122,7 +122,7 @@ async function writeFile(fileHandle, contents) {
   // Close the file and write the contents to disk.
   await writable.close();
   console.log("File Saved", new Date().toLocaleTimeString());
-  updateFooter(null, true);
+  updateFooter(null, fileHandle.name, true);
 }
 
 /**
