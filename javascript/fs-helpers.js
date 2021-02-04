@@ -51,7 +51,7 @@ function getNewFileHandle() {
     try {
       fileHandle = window.showSaveFilePicker(opts);
     } catch {
-      opts.types.accept['application/json'] = ['.json'];
+      opts.types[0].accept['application/json'] = ['.json'];
       fileHandle = window.showSaveFilePicker(opts);
     }
     return fileHandle;
