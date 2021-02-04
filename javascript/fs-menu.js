@@ -54,6 +54,10 @@ var newFile = () => {
 
     file = {};
 
+    if(autosaveEnabled) {
+      saveFile();
+    }
+
 };
 
 
