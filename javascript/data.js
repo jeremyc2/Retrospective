@@ -57,16 +57,18 @@ window.setInterval(calculateTimeDiff, 1000);
 function updateFooter(text, filename, resetLastSave) {
     var footer = document.querySelector("footer");
     if(text == null) {
+
+        if(filename == null) {
+            footer.innerHTML = "Not Saved";
+            return;
+        }
+
         var filenameDiv = document.createElement("div"),
             timestampDiv = document.createElement("div");
 
         timestampDiv.id = "last-save";
 
-        if(filename == null) {
-            filenameDiv.innerHTML = "Not Saved";
-        } else {
-            filenameDiv.innerHTML = "File: " + filename.substring(0, filename.lastIndexOf(".json"));
-        }
+        filenameDiv.innerHTML = "File: " + filename.substring(0, filename.lastIndexOf(".json"));
 
         if(resetLastSave) {
             file.lastSave = new Date();
