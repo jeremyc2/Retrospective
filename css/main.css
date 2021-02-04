@@ -344,8 +344,8 @@ button.card-action:hover {
 
 .resolved {
     position: absolute;
-    height: 20px;
-    width: 20px;
+    height: 18px;
+    width: 18px;
     background: #FFF59D;
     top: -10;
     left: 0px;
