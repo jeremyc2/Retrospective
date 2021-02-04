@@ -127,6 +127,7 @@ var saveFile = async () => {
     disableAutosave();
     alert(msg);
     // TODO Revert back to previous footer
+debugger;
   }
 };
 
@@ -143,6 +144,7 @@ var saveFileAs = async () => {
     if (ex.name === 'AbortError') {
       disableAutosave();
       // TODO Revert back to previous footer
+debugger;
       return;
     }
     const msg = 'An error occured trying to open the file.';
@@ -150,6 +152,7 @@ var saveFileAs = async () => {
     disableAutosave();
     alert(msg);
     // TODO Revert back to previous footer
+debugger;
     return;
   }
   try {
@@ -161,6 +164,7 @@ var saveFileAs = async () => {
     disableAutosave();
     alert(msg);
     // TODO Revert back to previous footer
+debugger;
     return;
   }
 };
