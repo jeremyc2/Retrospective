@@ -54,7 +54,7 @@ function updateFooter(text) {
         timestampDiv.id = "last-save";
         timestampDiv.setAttribute("data-last-save", time.valueOf());
 
-        filenameDiv.innerHTML = file.handle.name.trim(".json");
+        filenameDiv.innerHTML = file.handle.name.substring(0, file.handle.name.lastIndexOf(".json"));
         timestampDiv.innerHTML = "Saved less than a minute ago";
 
         footer.innerHTML = "";
