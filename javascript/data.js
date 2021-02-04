@@ -54,7 +54,7 @@ function updateFooter(text) {
         timestampDiv.id = "last-save";
         timestampDiv.setAttribute("data-last-save", time.valueOf());
 
-        filenameDiv.innerHTML = `Filename: ${file.handle.name}`;
+        filenameDiv.innerHTML = file.handle.name;
         timestampDiv.innerHTML = "Saved less than a minute ago";
 
         footer.innerHTML = "";
