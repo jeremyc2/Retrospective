@@ -36,7 +36,8 @@ function calculateTimeDiff(element) {
     if(element != null) {
 
         var current = new Date(),
-            diffMin = Math.floor((current.getTime() - file.lastSave.getTime()) / 60000);
+            diffMin = file.lastSave?
+                Math.floor((current.getTime() - file.lastSave.getTime()) / 60000): 0;
 
         if(diffMin == 0) {
             element.innerHTML = "Saved less than a minute ago";
