@@ -27,35 +27,42 @@ function verifyContentLength(url) {
 
 }
 
-window.setInterval(() => {
-    var timestampDiv = document.getElementById("last-save");
+function calculateTimeDiff(element) {
 
-    if(timestampDiv != null) {
-        var timestamp = parseInt(timestampDiv.getAttribute("data-last-save")),
-            old = new Date(timestamp),
-            current = new Date(),
-            mindif = Math.floor((current.getTime() - old.getTime()) / 60000);
+    if(element == null) {
+        element = document.getElementById("last-save");
+    }
+
+    if(element != null) {
+        var current = new Date(),
+            mindif = Math.floor((current.getTime() - file.lastSave.getTime()) / 60000);
 
         if(mindif == 0)
             return;
             
-        timestampDiv.innerHTML = `Saved ${mindif} minute${mindif > 1? "s": ""} ago`;
+        element.innerHTML = `Saved ${mindif} minute${mindif > 1? "s": ""} ago`;
     }
 
-}, 1000);
+}
 
-function updateFooter(text) {
+window.setInterval(calculateTimeDiff, 1000);
+
+function updateFooter(text, updateLastSave) {
     var footer = document.querySelector("footer");
     if(text == null) {
         var filenameDiv = document.createElement("div"),
-            timestampDiv = document.createElement("div"),
-            time = new Date();
+            timestampDiv = document.createElement("div");
 
         timestampDiv.id = "last-save";
-        timestampDiv.setAttribute("data-last-save", time.valueOf());
 
         filenameDiv.innerHTML = "File: " + file.handle.name.substring(0, file.handle.name.lastIndexOf(".json"));
-        timestampDiv.innerHTML = "Saved less than a minute ago";
+
+        if(updateLastSave) {
+            file.lastSave = new Date();
+            timestampDiv.innerHTML = "Saved less than a minute ago";
+        } else {
+            calculateTimeDiff();
+        }
 
         footer.innerHTML = "";
         footer.append(filenameDiv, timestampDiv);

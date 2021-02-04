@@ -39,7 +39,7 @@ function setFile(fileHandle) {
     file.handle = null;
     file.name = fileHandle;
   }
-  updateFooter();
+  updateFooter(null, true);
 };
 
 /**
@@ -126,8 +126,7 @@ var saveFile = async () => {
     console.error(msg, ex);
     disableAutosave();
     alert(msg);
-    // TODO Revert back to previous footer
-debugger;
+    updateFooter(null, false);
   }
 };
 
@@ -143,16 +142,14 @@ var saveFileAs = async () => {
   } catch (ex) {
     if (ex.name === 'AbortError') {
       disableAutosave();
-      // TODO Revert back to previous footer
-debugger;
+      updateFooter(null, false);
       return;
     }
     const msg = 'An error occured trying to open the file.';
     console.error(msg, ex);
     disableAutosave();
     alert(msg);
-    // TODO Revert back to previous footer
-debugger;
+    updateFooter(null, false);
     return;
   }
   try {
@@ -163,8 +160,7 @@ debugger;
     console.error(msg, ex);
     disableAutosave();
     alert(msg);
-    // TODO Revert back to previous footer
-debugger;
+    updateFooter(null, false);
     return;
   }
 };
