@@ -63,7 +63,7 @@ function updateFooter(text, filename, resetLastSave) {
         timestampDiv.id = "last-save";
 
         if(filename == null) {
-            filenameDiv.innerHTML = "File Not Saved";
+            filenameDiv.innerHTML = "Not Saved";
         } else {
             filenameDiv.innerHTML = "File: " + filename.substring(0, filename.lastIndexOf(".json"));
         }

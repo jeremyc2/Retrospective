@@ -50,7 +50,7 @@ var newFile = () => {
     cards.negative = [];
 
     loadCards();
-    updateFooter("File Not Saved");
+    updateFooter("Not Saved");
 
     file = {};
 
