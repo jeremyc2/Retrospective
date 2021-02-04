@@ -43,9 +43,17 @@ function calculateTimeDiff(element) {
             diffMin = Math.floor((current.getTime() - file.lastSave.getTime()) / 60000);
 
         if(diffMin == 0) {
-            element.innerHTML = "Saved less than a minute ago";
+            if(autosaveEnabled) {
+                element.innerHTML = "AutoSave Enabled (updated less than a minute ago)";
+            } else {
+                element.innerHTML = "Saved less than a minute ago";
+            }
         } else {
-            element.innerHTML = `Saved ${diffMin} minute${diffMin > 1? "s": ""} ago`;
+            if(autosaveEnabled) {
+                element.innerHTML = `AutoSave Enabled (updated ${diffMin} minute${diffMin > 1? "s": ""} ago)`;
+            } else {
+                element.innerHTML = `Saved ${diffMin} minute${diffMin > 1? "s": ""} ago`;
+            }
         }
             
     }
@@ -72,7 +80,11 @@ function updateFooter(text, filename, resetLastSave) {
 
         if(resetLastSave) {
             file.lastSave = new Date();
-            timestampDiv.innerHTML = "Saved less than a minute ago";
+            if(autosaveEnabled) {
+                timestampDiv.innerHTML = "AutoSave Enabled (updated less than a minute ago)";
+            } else {
+                timestampDiv.innerHTML = "Saved less than a minute ago";
+            }
         } else {
             calculateTimeDiff(timestampDiv);
         }
