@@ -9,6 +9,10 @@ if(!hasFSAccess) {
 var autosaveEnabled = false;
 var file = {};
 
+function enableAutosave() {
+  autosaveEnabled = document.getElementById("autosave").checked = true;
+}
+
 function disableAutosave() {
   autosaveEnabled = document.getElementById("autosave").checked = false;
 }
@@ -112,6 +116,8 @@ var read = async (file, fileHandle) => {
     console.error(msg, ex);
     alert(msg);
   }
+  // Autosave by default
+  enableAutosave();
 };
 
 /**
@@ -167,4 +173,6 @@ var saveFileAs = async () => {
     updateFooter(null, file.name, false);
     return;
   }
+  // Autosave by default
+  enableAutosave();
 };
