@@ -80,7 +80,8 @@ function showDetails(column, card) {
 function openModal() {
     var detailsModal = document.querySelector("#details-modal");
 
-    animateCSS(detailsModal.querySelector(".modal-content"), "backInUp");
+    animateCSS(detailsModal.querySelector(".modal-content"), "backInUp",
+        () => detailsModal.querySelector("input, textarea").focus());
     detailsModal.style.display = "flex";
 }
 
