@@ -172,16 +172,12 @@ function loadCards() {
         card.parentNode.removeChild(card);
     });
 
-    var i = 0;
     cards.positive.forEach(() => {
         appendCardToDOM('positive', true);
-        i++;
     });
 
-    i = 0;
     cards.negative.forEach(() => {
         appendCardToDOM('negative', true);
-        i++;
     });
 
 }
