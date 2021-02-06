@@ -120,7 +120,7 @@ function appendCardToDOM(column, initialLoad) {
     }
 
     content.addEventListener("input", function() {
-        updateCard(column, this.parentElement, "c", this.value);
+        updateCard(column, this.parentElement, "c", this.innerHTML);
     });
 
     deleteButton.addEventListener("click", function() {
