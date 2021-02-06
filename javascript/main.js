@@ -136,7 +136,7 @@ function appendCardToDOM(column, initialLoad) {
     // Fill in props
     var props = cards[column][container.querySelectorAll(".card").length];
     if(props.c != null) {
-        content.value = props.c;
+        content.innerHTML = props.c;
     }
 
     // Add one more for negative columns
