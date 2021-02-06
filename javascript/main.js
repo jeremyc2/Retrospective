@@ -96,15 +96,18 @@ function closeModal() {
 function appendCardToDOM(column, initialLoad) {
 
     var card = document.createElement("div"),
-        textarea = document.createElement("textarea"),
+        content = document.createElement("div"),
         cardActions = document.createElement("div"),
         deleteButton = document.createElement("button"),
         detailsButton = document.createElement("button");
 
     card.classList.add("card");
+    content.classList.add("content");
     cardActions.classList.add("card-actions");
     deleteButton.classList.add("delete", "card-action");
     detailsButton.classList.add("open-details", "card-action");
+
+    content.setAttribute("contenteditable","");
     
     deleteButton.innerHTML = "remove";
     detailsButton.innerHTML = "details";
@@ -116,8 +119,8 @@ function appendCardToDOM(column, initialLoad) {
         }, {once: true});
     }
 
-    textarea.addEventListener("input", function() {
-        updateCard(column, this.parentElement, "c", this.value);
+    content.addEventListener("input", function() {
+        updateCard(column, this.parentElement, "c", this.innerHTML);
     });
 
     deleteButton.addEventListener("click", function() {
@@ -133,7 +136,7 @@ function appendCardToDOM(column, initialLoad) {
     // Fill in props
     var props = cards[column][container.querySelectorAll(".card").length];
     if(props.c != null) {
-        textarea.value = props.c;
+        content.innerHTML = props.c;
     }
 
     // Add one more for negative columns
@@ -151,12 +154,12 @@ function appendCardToDOM(column, initialLoad) {
     }
 
     cardActions.append(deleteButton, detailsButton);
-    card.append(textarea, cardActions);
+    card.append(content, cardActions);
 
     container.insertBefore(card, container.firstElementChild);
 
     if(initialLoad == false) {
-        textarea.focus();
+        content.focus();
     }
 
     return card;

@@ -48,12 +48,10 @@ function getNewFileHandle() {
       }],
     };
     var fileHandle;
-    try {
-      fileHandle = window.showSaveFilePicker(opts);
-    } catch {
-      opts.types[0].accept['application/json'] = ['.json'];
-      fileHandle = window.showSaveFilePicker(opts);
-    }
+      fileHandle = window.showSaveFilePicker(opts).catch(() => {
+        opts.types[0].accept['application/json'] = ['.json'];
+        return window.showSaveFilePicker(opts);
+      });
     return fileHandle;
   }
   // For Chrome 85 and earlier...
