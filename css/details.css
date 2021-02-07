@@ -38,6 +38,7 @@
     position: absolute;
     top: 0px;
     right: 10px;
+    opacity: .7;
 }
   
 .close:hover,
