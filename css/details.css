@@ -58,6 +58,10 @@
     margin-bottom: 20px;
 }
 
+.modal h3 {
+    font-weight: 300;
+}
+
 .modal input {
     border: .1px solid;
     border-color: var(--border-color);
