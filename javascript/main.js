@@ -148,11 +148,20 @@ document.addEventListener("DOMContentLoaded", () => {
             if(document.querySelector("#details-modal").style.display == "flex") {
                 closeModal();
             }
-        } else if (e.ctrlKey && e.key == 'o') {
-            openFile();
+        } else if (e.altKey && e.key == 'n') {
+            newFile();
             e.preventDefault();
         } else if (e.ctrlKey && e.key == 's') {
             saveFile();
+            e.preventDefault();
+        } else if (e.ctrlKey && e.key == 's') {
+            saveFile();
+            e.preventDefault();
+        } else if (e.altKey && e.key == 'c') {
+            copyURL();
+            e.preventDefault();
+        } else if (e.altKey && e.key == 'f') {
+            toggleFullscreen();
             e.preventDefault();
         }
     });
