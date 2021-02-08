@@ -17,20 +17,20 @@
 <header>
     <span class="title" style="color: white; cursor: default;">The Fast and the Curious </span><span class="title" style="color: red;cursor: default;font-size: 21px;">Retrospective</span>
     <img class="copy" src="copy.svg" onclick="copyURL()">
-    <div class="menu">
-        <div class="switch">
-            <label>
-                <input id="autosave" type="checkbox">
-                <span onclick="toggleAutosave()" class="slider round"></span>
-            </label>
-            AutoSave
-        </div>
-        <div id="butNew" onclick="newFile()">New</div>
-        <div id="butOpen" onclick="openFile()">Open</div>
-        <div id="butSave" onclick="saveFile()">Save</div>
-        <div id="butSaveAs" onclick="saveFileAs()">Save As</div>
-    </div>
 </header>
+<div class="menu">
+    <div class="switch">
+        <label>
+            <input id="autosave" type="checkbox">
+            <span onclick="toggleAutosave()" class="slider round"></span>
+        </label>
+        AutoSave
+    </div>
+    <div id="butNew" onclick="newFile()">New</div>
+    <div id="butOpen" onclick="openFile()">Open</div>
+    <div id="butSave" onclick="saveFile()">Save</div>
+    <div id="butSaveAs" onclick="saveFileAs()">Save As</div>
+</div>
 <div id="load-data">
     <div>
         <label for="data-url">URL:</label>
