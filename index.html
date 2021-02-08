@@ -2,6 +2,7 @@
 <title>TFATC Team Retrospective</title>
 <link rel="shortcut icon" href="logo.svg" type="image/png">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/tooltip.css">
 <link rel="stylesheet" href="css/card.css">
 <link rel="stylesheet" href="css/details.css">
 <link rel="stylesheet" href="css/scrollbars.css">
@@ -28,10 +29,23 @@
         </label>
         AutoSave
     </div>
-    <div id="butNew" onclick="newFile()">New</div>
-    <div id="butOpen" onclick="openFile()">Open</div>
-    <div id="butSave" onclick="saveFile()">Save</div>
-    <div id="butSaveAs" onclick="saveFileAs()">Save As</div>
+    <div id="butNew" class="tooltip" onclick="newFile()">New
+        <div class="tooltiptext">
+            alt + n
+        </div>
+    </div>
+    <div id="butOpen" class="tooltip" onclick="openFile()">Open
+        <div class="tooltiptext">
+            ctrl + o
+        </div>
+    </div>
+    <div id="butSave" class="tooltip" onclick="saveFile()">Save
+        <div class="tooltiptext">
+            ctrl + s
+        </div>
+    </div>
+    <div id="butSaveAs" class="tooltip" onclick="saveFileAs()">Save As
+    </div>
 </div>
 <div id="load-data">
     <div>

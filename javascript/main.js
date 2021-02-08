@@ -151,8 +151,8 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (e.altKey && e.key == 'n') {
             newFile();
             e.preventDefault();
-        } else if (e.ctrlKey && e.key == 's') {
-            saveFile();
+        } else if (e.ctrlKey && e.key == 'o') {
+            openFile();
             e.preventDefault();
         } else if (e.ctrlKey && e.key == 's') {
             saveFile();
