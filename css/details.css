@@ -17,8 +17,8 @@
     position: relative;
     background-color: var(--background-color);
     margin: auto;
-    padding: 12px;
-    width: 400px;
+    padding: 10px;
+    width: min(80%, 500px);
     border-radius: 5px;
     text-align: center;
 
@@ -49,7 +49,7 @@
 }
 
 .modal h1, .modal h2, .modal h3 {
-    margin: 10px 0px 2px 0px;
+    margin: 5px 0px 2px 0px;
     text-align: center;
     font-family: Helvetica, sans-serif;
 }
