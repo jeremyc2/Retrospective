@@ -148,6 +148,12 @@ document.addEventListener("DOMContentLoaded", () => {
             if(document.querySelector("#details-modal").style.display == "flex") {
                 closeModal();
             }
+        } else if (e.ctrlKey && e.key == 'o') {
+            openFile();
+            e.preventDefault();
+        } else if (e.ctrlKey && e.key == 's') {
+            saveFile();
+            e.preventDefault();
         }
     });
 });
