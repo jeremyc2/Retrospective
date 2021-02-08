@@ -118,18 +118,26 @@ footer div {
     overflow: hidden;
 }
 
-.copy {
+.fullscreen, .copy {
     opacity: 0.7;
     cursor: pointer;
     float: right;
     height: 15;
-    
+
     position: absolute;
-    top: 6px;
+    z-index: 1;
+    top: 4px;
+}
+
+.fullscreen {
     right: 2px;
 }
 
-.copy:hover {
+.copy {
+    right: 23px;
+}
+
+.fullscreen:hover, .copy:hover {
     opacity: 1;
 }
 

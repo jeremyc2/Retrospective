@@ -1,3 +1,42 @@
+var isFullscreen = false;
+
+function enableFullscreen() {
+    document.documentElement.requestFullscreen();
+}
+
+function disableFullscreen() {
+    document.exitFullscreen();
+}
+
+function toggleFullscreen() {
+    if(isFullscreen) {
+        disableFullscreen();
+    } else {
+        enableFullscreen();
+    }
+}
+
+document.addEventListener("fullscreenchange", () => {
+    console.log("Fullscreen change")
+    if(document.fullscreenElement) {
+        // Is fullscreen
+        document.querySelector("header").style.display = "none";
+        [...document.querySelectorAll(".container")].forEach(el => {
+            el.style.height = "calc(100vh - 67px)";
+        });
+        document.querySelector(".fullscreen").src = "exit-fullscreen.svg";
+        isFullscreen = true;
+    } else {
+        // Is not fullscreen
+        document.querySelector("header").style.display = "block";
+        [...document.querySelectorAll(".container")].forEach(el => {
+            el.style.height = "calc(100vh - 108px)";
+        });
+        document.querySelector(".fullscreen").src = "fullscreen.svg";
+        isFullscreen = false;
+    }
+});
+
 // Append new card that already exists in "cards" to the DOM
 function appendCardToDOM(column, initialLoad) {
 
