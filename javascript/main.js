@@ -101,7 +101,8 @@ function appendCardToDOM(index, column, initialLoad) {
         if(resolved) {
             resolvedIcon.classList.toggle("active");
         }
-        resolvedIcon.addEventListener("click", function() {                
+        resolvedIcon.addEventListener("click", function() { 
+            // TODO FIXME               
             var container = this.parentElement;
             container.removeChild(this);
             this.classList.toggle("active");
