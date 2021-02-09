@@ -26,6 +26,16 @@
     background: var(--background-light);
 }
 
+.card:nth-last-child(2) {
+    animation: margin-bottom-grow 0s ease 0s 1 normal forwards;
+}
+
+@keyframes margin-bottom-grow {
+    to {
+        margin-bottom: 70px;
+    }
+}
+
 .card.expand {
     animation: expand .5s cubic-bezier(0, 0.5, 0, 1) 0s 1 normal forwards;
 }
@@ -39,10 +49,6 @@
         opacity: 1;
         height: 67px;
     }
-}
-
-.card:nth-last-child(2) {
-    margin-bottom: 70px;
 }
 
 textarea {

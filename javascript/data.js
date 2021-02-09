@@ -1,5 +1,7 @@
 var searchParams = new URLSearchParams(document.location.search);
 var cards = {
+    positiveMaxIndex: -1,
+    negativeMaxIndex: -1,
     positive: [],
     negative: []
 }
@@ -131,11 +133,11 @@ function condenseURL(string) {
 
 function copyURL() {
 
-    var params = new URLSearchParams(window.location.search);
+    var params = new URLSearchParams();
     params.append("a", JSON.stringify(cards));
 
     var input = document.createElement("textarea"),
-        string = condenseURL(window.location.href + `?${params.toString()}`);
+        string = condenseURL(window.location.origin + window.location.pathname + `?${params.toString()}`);
 
     if(verifyContentLength(string)) {
 
@@ -144,38 +146,27 @@ function copyURL() {
         input.select();
         document.execCommand("copy");
         document.body.removeChild(input);
+        alert("Data URL copied to clipboard");
         return string;
         
+    } else {
+        alert("Data too long to copy as URL");
     }
 
 }
 
 // A new card
-function appendCard(column, updateDOM, props) {
-    cards[column].push(props);
+function appendCard(column) {
+    var index = ++cards[column + "MaxIndex"];
+    cards[column].push({i: index});
 
-    if(updateDOM != null && updateDOM == true) {
-        appendCardToDOM(column, false);
-    }
+    appendCardToDOM(index, column, false);
 
     reflectChanges();
 }
 
 function getCardIndex(card) {
-    var sibling = card,
-        i = 0;
-    while( (sibling = sibling.nextElementSibling) != null ) {
-        if(sibling.classList.contains("card")) {
-            i++;
-        }
-    }
-
-    return i;
-}
-
-function sortNegativeCards() {
-    cards.negative = [...cards.negative.filter(x => x.r), ...cards.negative.filter(x => !x.r)];
-    loadCards();
+    return parseInt(card.getAttribute("data-index"));
 }
 
 function updateCard(column, card, field, value) {
@@ -188,20 +179,28 @@ function updateCard(column, card, field, value) {
 }
 
 function deleteCard(column, card) {
+
     var i = getCardIndex(card);
 
     card.parentNode.removeChild(card);
 
     cards[column].splice(i, 1);
 
+    cards[column + "MaxIndex"]--;
+    while(i < cards[column].length) {
+        cards[column][i].i--;
+        var element = document.querySelector(`#${column} .card[data-index='${i + 1}']`);
+        if(element) {
+            element.setAttribute("data-index", i);
+        }
+        i++;
+    }
+
     reflectChanges();
 }
 
 function clearColumn(column) {
-    cards[column] = [];
     [...document.querySelectorAll(`#${column} .card`)].forEach(card => {
-        card.parentNode.removeChild(card);
+        deleteCard(column, card);
     });
-
-    reflectChanges();
 }

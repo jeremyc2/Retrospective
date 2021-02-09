@@ -52,6 +52,8 @@ function setFile(fileHandle) {
 var newFile = () => {
     cards.positive = [];
     cards.negative = [];
+    cards.positiveMaxIndex =  -1,
+    cards.negativeMaxIndex = -1,
 
     loadCards();
     updateFooter("Not Saved");

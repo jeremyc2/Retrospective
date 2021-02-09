@@ -3,8 +3,8 @@
 } 
 .tooltip .tooltiptext {
     display: none;
-    width: 55px;
-    background-color: #272727 !important;
+    width: 70px;
+    background-color: #272727e7 !important;
     color: rgb(226, 226, 226) !important;
     cursor: default !important;
     text-align: center;
@@ -13,7 +13,8 @@
     position: absolute;
     z-index: 1;
     top: 30px;
-    transform: translateX(-19px);
+    transform: translateX(-25px);
+    text-transform: none;
 }
 .tooltip .tooltiptext::after {
     content: "";
@@ -23,7 +24,7 @@
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent transparent #272727 transparent;
+    border-color: transparent transparent #272727e7 transparent;
 }
 .tooltip:hover .tooltiptext {
     display: block;

@@ -37,8 +37,26 @@ document.addEventListener("fullscreenchange", () => {
     }
 });
 
+function insertBefore(column, resolved, container, card) {
+
+    if(column == "negative") {
+        if(resolved) {
+            var topResolved = container.querySelector(".resolved.active"),
+                el = topResolved? topResolved.parentElement: container.lastElementChild;
+            container.insertBefore(card, el);
+        } else {
+            var topResolved = container.querySelector(".resolved:not(.active)"),
+                el = topResolved? topResolved.parentElement: container.firstElementChild;
+            container.insertBefore(card, el);
+        }
+    } else {
+        container.insertBefore(card, container.firstElementChild)
+    }
+
+}
+
 // Append new card that already exists in "cards" to the DOM
-function appendCardToDOM(column, initialLoad) {
+function appendCardToDOM(index, column, initialLoad) {
 
     var card = document.createElement("div"),
         content = document.createElement("div"),
@@ -52,6 +70,7 @@ function appendCardToDOM(column, initialLoad) {
     deleteButton.classList.add("delete", "card-action");
     detailsButton.classList.add("open-details", "card-action");
 
+    card.setAttribute("data-index", index);
     content.setAttribute("contenteditable","");
     
     deleteButton.innerHTML = "remove";
@@ -76,24 +95,33 @@ function appendCardToDOM(column, initialLoad) {
         showDetails(column, this.parentNode.parentNode);
     });
 
-    container = document.querySelector(`#${column} .cards`)
+    container = document.querySelector(`#${column} .cards`);
 
     // Fill in props
-    var props = cards[column][container.querySelectorAll(".card").length];
+    var props = cards[column][index];
+
     if(props.c != null) {
         content.innerHTML = props.c;
     }
+
+    var resolved = props.r != null && props.r != false;
 
     // Add one more for negative columns
     if(column == "negative") {
         var resolvedIcon = document.createElement("div");
         resolvedIcon.classList.add("resolved");
-        if(props.r != null && props.r != false) {
+        if(resolved) {
             resolvedIcon.classList.toggle("active");
         }
         resolvedIcon.addEventListener("click", function() {
             this.classList.toggle("active");
-            updateCard(column, card, "r", this.classList.contains("active"));
+            
+            var element = this.parentElement;
+                container = element.parentElement,
+                resolved = this.classList.contains("active");
+            container.removeChild(element);
+            updateCard(column, card, "r", resolved);
+            insertBefore("negative", resolved, container, element);
         });
         card.append(resolvedIcon);
     }
@@ -101,7 +129,7 @@ function appendCardToDOM(column, initialLoad) {
     cardActions.append(deleteButton, detailsButton);
     card.append(content, cardActions);
 
-    container.insertBefore(card, container.firstElementChild);
+    insertBefore(column, resolved, container, card);
 
     if(initialLoad == false) {
         content.focus();
@@ -121,12 +149,14 @@ function loadCards() {
         card.parentNode.removeChild(card);
     });
 
-    cards.positive.forEach(() => {
-        appendCardToDOM('positive', true);
+    cards.positive.forEach(card => {
+        cards.positiveMaxIndex = card.i;
+        appendCardToDOM(card.i, 'positive', true);
     });
 
-    cards.negative.forEach(() => {
-        appendCardToDOM('negative', true);
+    cards.negative.forEach(card => {
+        cards.positiveMaxIndex = card.i;
+        appendCardToDOM(card.i, 'negative', true);
     });
 
 }
