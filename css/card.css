@@ -42,7 +42,13 @@
 }
 
 .card:nth-last-child(2) {
-    margin-bottom: 70px;
+    animation: margin-bottom-grow 0s ease 0s 1 normal forwards;
+}
+
+@keyframes margin-bottom-grow {
+    to {
+        margin-bottom: 70px;
+    }
 }
 
 textarea {
