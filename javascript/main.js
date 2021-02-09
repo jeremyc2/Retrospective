@@ -115,7 +115,7 @@ function appendCardToDOM(index, column, initialLoad) {
     if(column == "negative") {
         if(resolved) {
             var topResolved = container.querySelector(".resolved.active"),
-                el = topResolved? topResolved.parentElement: container.firstElementChild;
+                el = topResolved? topResolved.parentElement: container.lastElementChild;
             container.insertBefore(card, el);
         } else {
             var topResolved = container.querySelector(".resolved:not(.active)"),
