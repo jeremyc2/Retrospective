@@ -37,10 +37,22 @@ document.addEventListener("fullscreenchange", () => {
     }
 });
 
-function appendToResolved(container, card) {
-    var topResolved = container.querySelector(".resolved.active"),
-        el = topResolved? topResolved.parentElement: container.lastElementChild;
-    container.insertBefore(card, el);
+function insertBefore(column, resolved, container, card) {
+
+    if(column == "negative") {
+        if(resolved) {
+            var topResolved = container.querySelector(".resolved.active"),
+                el = topResolved? topResolved.parentElement: container.lastElementChild;
+            container.insertBefore(card, el);
+        } else {
+            var topResolved = container.querySelector(".resolved:not(.active)"),
+                el = topResolved? topResolved.parentElement: container.firstElementChild;
+            container.insertBefore(card, el);
+        }
+    } else {
+        container.insertBefore(card, container.firstElementChild)
+    }
+
 }
 
 // Append new card that already exists in "cards" to the DOM
@@ -101,13 +113,15 @@ function appendCardToDOM(index, column, initialLoad) {
         if(resolved) {
             resolvedIcon.classList.toggle("active");
         }
-        resolvedIcon.addEventListener("click", function() { 
-            // TODO FIXME               
-            var container = this.parentElement;
-            container.removeChild(this);
+        resolvedIcon.addEventListener("click", function() {
             this.classList.toggle("active");
-            updateCard(column, card, "r", this.classList.contains("active"));
-            appendToResolved(container, this);
+            
+            var element = this.parentElement;
+                container = element.parentElement,
+                resolved = this.classList.contains("active");
+            container.removeChild(element);
+            updateCard(column, card, "r", resolved);
+            insertBefore("negative", resolved, container, element);
         });
         card.append(resolvedIcon);
     }
@@ -115,17 +129,7 @@ function appendCardToDOM(index, column, initialLoad) {
     cardActions.append(deleteButton, detailsButton);
     card.append(content, cardActions);
 
-    if(column == "negative") {
-        if(resolved) {
-            appendToResolved(container, card);
-        } else {
-            var topResolved = container.querySelector(".resolved:not(.active)"),
-                el = topResolved? topResolved.parentElement: container.firstElementChild;
-            container.insertBefore(card, el);
-        }
-    } else {
-        container.insertBefore(card, container.firstElementChild)
-    }
+    insertBefore(column, resolved, container, card);
 
     if(initialLoad == false) {
         content.focus();
