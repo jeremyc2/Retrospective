@@ -146,8 +146,11 @@ function copyURL() {
         input.select();
         document.execCommand("copy");
         document.body.removeChild(input);
+        alert("Data URL copied to clipboard");
         return string;
         
+    } else {
+        alert("Data too long to copy as URL");
     }
 
 }
