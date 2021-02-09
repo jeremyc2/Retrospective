@@ -37,6 +37,12 @@ document.addEventListener("fullscreenchange", () => {
     }
 });
 
+function appendToResolved(container, card) {
+    var topResolved = container.querySelector(".resolved.active"),
+        el = topResolved? topResolved.parentElement: container.lastElementChild;
+    container.insertBefore(card, el);
+}
+
 // Append new card that already exists in "cards" to the DOM
 function appendCardToDOM(index, column, initialLoad) {
 
@@ -95,9 +101,12 @@ function appendCardToDOM(index, column, initialLoad) {
         if(resolved) {
             resolvedIcon.classList.toggle("active");
         }
-        resolvedIcon.addEventListener("click", function() {
+        resolvedIcon.addEventListener("click", function() {                
+            var container = this.parentElement;
+            container.removeChild(this);
             this.classList.toggle("active");
             updateCard(column, card, "r", this.classList.contains("active"));
+            appendToResolved(container, this);
         });
         card.append(resolvedIcon);
     }
@@ -107,9 +116,7 @@ function appendCardToDOM(index, column, initialLoad) {
 
     if(column == "negative") {
         if(resolved) {
-            var topResolved = container.querySelector(".resolved.active"),
-                el = topResolved? topResolved.parentElement: container.lastElementChild;
-            container.insertBefore(card, el);
+            appendToResolved(container, card);
         } else {
             var topResolved = container.querySelector(".resolved:not(.active)"),
                 el = topResolved? topResolved.parentElement: container.firstElementChild;
