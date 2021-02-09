@@ -37,8 +37,9 @@ document.addEventListener("fullscreenchange", () => {
     }
 });
 
+var maxCardIndex = 0;
 // Append new card that already exists in "cards" to the DOM
-function appendCardToDOM(column, initialLoad) {
+function appendCardToDOM(index, column, initialLoad) {
 
     var card = document.createElement("div"),
         content = document.createElement("div"),
@@ -52,6 +53,11 @@ function appendCardToDOM(column, initialLoad) {
     deleteButton.classList.add("delete", "card-action");
     detailsButton.classList.add("open-details", "card-action");
 
+    if(index > maxCardIndex) {
+        maxCardIndex = index;
+    }
+
+    card.setAttribute("data-index", index);
     content.setAttribute("contenteditable","");
     
     deleteButton.innerHTML = "remove";
@@ -76,19 +82,21 @@ function appendCardToDOM(column, initialLoad) {
         showDetails(column, this.parentNode.parentNode);
     });
 
-    container = document.querySelector(`#${column} .cards`)
+    container = document.querySelector(`#${column} .cards`);
 
     // Fill in props
-    var props = cards[column][container.querySelectorAll(".card").length];
+    var props = cards[column][index];
     if(props.c != null) {
         content.innerHTML = props.c;
     }
+
+    var resolved = props.r != null && props.r != false;
 
     // Add one more for negative columns
     if(column == "negative") {
         var resolvedIcon = document.createElement("div");
         resolvedIcon.classList.add("resolved");
-        if(props.r != null && props.r != false) {
+        if(resolved) {
             resolvedIcon.classList.toggle("active");
         }
         resolvedIcon.addEventListener("click", function() {
@@ -101,7 +109,14 @@ function appendCardToDOM(column, initialLoad) {
     cardActions.append(deleteButton, detailsButton);
     card.append(content, cardActions);
 
-    container.insertBefore(card, container.firstElementChild);
+    // TODO FIXME
+    if(resolved) {
+        var el = container.querySelector("#negative .resolved.active").parentElement;
+        container.insertBefore(card, el);
+    } else {
+        var el = container.querySelector("#negative .resolved:not(.active)").parentElement;
+        container.insertBefore(card, el);
+    }
 
     if(initialLoad == false) {
         content.focus();
@@ -122,11 +137,11 @@ function loadCards() {
     });
 
     cards.positive.forEach(() => {
-        appendCardToDOM('positive', true);
+        appendCardToDOM(++maxCardIndex, 'positive', true);
     });
 
     cards.negative.forEach(() => {
-        appendCardToDOM('negative', true);
+        appendCardToDOM(++maxCardIndex, 'negative', true);
     });
 
 }

@@ -155,22 +155,14 @@ function appendCard(column, updateDOM, props) {
     cards[column].push(props);
 
     if(updateDOM != null && updateDOM == true) {
-        appendCardToDOM(column, false);
+        appendCardToDOM(++maxCardIndex, column, false);
     }
 
     reflectChanges();
 }
 
 function getCardIndex(card) {
-    var sibling = card,
-        i = 0;
-    while( (sibling = sibling.nextElementSibling) != null ) {
-        if(sibling.classList.contains("card")) {
-            i++;
-        }
-    }
-
-    return i;
+    return parseInt(card.getAttribute("data-index"));
 }
 
 function sortNegativeCards() {
