@@ -181,17 +181,24 @@ function updateCard(column, card, field, value) {
 }
 
 function deleteCard(column, card) {
+
     var i = getCardIndex(card);
 
     card.parentNode.removeChild(card);
 
     cards[column].splice(i, 1);
 
-    debugger
-    if(cards[column].length > 0) {
-        // A shallow copy
-        var sortedCards = [...cards[column]].sort((first, second) => second.i - first.i);
-        cards[column + "MaxIndex"] = sortedCards[0].i;
+    if(cards[column].length == 0) {
+        cards[column + "MaxIndex"] = -1;
+    } else {
+        while(i < cards[column].length) {
+            cards[column + "MaxIndex"] = --cards[column][i].i;
+            var element = document.querySelector(`#${column} .card[data-index='${i + 1}']`);
+            if(element) {
+                element.setAttribute("data-index", i);
+            }
+            i++;
+        }
     }
 
     reflectChanges();

@@ -52,10 +52,6 @@ function appendCardToDOM(index, column, initialLoad) {
     deleteButton.classList.add("delete", "card-action");
     detailsButton.classList.add("open-details", "card-action");
 
-    if(index > cards[column + "MaxIndex"]) {
-        cards[column + "MaxIndex"] = index;
-    }
-
     card.setAttribute("data-index", index);
     content.setAttribute("contenteditable","");
     
@@ -85,9 +81,6 @@ function appendCardToDOM(index, column, initialLoad) {
 
     // Fill in props
     var props = cards[column][index];
-
-    if(props == null)
-        debugger
 
     if(props.c != null) {
         content.innerHTML = props.c;
@@ -145,10 +138,12 @@ function loadCards() {
     });
 
     cards.positive.forEach(card => {
+        cards.positiveMaxIndex = card.i;
         appendCardToDOM(card.i, 'positive', true);
     });
 
     cards.negative.forEach(card => {
+        cards.positiveMaxIndex = card.i;
         appendCardToDOM(card.i, 'negative', true);
     });
 
