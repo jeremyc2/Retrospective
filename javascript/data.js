@@ -133,11 +133,11 @@ function condenseURL(string) {
 
 function copyURL() {
 
-    var params = new URLSearchParams(window.location.search);
+    var params = new URLSearchParams();
     params.append("a", JSON.stringify(cards));
 
     var input = document.createElement("textarea"),
-        string = condenseURL(window.location.href + `?${params.toString()}`);
+        string = condenseURL(window.location.origin + window.location.pathname + `?${params.toString()}`);
 
     if(verifyContentLength(string)) {
 
@@ -153,12 +153,11 @@ function copyURL() {
 }
 
 // A new card
-function appendCard(column, updateDOM, props) {
-    cards[column].push(props);
+function appendCard(column) {
+    var index = ++cards[column + "MaxIndex"];
+    cards[column].push({i: index});
 
-    if(updateDOM != null && updateDOM == true) {
-        appendCardToDOM(++cards[column + "MaxIndex"], column, false);
-    }
+    appendCardToDOM(index, column, false);
 
     reflectChanges();
 }

@@ -85,6 +85,10 @@ function appendCardToDOM(index, column, initialLoad) {
 
     // Fill in props
     var props = cards[column][index];
+
+    if(props == null)
+        debugger
+
     if(props.c != null) {
         content.innerHTML = props.c;
     }
@@ -108,15 +112,19 @@ function appendCardToDOM(index, column, initialLoad) {
     cardActions.append(deleteButton, detailsButton);
     card.append(content, cardActions);
 
-    // TODO FIXME
-    if(resolved) {
-        var topResolved = container.querySelector("#negative .resolved.active"),
-            el = topResolved? topResolved.parentElement: null;
-        container.insertBefore(card, el);
+    // TODO
+    if(column == "negative") {
+        if(resolved) {
+            var topResolved = container.querySelector(".resolved.active"),
+                el = topResolved? topResolved.parentElement: container.firstElementChild;
+            container.insertBefore(card, el);
+        } else {
+            var topResolved = container.querySelector(".resolved:not(.active)"),
+                el = topResolved? topResolved.parentElement: container.firstElementChild;
+            container.insertBefore(card, el);
+        }
     } else {
-        var topResolved = container.querySelector("#negative .resolved:not(.active)"),
-            el = topResolved? topResolved.parentElement: null;
-        container.insertBefore(card, el);
+        container.insertBefore(card, container.firstElementChild)
     }
 
     if(initialLoad == false) {
@@ -137,12 +145,12 @@ function loadCards() {
         card.parentNode.removeChild(card);
     });
 
-    cards.positive.forEach(() => {
-        appendCardToDOM(++cards[column + "MaxIndex"], 'positive', true);
+    cards.positive.forEach(card => {
+        appendCardToDOM(card.i, 'positive', true);
     });
 
-    cards.negative.forEach(() => {
-        appendCardToDOM(++cards[column + "MaxIndex"], 'negative', true);
+    cards.negative.forEach(card => {
+        appendCardToDOM(card.i, 'negative', true);
     });
 
 }
