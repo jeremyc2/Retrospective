@@ -166,11 +166,6 @@ function getCardIndex(card) {
     return parseInt(card.getAttribute("data-index"));
 }
 
-function sortNegativeCards() {
-    cards.negative = [...cards.negative.filter(x => x.r), ...cards.negative.filter(x => !x.r)];
-    loadCards();
-}
-
 function updateCard(column, card, field, value) {
     var i = getCardIndex(card);
 
