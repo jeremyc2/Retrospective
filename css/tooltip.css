@@ -13,7 +13,7 @@
     position: absolute;
     z-index: 1;
     top: 30px;
-    transform: translateX(-19px);
+    transform: translateX(-25px);
     text-transform: none;
 }
 .tooltip .tooltiptext::after {
