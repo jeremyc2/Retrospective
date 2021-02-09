@@ -1,5 +1,7 @@
 var searchParams = new URLSearchParams(document.location.search);
 var cards = {
+    positiveMaxIndex: -1,
+    negativeMaxIndex: -1,
     positive: [],
     negative: []
 }
@@ -155,7 +157,7 @@ function appendCard(column, updateDOM, props) {
     cards[column].push(props);
 
     if(updateDOM != null && updateDOM == true) {
-        appendCardToDOM(++maxCardIndex, column, false);
+        appendCardToDOM(++cards[column + "MaxIndex"], column, false);
     }
 
     reflectChanges();

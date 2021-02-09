@@ -37,7 +37,6 @@ document.addEventListener("fullscreenchange", () => {
     }
 });
 
-var maxCardIndex = 0;
 // Append new card that already exists in "cards" to the DOM
 function appendCardToDOM(index, column, initialLoad) {
 
@@ -53,8 +52,8 @@ function appendCardToDOM(index, column, initialLoad) {
     deleteButton.classList.add("delete", "card-action");
     detailsButton.classList.add("open-details", "card-action");
 
-    if(index > maxCardIndex) {
-        maxCardIndex = index;
+    if(index > cards[column + "MaxIndex"]) {
+        cards[column + "MaxIndex"] = index;
     }
 
     card.setAttribute("data-index", index);
@@ -111,10 +110,12 @@ function appendCardToDOM(index, column, initialLoad) {
 
     // TODO FIXME
     if(resolved) {
-        var el = container.querySelector("#negative .resolved.active").parentElement;
+        var topResolved = container.querySelector("#negative .resolved.active"),
+            el = topResolved? topResolved.parentElement: null;
         container.insertBefore(card, el);
     } else {
-        var el = container.querySelector("#negative .resolved:not(.active)").parentElement;
+        var topResolved = container.querySelector("#negative .resolved:not(.active)"),
+            el = topResolved? topResolved.parentElement: null;
         container.insertBefore(card, el);
     }
 
@@ -137,11 +138,11 @@ function loadCards() {
     });
 
     cards.positive.forEach(() => {
-        appendCardToDOM(++maxCardIndex, 'positive', true);
+        appendCardToDOM(++cards[column + "MaxIndex"], 'positive', true);
     });
 
     cards.negative.forEach(() => {
-        appendCardToDOM(++maxCardIndex, 'negative', true);
+        appendCardToDOM(++cards[column + "MaxIndex"], 'negative', true);
     });
 
 }
