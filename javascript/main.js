@@ -112,7 +112,6 @@ function appendCardToDOM(index, column, initialLoad) {
     cardActions.append(deleteButton, detailsButton);
     card.append(content, cardActions);
 
-    // TODO
     if(column == "negative") {
         if(resolved) {
             var topResolved = container.querySelector(".resolved.active"),
