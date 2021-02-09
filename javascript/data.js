@@ -188,27 +188,21 @@ function deleteCard(column, card) {
 
     cards[column].splice(i, 1);
 
-    if(cards[column].length == 0) {
-        cards[column + "MaxIndex"] = -1;
-    } else {
-        while(i < cards[column].length) {
-            cards[column + "MaxIndex"] = --cards[column][i].i;
-            var element = document.querySelector(`#${column} .card[data-index='${i + 1}']`);
-            if(element) {
-                element.setAttribute("data-index", i);
-            }
-            i++;
+    cards[column + "MaxIndex"]--;
+    while(i < cards[column].length) {
+        cards[column][i].i--;
+        var element = document.querySelector(`#${column} .card[data-index='${i + 1}']`);
+        if(element) {
+            element.setAttribute("data-index", i);
         }
+        i++;
     }
 
     reflectChanges();
 }
 
 function clearColumn(column) {
-    cards[column] = [];
     [...document.querySelectorAll(`#${column} .card`)].forEach(card => {
-        card.parentNode.removeChild(card);
+        deleteCard(column, card);
     });
-
-    reflectChanges();
 }
