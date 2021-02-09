@@ -187,6 +187,13 @@ function deleteCard(column, card) {
 
     cards[column].splice(i, 1);
 
+    debugger
+    if(cards[column].length > 0) {
+        // A shallow copy
+        var sortedCards = [...cards[column]].sort((first, second) => second.i - first.i);
+        cards[column + "MaxIndex"] = sortedCards[0].i;
+    }
+
     reflectChanges();
 }
 
