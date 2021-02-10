@@ -138,12 +138,15 @@ function appendCardToDOM(index, column, isNewCard) {
                 container = element.parentElement,
                 resolved = this.classList.contains("active");
 
+            element.style.height = element.getBoundingClientRect().height;
+
             element.classList.add("close-out");
             element.addEventListener('animationend', () => {
                 element.classList.remove("close-out");
                 container.removeChild(element);
                 insertBefore("negative", resolved, container, element);
                 this.style.display = "";
+                element.style.height = "";
             }, {once: true});
 
             updateCard(column, card, "r", resolved);
