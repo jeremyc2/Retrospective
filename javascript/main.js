@@ -132,13 +132,21 @@ function appendCardToDOM(index, column, isNewCard) {
         }
         resolvedIcon.addEventListener("click", function() {
             this.classList.toggle("active");
+            this.style.display = "none";
             
             var element = this.parentElement;
                 container = element.parentElement,
                 resolved = this.classList.contains("active");
-            container.removeChild(element);
+
+            element.classList.add("close-out");
+            element.addEventListener('animationend', () => {
+                element.classList.remove("close-out");
+                container.removeChild(element);
+                insertBefore("negative", resolved, container, element);
+                this.style.display = "";
+            }, {once: true});
+
             updateCard(column, card, "r", resolved);
-            insertBefore("negative", resolved, container, element);
         });
         card.append(resolvedIcon);
     }

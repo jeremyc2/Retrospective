@@ -51,6 +51,16 @@
     }
 }
 
+.card.close-out {
+    animation: close-out 0.5s cubic-bezier(0, 0.5, 0, 1) 0s 1 normal forwards;
+}
+
+@keyframes close-out {
+    to {
+        height: 0px;
+    }
+}
+
 textarea {
     appearance: none;
     border: none;
