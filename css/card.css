@@ -139,8 +139,8 @@ button.card-action:hover {
 }
 
 .bottom button {
-    background: black;
-    color: white;
+    background: var(--background-light);
+    color: black;
     font-size: 30px;
     border: 1px solid black;
     border-radius: 50%;
@@ -152,7 +152,7 @@ button.card-action:hover {
 }
 
 .bottom button:hover {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8);
+    background-color: var(--background-dark);
 }
 
 .resolved {
