@@ -105,7 +105,12 @@ function appendCardToDOM(index, column, isNewCard) {
     });
 
     deleteButton.addEventListener("click", function() {
-        deleteCard(column, this.parentNode.parentNode);
+        var card = this.parentNode.parentNode;
+        card.classList.add("fly-left");
+
+        card.addEventListener('animationend', () => {
+            deleteCard(column, card);
+        }, {once: true});
     });
 
     detailsButton.addEventListener("click", function() {
