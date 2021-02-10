@@ -30,7 +30,7 @@ document.addEventListener("fullscreenchange", () => {
         // Is not fullscreen
         document.querySelector("header").style.display = "block";
         [...document.querySelectorAll(".container")].forEach(el => {
-            el.style.height = "calc(100vh - 108px)";
+            el.style.height = "calc(100vh - 120px)";
         });
         document.querySelector(".fullscreen img").src = "fullscreen.svg";
         isFullscreen = false;
