@@ -38,15 +38,32 @@ document.addEventListener("fullscreenchange", () => {
 });
 
 function insertBefore(column, resolved, container, card) {
-
     if(column == "negative") {
         if(resolved) {
-            var topResolved = container.querySelector(".resolved.active"),
-                el = topResolved? topResolved.parentElement: container.lastElementChild;
+            var resolvedArray = [...container.querySelectorAll(".resolved.active")].map(x => x.parentElement);;
+            if(resolvedArray.length == 0) {
+                container.insertBefore(card, container.lastElementChild);
+                return;
+            }
+            resolvedArray = resolvedArray.sort((a, b) => {
+                return getCardIndex(b) - getCardIndex(a);
+            });
+            var el = resolvedArray.find((el) => {
+                return getCardIndex(el) < getCardIndex(card);
+            }) || container.lastElementChild;
             container.insertBefore(card, el);
         } else {
-            var topResolved = container.querySelector(".resolved:not(.active)"),
-                el = topResolved? topResolved.parentElement: container.firstElementChild;
+            var resolvedArray = [...container.querySelectorAll(".resolved:not(.active)")].map(x => x.parentElement);
+            if(resolvedArray.length == 0) {
+                container.insertBefore(card, container.firstElementChild);
+                return;
+            }
+            resolvedArray = resolvedArray.sort((a, b) => {
+                return getCardIndex(b) - getCardIndex(a);
+            });
+            var el = resolvedArray.find((el) => {
+                return getCardIndex(el) < getCardIndex(card);
+            }) || resolvedArray[resolvedArray.length - 1].nextElementSibling;
             container.insertBefore(card, el);
         }
     } else {
