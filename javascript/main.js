@@ -139,14 +139,16 @@ function appendCardToDOM(index, column, isNewCard) {
                 resolved = this.classList.contains("active");
 
             element.style.height = element.getBoundingClientRect().height;
+            element.style.overflow = "hidden";
 
             element.classList.add("close-out");
             element.addEventListener('animationend', () => {
                 element.classList.remove("close-out");
                 container.removeChild(element);
                 insertBefore("negative", resolved, container, element);
-                this.style.display = "";
                 element.style.height = "";
+                element.style.overflow = "";
+                this.style.display = "";
             }, {once: true});
 
             updateCard(column, card, "r", resolved);
