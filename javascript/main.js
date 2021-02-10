@@ -73,7 +73,7 @@ function insertBefore(column, resolved, container, card) {
 }
 
 // Append new card that already exists in "cards" to the DOM
-function appendCardToDOM(index, column, initialLoad) {
+function appendCardToDOM(index, column, isNewCard) {
 
     var card = document.createElement("div"),
         content = document.createElement("div"),
@@ -93,7 +93,7 @@ function appendCardToDOM(index, column, initialLoad) {
     deleteButton.innerHTML = "remove";
     detailsButton.innerHTML = "details";
 
-    if(initialLoad == false) {
+    if(isNewCard == false) {
         card.classList.add("expand");
         card.addEventListener('animationend', () => {
             card.classList.remove("expand");
@@ -148,7 +148,7 @@ function appendCardToDOM(index, column, initialLoad) {
 
     insertBefore(column, resolved, container, card);
 
-    if(initialLoad == false) {
+    if(isNewCard == false) {
         content.focus();
     }
 
