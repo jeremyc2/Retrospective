@@ -1,8 +1,4 @@
 .cards {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
     padding-top: 10px;
 
     overflow-y: scroll;
@@ -73,8 +69,6 @@ textarea {
 }
 
 .card .content {
-    min-height: calc(100% - 52px);
-    max-height: 100%;
     overflow: hidden;
     padding: 11px;
     background: white;
