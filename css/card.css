@@ -52,7 +52,7 @@
 }
 
 .card.close-out {
-    animation: close-out 0.5s cubic-bezier(0, 0.5, 0, 1) 0s 1 normal forwards;
+    animation: close-out 0.25s linear 0s 1 normal forwards;
 }
 
 @keyframes close-out {
@@ -74,6 +74,8 @@ textarea {
 
 .card .content {
     min-height: calc(100% - 52px);
+    max-height: 100%;
+    overflow: hidden;
     padding: 11px;
     background: white;
     border-radius: 5px 5px 0px 0px;
@@ -107,7 +109,7 @@ textarea {
 .card-actions {
     display: flex;
     justify-content: space-evenly;
-    overflow: none;
+    overflow: hidden;
 }
 
 button {
