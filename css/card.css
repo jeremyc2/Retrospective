@@ -97,6 +97,7 @@ textarea {
 .card-actions {
     display: flex;
     justify-content: space-evenly;
+    overflow: none;
 }
 
 button {
