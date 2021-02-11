@@ -69,6 +69,7 @@
     border-radius: 50%;
     margin-right: 5px;
     position: relative;
+    background-color: var(--border-color);
     top: 1;
 }
 
