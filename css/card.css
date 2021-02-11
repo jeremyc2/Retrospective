@@ -2,6 +2,7 @@
     padding-top: 10px;
 
     overflow-y: scroll;
+    overflow-x: hidden;
     background-color: white;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
