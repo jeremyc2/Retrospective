@@ -26,7 +26,10 @@ function addDetailsField(column, card, div, headingText, propName) {
         i = getCardIndex(card),
         props = cards[column][i];
 
-    heading.innerHTML = headingText;
+    if(propName == "a") {
+        heading.innerHTML = "<img height=\"13px\" src=\"lightning.svg\">";
+    }
+    heading.innerHTML += headingText;
 
     if(props[propName] != null) {
         textarea.innerHTML = props[propName];
