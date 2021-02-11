@@ -48,10 +48,12 @@ function getNewFileHandle() {
       }],
     };
     var fileHandle;
-      fileHandle = window.showSaveFilePicker(opts).catch(() => {
-        opts.types[0].accept['application/json'] = ['.json'];
-        return window.showSaveFilePicker(opts);
-      });
+      fileHandle = window.showSaveFilePicker(opts);
+      // .catch(ex => {
+        // TODO FIXME on mac
+        //   opts.types[0].accept['application/json'] = ['.json'];
+        //   return window.showSaveFilePicker(opts);
+      // });
     return fileHandle;
   }
   // For Chrome 85 and earlier...

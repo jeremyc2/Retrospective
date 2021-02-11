@@ -111,7 +111,7 @@ var openFile = async (fileHandle) => {
  */
 var read = async (file, fileHandle) => {
   try {
-    setData(await readFile(file));
+    setData(await readFile(file), false);
     setFile(fileHandle || file.name);
   } catch (ex) {
     const msg = `An error occured reading ${file.name}`;

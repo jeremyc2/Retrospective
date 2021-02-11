@@ -99,10 +99,12 @@ function updateFooter(text, filename, resetLastSave) {
 
 }
 
-function setData(data) {
+function setData(data, save) {
     cards = JSON.parse(data);
     loadCards();
-    reflectChanges();
+
+    if(save)
+        reflectChanges();
 }
 
 function loadData() {
@@ -110,7 +112,7 @@ function loadData() {
     var params = new URLSearchParams(urlInput.value.substring(urlInput.value.indexOf("?"), urlInput.length));
 
     if(params.has("a")) {
-        setData(params.get("a"));
+        setData(params.get("a"), true);
     }
 
     urlInput.parentElement.parentElement.style.display = "none";
