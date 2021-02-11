@@ -50,7 +50,7 @@ function getNewFileHandle() {
     var fileHandle;
       fileHandle = window.showSaveFilePicker(opts);
       // .catch(ex => {
-        // TODO FIXME on mac. Only call save file picker on mac errors, not all errors
+        // // TODO FIXME on mac. Only call save file picker on mac errors, not all errors
         //   opts.types[0].accept['application/json'] = ['.json'];
         //   return window.showSaveFilePicker(opts);
       // });
