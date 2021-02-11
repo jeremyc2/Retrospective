@@ -125,6 +125,9 @@ function appendCardToDOM(index, column, isNewCard) {
     if(props.c != null) {
         content.innerHTML = props.c;
     }
+    if(props.a != null && props.a.trim() != ""){
+        card.classList.add("has-actions");
+    }
 
     var resolved = props.r != null && props.r != false;
 

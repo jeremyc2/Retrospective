@@ -33,6 +33,13 @@ function addDetailsField(column, card, div, headingText, propName) {
     }
 
     textarea.addEventListener("input", function() {
+        if(propName == "a") {
+            if(this.value != null && this.value.trim() != "") {
+                card.classList.add("has-actions");
+            } else {
+                card.classList.remove("has-actions");
+            }
+        }
         updateCard(column, card, propName, this.value);
     });
 
