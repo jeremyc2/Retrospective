@@ -147,10 +147,10 @@ button.card-action {
     height: 5;
     border-radius: 50%;
     border: solid black 1px;
-    background-image: url("data:image/svg+xml,%3Csvg width='32' height='36' viewBox='0 0 32 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M23.4463 26.7227H8.55371L5.20898 36H0.375L13.9492 0.453125H18.0508L31.6494 36H26.8398L23.4463 26.7227ZM9.96973 22.8652H22.0547L16 6.23926L9.96973 22.8652Z' fill='black'/%3E%3C/svg%3E");
+    background-image: url(../lightning.svg);
     background-color: var(--background-dark);
     background-repeat: no-repeat;
-    background-size: 8px;
+    background-size: 17px;
     background-position: center;
 }
 
