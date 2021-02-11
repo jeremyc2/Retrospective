@@ -63,6 +63,15 @@
     font-weight: 300;
 }
 
+.lightning {
+    border: solid black 1px;
+    height: 13px;
+    border-radius: 50%;
+    margin-right: 5px;
+    position: relative;
+    top: 1;
+}
+
 .modal input {
     border: .1px solid;
     border-color: var(--border-color);
