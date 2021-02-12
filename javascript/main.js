@@ -24,7 +24,7 @@ document.addEventListener("fullscreenchange", () => {
         [...document.querySelectorAll(".container")].forEach(el => {
             el.style.height = "calc(100vh - 67px)";
         });
-        document.querySelector(".fullscreen img").src = "exit-fullscreen.svg";
+        document.querySelector(".fullscreen img").src = "img/exit-fullscreen.svg";
         isFullscreen = true;
     } else {
         // Is not fullscreen
@@ -32,7 +32,7 @@ document.addEventListener("fullscreenchange", () => {
         [...document.querySelectorAll(".container")].forEach(el => {
             el.style.height = "calc(100vh - 120px)";
         });
-        document.querySelector(".fullscreen img").src = "fullscreen.svg";
+        document.querySelector(".fullscreen img").src = "img/fullscreen.svg";
         isFullscreen = false;
     }
 });
