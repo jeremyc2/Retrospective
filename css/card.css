@@ -191,6 +191,20 @@ button.card-action:hover {
     z-index: 2;
 }
 
+.bottom button.add-card {
+    background-image: url("data:image/svg+xml,%3Csvg width='8' height='9' viewBox='0 0 8 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.69531 3.89844H7.86719V5.26562H4.69531V8.85938H3.24219V5.26562H0.0703125V3.89844H3.24219V0.578125H4.69531V3.89844Z' fill='black'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 17px;
+    background-position: center;
+}
+
+.bottom button.clear-column {
+    background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.27055 3.71276L7.51341 5.95561L6.54666 6.92236L4.3038 4.6795L1.76264 7.22067L0.735125 6.19315L3.27629 3.65199L1.03344 1.40913L2.00018 0.442387L4.24304 2.68524L6.59085 0.337426L7.61837 1.36494L5.27055 3.71276Z' fill='black'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-size: 17px;
+    background-position: center;
+}
+
 .bottom button:hover {
     background-color: var(--background-dark);
 }
