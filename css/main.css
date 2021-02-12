@@ -30,6 +30,10 @@ svg.animate > path {
     animation: dash 2.5s linear forwards;
 }
 
+svg.animate > path.secondary {
+    stroke: red;
+}
+
 @keyframes dash {
     to {
         stroke-dashoffset: 0;
