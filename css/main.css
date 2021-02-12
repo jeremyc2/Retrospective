@@ -17,8 +17,23 @@ header {
     justify-content: center;
 }
 
-header > img {
+header > svg {
     cursor: pointer;
+    margin: auto;
+}
+
+svg.animate > path {
+    fill: none;
+    stroke: white;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: dash 2.5s linear forwards;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
 }
 
 footer {

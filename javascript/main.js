@@ -211,6 +211,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loadCards();
 
+    var titleSVG = document.querySelector("#title");
+    titleSVG.addEventListener("animationend", () => {
+        titleSVG.classList.remove("animate");
+    });
+
     document.addEventListener('keydown', function(e) {
         if(e.code == "Escape") {
             if(document.querySelector("#details-modal").style.display == "flex") {
