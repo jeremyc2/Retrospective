@@ -9,11 +9,16 @@ body {
 }
 
 header {
+    height: 43.33px;
     background: black;
     padding: 5px;
-    height: auto;
     text-align: center;
-    font-family: "permanent marker";
+    display: flex;
+    justify-content: center;
+}
+
+header > img {
+    cursor: pointer;
 }
 
 footer {

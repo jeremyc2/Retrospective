@@ -28,7 +28,7 @@ document.addEventListener("fullscreenchange", () => {
         isFullscreen = true;
     } else {
         // Is not fullscreen
-        document.querySelector("header").style.display = "block";
+        document.querySelector("header").style.display = "flex";
         [...document.querySelectorAll(".container")].forEach(el => {
             el.style.height = "calc(100vh - 120px)";
         });
