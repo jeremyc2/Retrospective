@@ -31,19 +31,19 @@
   
 /* The Close Button */
 .close {
-    color: #aaaaaa;
+    color: black;
     float: right;
     font-size: 27px;
     font-weight: bold;
     position: absolute;
     top: 4px;
     right: 10px;
-    opacity: .7;
+    opacity: .2;
 }
   
 .close:hover,
 .close:focus {
-    color: #000;
+    opacity: 1;
     text-decoration: none;
     cursor: pointer;
 }
