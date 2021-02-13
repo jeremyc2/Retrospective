@@ -8,10 +8,11 @@
     border-bottom-right-radius: 5px;
 }
 
-#divider {
+.card:not(.resolved) + .card.resolved::before {
+    content: "";
+    position: absolute;
     width: 90%;
     display: block;
-    margin: 0 auto;
     padding: 20 0 10 0;
 }
 
