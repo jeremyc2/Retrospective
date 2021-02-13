@@ -40,7 +40,7 @@ document.addEventListener("fullscreenchange", () => {
 function insertBefore(column, resolved, container, card) {
     if(column == "negative") {
         if(resolved) {
-            var resolvedArray = [...container.querySelectorAll(".resolved.active")].map(x => x.parentElement);;
+            var resolvedArray = [...container.querySelectorAll(".card.resolved")];
             if(resolvedArray.length == 0) {
                 container.insertBefore(card, container.lastElementChild);
                 return;
@@ -53,7 +53,7 @@ function insertBefore(column, resolved, container, card) {
             }) || container.lastElementChild;
             container.insertBefore(card, el);
         } else {
-            var resolvedArray = [...container.querySelectorAll(".resolved:not(.active)")].map(x => x.parentElement);
+            var resolvedArray = [...container.querySelectorAll(".card:not(.resolved)")];
             if(resolvedArray.length == 0) {
                 container.insertBefore(card, container.firstElementChild);
                 return;
@@ -136,15 +136,15 @@ function appendCardToDOM(index, column, isNewCard) {
         var resolvedIcon = document.createElement("div");
         resolvedIcon.classList.add("resolved");
         if(resolved) {
-            resolvedIcon.classList.toggle("active");
+            card.classList.toggle("resolved");
         }
         resolvedIcon.addEventListener("click", function() {
-            this.classList.toggle("active");
+            this.parentElement.classList.toggle("resolved");
             this.style.display = "none";
             
             var element = this.parentElement;
                 container = element.parentElement,
-                resolved = this.classList.contains("active");
+                resolved = element.classList.contains("resolved");
 
             element.style.height = element.getBoundingClientRect().height;
             element.style.overflow = "hidden";

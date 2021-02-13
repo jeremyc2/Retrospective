@@ -238,11 +238,11 @@ button.card-action:hover {
     background-size: 70%;
 }
 
-.card .resolved:not(.active) {
+.card:not(.resolved) .resolved {
     display: none;
 }
 
-.card .resolved:hover, .card .resolved.active {
+.card .resolved:hover, .card.resolved .resolved {
     opacity: 100%;
 }
 
