@@ -8,6 +8,13 @@
     border-bottom-right-radius: 5px;
 }
 
+.divider {
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+    padding: 20 0 10 0;
+}
+
 .card {
 
     position: relative;
