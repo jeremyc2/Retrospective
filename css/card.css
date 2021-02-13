@@ -216,7 +216,7 @@ button.card-action:hover {
     background-color: var(--background-dark);
 }
 
-.resolved {
+.card .resolved {
     position: absolute;
     height: 18px;
     width: 18px;
@@ -238,11 +238,11 @@ button.card-action:hover {
     background-size: 70%;
 }
 
-.resolved:not(.active) {
+.card .resolved:not(.active) {
     display: none;
 }
 
-.resolved:hover, .resolved.active {
+.card .resolved:hover, .card .resolved.active {
     opacity: 100%;
 }
 
