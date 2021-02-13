@@ -15,7 +15,7 @@
 .card:not(.resolved) + .card.resolved::before {
     content: "";
     position: absolute;
-    top: -20;
+    top: -30;
     width: 100%;
     display: block;
     padding: 20 0 10 0;
