@@ -139,12 +139,11 @@ function appendCardToDOM(index, column, isNewCard) {
             card.classList.toggle("resolved");
         }
         resolvedIcon.addEventListener("click", function() {
-            this.parentElement.classList.toggle("resolved");
             this.style.display = "none";
             
             var element = this.parentElement;
                 container = element.parentElement,
-                resolved = element.classList.contains("resolved");
+                resolved = !element.classList.contains("resolved");
 
             element.style.height = element.getBoundingClientRect().height;
             element.style.overflow = "hidden";
@@ -154,6 +153,7 @@ function appendCardToDOM(index, column, isNewCard) {
                 element.classList.remove("close-out");
                 container.removeChild(element);
                 insertBefore("negative", resolved, container, element);
+                element.classList.toggle("resolved");
                 element.style.height = "";
                 element.style.overflow = "";
                 this.style.display = "";
