@@ -1,1 +1,1 @@
-avascript: document.querySelector(".resolved.active").parentElement.insertAdjacentHTML('beforebegin', `<img src="img/divider.svg" class="divider">`);
+avascript: document.querySelector(".resolved.active").parentElement.insertAdjacentHTML('beforebegin', `<img src="img/divider.svg" id="divider">`);

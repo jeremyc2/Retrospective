@@ -8,7 +8,7 @@
     border-bottom-right-radius: 5px;
 }
 
-.divider {
+#divider {
     width: 90%;
     display: block;
     margin: 0 auto;
