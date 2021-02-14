@@ -46,7 +46,7 @@ div:not(.resolved) ~ #divider:not(div:nth-last-child(2)) {
 #divider:nth-last-child(2) {
     display: block;
     visibility: hidden;
-    height: 40px;
+    height: 30px;
 }
 
 @keyframes margin-bottom-grow {
