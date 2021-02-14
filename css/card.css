@@ -19,6 +19,10 @@
     background-size: contain;
 }
 
+div:not(.resolved) ~ #divider:not(div:nth-last-child(2)) {
+    display: block;
+}
+
 .card {
 
     position: relative;
