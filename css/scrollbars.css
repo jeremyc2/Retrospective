@@ -5,14 +5,17 @@
 
 .cards::-webkit-scrollbar {
     width: 0px;
+    display: none;
 }
 
 :root::-webkit-scrollbar {
     width: 0px;
+    display: none;
 }
 
 body::-webkit-scrollbar {
     width: 0px;
+    display: none;
 }
 
 ::-webkit-scrollbar-track {
