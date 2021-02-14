@@ -42,6 +42,12 @@ div:not(.resolved) ~ #divider:not(div:nth-last-child(2)) {
     animation: margin-bottom-grow 0s ease 0s 1 normal forwards;
 }
 
+#divider:nth-last-child(2) {
+    display: block;
+    visibility: hidden;
+    height: 40px;
+}
+
 @keyframes margin-bottom-grow {
     to {
         margin-bottom: 70px;
