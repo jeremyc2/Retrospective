@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         button.innerHTML = filename; 
 
         button.addEventListener("click", function() {
-            openFile(this.innerText);
+            openFile(await get(this.innerHTML));
         });
 
         recentsButton.querySelector("div").appendChild(button);
