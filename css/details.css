@@ -66,6 +66,7 @@
 .lightning {
     border: solid black 1px;
     height: 13px;
+    width: 13px;
     border-radius: 50%;
     margin-right: 5px;
     position: relative;
