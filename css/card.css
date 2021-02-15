@@ -56,7 +56,7 @@ div:not(.resolved) ~ #divider {
 }
 
 .card.expand {
-    animation: expand .5s cubic-bezier(0, 0.5, 0, 1) 0s 1 normal forwards;
+    animation: expand .5s linear 0s 1 normal forwards;
 }
 
 @keyframes expand {
@@ -71,7 +71,7 @@ div:not(.resolved) ~ #divider {
 }
 
 .card.close-out {
-    animation: close-out .5s cubic-bezier(0, 0.5, 0, 1) 0s 1 normal forwards;
+    animation: close-out .25s cubic-bezier(0, 0.5, 0, 1) 0s 1 normal forwards;
 }
 
 @keyframes close-out {

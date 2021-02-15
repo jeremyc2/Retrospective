@@ -95,8 +95,12 @@ function appendCardToDOM(index, column, isNewCard) {
 
     if(isNewCard == false) {
         card.classList.add("expand");
+
+        card.style.overflow = "hidden";
+
         card.addEventListener('animationend', () => {
             card.classList.remove("expand");
+            card.style.overflow = "";
         }, {once: true});
     }
 
