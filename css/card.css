@@ -20,7 +20,7 @@
     background-size: contain;
 }
 
-div:not(.resolved) ~ #divider:not(div:nth-last-child(2)) {
+div:not(.resolved) ~ #divider {
     display: block;
 }
 
