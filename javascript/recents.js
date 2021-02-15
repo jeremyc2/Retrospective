@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     var recentsButton = document.getElementById("butRecents");
 
     var filenames = await keys();
-    filenames.forEach(filename => {
+    filenames.reverse().forEach(filename => {
         var button = document.createElement("div");
         button.innerHTML = filename; 
 
