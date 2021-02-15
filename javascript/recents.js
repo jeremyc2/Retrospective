@@ -19,6 +19,16 @@ document.addEventListener("DOMContentLoaded", async function() {
     
             recentsListElement.appendChild(button);
         });
+
+        var clearRecents = document.createElement("div");
+        clearRecents.innerHTML = "CLEAR";
+        clearRecents.id = "clear-recents";
+        clearRecents.onclick = () => {
+            clear();
+            recentsListElement.innerHTML = "";
+        }
+        recentsListElement.appendChild(clearRecents);
+
     });
 
 });

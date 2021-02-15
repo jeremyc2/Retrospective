@@ -37,3 +37,12 @@
 #butRecents:hover div {
     display: block;
 }
+
+#clear-recents {
+    display: none !important;
+}
+
+div ~ #clear-recents {
+    display: block !important;
+    background-color: red !important;
+}
