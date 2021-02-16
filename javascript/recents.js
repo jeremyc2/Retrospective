@@ -33,7 +33,7 @@ async function buildMenu() {
         var recentsListElement = recentsButton.querySelector("div");
         recentsListElement.innerHTML = "";
 
-        var rfTemp = file == {}? recentFiles: recentFiles.slice(1, recentFiles.length); 
+        var rfTemp = JSON.stringify(file) == "{}"? recentFiles: recentFiles.slice(1, recentFiles.length); 
         rfTemp.forEach(handle => {
             var button = document.createElement("div");
             button.innerHTML = handle.name; 
@@ -51,7 +51,7 @@ async function buildMenu() {
         clearRecents.id = "clear-recents";
         clearRecents.onclick = () => {
             clear();
-            recentFiles = file == {} || recentFiles.length == 0? []: [recentFiles[0]];
+            recentFiles = JSON.stringify(file) == "{}" || recentFiles.length == 0? []: [recentFiles[0]];
             set('recentFiles', recentFiles);
             recentsListElement.innerHTML = "";
         }
