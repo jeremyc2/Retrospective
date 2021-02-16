@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", async function() {
             button.addEventListener("click", async function() {
                 var handle = await get(this.innerHTML);
                 openFile(handle);
+                recentsListElement.innerHTML = "";
             });
     
             recentsListElement.appendChild(button);
