@@ -33,7 +33,8 @@ async function buildMenu() {
         var recentsListElement = recentsButton.querySelector("div");
         recentsListElement.innerHTML = "";
 
-        recentFiles.slice(1, recentFiles.length).forEach(handle => {
+        var rfTemp = file == {}? recentFiles: recentFiles.slice(1, recentFiles.length); 
+        rfTemp.forEach(handle => {
             var button = document.createElement("div");
             button.innerHTML = handle.name; 
 
