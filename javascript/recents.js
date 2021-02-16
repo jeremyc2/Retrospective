@@ -15,7 +15,7 @@ async function addRecent(fileHandle) {
     // Add the new file handle to the top of the list, and remove any old ones.
     recentFiles.unshift(fileHandle);
 
-    if (recentFiles.length > 5) {
+    if (recentFiles.length > 6) {
         recentFiles.pop();
     }
 
@@ -33,7 +33,7 @@ async function buildMenu() {
         var recentsListElement = recentsButton.querySelector("div");
         recentsListElement.innerHTML = "";
 
-        recentFiles.forEach(handle => {
+        recentFiles.slice(1, recentFiles.length).forEach(handle => {
             var button = document.createElement("div");
             button.innerHTML = handle.name; 
 
