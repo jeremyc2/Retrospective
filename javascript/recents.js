@@ -36,7 +36,7 @@ async function buildMenu() {
         var rfTemp = JSON.stringify(file) == "{}"? recentFiles: recentFiles.slice(1, recentFiles.length); 
         rfTemp.forEach(handle => {
             var button = document.createElement("div");
-            button.innerHTML = handle.name; 
+            button.innerHTML = handle.name.substring(0, handle.name.lastIndexOf(".json"));
 
             button.addEventListener("click", async function() {
                 openFile(handle);
