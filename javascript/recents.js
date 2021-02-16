@@ -36,12 +36,12 @@ async function buildMenu() {
         var recentsListElement = recentsButton.querySelector("div");
         recentsListElement.innerHTML = "";
 
-        recentFiles.forEach(file => {
+        recentFiles.forEach(handle => {
             var button = document.createElement("div");
-            button.innerHTML = file.name; 
+            button.innerHTML = handle.name; 
 
             button.addEventListener("click", async function() {
-                openFile(file);
+                openFile(handle);
                 recentsListElement.innerHTML = "";
             });
 
