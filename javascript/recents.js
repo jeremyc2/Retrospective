@@ -7,9 +7,10 @@ async function addRecent(fileHandle) {
         return;
     }
 
-    recentFiles = await Promise.all(recentFiles.filter((f) => {
-        return !fileHandle.isSameEntry(f);
+    recentFiles = await Promise.all(recentFiles.map((f) => {
+        return fileHandle.isSameEntry(f).then((same) => !same? f: false);
     }));
+    recentFiles = recentFiles.filter(handle => handle);
 
     // Add the new file handle to the top of the list, and remove any old ones.
     recentFiles.unshift(fileHandle);
