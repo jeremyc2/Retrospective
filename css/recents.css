@@ -17,6 +17,7 @@
 
   font-size: 12px;
   text-align: center;
+  white-space: nowrap;
 }
 
 /* Links inside the dropdown */
