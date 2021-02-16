@@ -1,4 +1,4 @@
-var recentFiles = [];
+var recentFiles;
 
 async function addRecent(fileHandle) {
     // If isSameEntry isn't available, we can't store the file handle
@@ -7,17 +7,13 @@ async function addRecent(fileHandle) {
         return;
     }
 
-    // Loop through the list of recent files and make sure the file we're
-    // adding isn't already there. This is gross.
-    const inList = await Promise.all(recentFiles.map((f) => {
-        return fileHandle.isSameEntry(f);
+    recentFiles = await Promise.all(recentFiles.filter((f) => {
+        return !fileHandle.isSameEntry(f);
     }));
-    if (inList.some((val) => val)) {
-        return;
-    }
 
     // Add the new file handle to the top of the list, and remove any old ones.
     recentFiles.unshift(fileHandle);
+
     if (recentFiles.length > 5) {
         recentFiles.pop();
     }
@@ -29,9 +25,9 @@ async function addRecent(fileHandle) {
 async function buildMenu() {
 
     var recentsButton = document.getElementById("butRecents");
+    recentFiles = await get('recentFiles') || [];
 
     recentsButton.addEventListener("mouseenter", async function() {
-        var recentFiles = await get('recentFiles') || [];
 
         var recentsListElement = recentsButton.querySelector("div");
         recentsListElement.innerHTML = "";
@@ -54,6 +50,7 @@ async function buildMenu() {
         clearRecents.onclick = () => {
             clear();
             recentFiles = [];
+            set('recentFiles', recentFiles);
             recentsListElement.innerHTML = "";
         }
         recentsListElement.appendChild(clearRecents);
