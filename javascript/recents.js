@@ -50,7 +50,7 @@ async function buildMenu() {
         clearRecents.id = "clear-recents";
         clearRecents.onclick = () => {
             clear();
-            recentFiles = recentFiles[0] != null? [recentFiles[0]]: [];
+            recentFiles = file == {} || recentFiles[0] != null? [recentFiles[0]]: [];
             set('recentFiles', recentFiles);
             recentsListElement.innerHTML = "";
         }
