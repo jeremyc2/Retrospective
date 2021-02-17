@@ -216,6 +216,10 @@ document.addEventListener("DOMContentLoaded", () => {
     loadCards();
 
     var titleSVG = document.querySelector("#title");
+
+    titleSVG.addEventListener("mouseenter", () => {
+        titleSVG.classList.add("animate");
+    });
     titleSVG.addEventListener("animationend", () => {
         titleSVG.classList.remove("animate");
     });
