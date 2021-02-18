@@ -16,7 +16,6 @@ body {
 header {
     height: 43.33px;
     background: black;
-    padding: 5px;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -24,7 +23,8 @@ header {
 
 header > svg {
     cursor: pointer;
-    margin: auto;
+    margin: 0;
+    height: 100%;
 }
 
 svg.animate > path {
@@ -180,7 +180,7 @@ footer div {
 
     border: .1px solid #dfe1e5;
     border-radius: 5px;
-    height: calc(100% - 120px);
+    height: calc(100% - 110px);
     width: 50%;
     margin: 32 10 10 10;
 
