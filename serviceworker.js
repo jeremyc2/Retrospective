@@ -3,7 +3,6 @@ const path = (new URL(self.registration.scope)).pathname;
 var cacheName = "Retro-V1.0";
 const cachefiles = [
     path,
-    path + "manifest.webmanifest",
     path + "css/main.css",
     path + "css/recents.css",
     path + "css/tooltip.css",
