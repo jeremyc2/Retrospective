@@ -1,0 +1,27 @@
+{
+    "author": "Jeremy Chandler",
+    "short_name": "TFATC Retro",
+    "name": "TFATC Team Retrospective",
+    "description": "Scrum Retrospective Meeting for The Fast and The Curious team",
+    "version": "0.1",
+    "orientation": "portrait",
+    "icons": [
+      {
+        "src": "/Retrospective/img/icons/192.png",
+        "type": "image/png",
+        "sizes": "192x192",
+        "purpose": "any maskable"
+      },
+      {
+        "src": "/Retrospective/img/icons/512.png",
+        "type": "image/png",
+        "sizes": "512x512",
+        "purpose": "any maskable"
+      }
+    ],
+    "start_url": "/Retrospective/",
+    "scope": "/Retrospective/",
+    "background_color": "black",
+    "theme_color": "black",
+    "display": "standalone"
+}
