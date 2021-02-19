@@ -48,7 +48,6 @@ self.addEventListener("activate", event => {
 });
 
 self.addEventListener("fetch", event => {
-    console.log(event.request.url);
     const parsedUrl = new URL(event.request.url);
 
     // might have to clone request and response
