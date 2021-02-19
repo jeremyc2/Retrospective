@@ -10,9 +10,21 @@ const cachefiles = [
     path + "css/details.css",
     path + "css/scrollbars.css",
     path + "css/slider.css",
+    path + "javascript/mobile-full-height.js",
+    path + "javascript/animate.js",
+    path + "javascript/data.js",
+    path + "javascript/main.js",
+    path + "javascript/details.js",
+    path + "javascript/fs-helpers.js",
+    path + "javascript/fs-menu.js",
+    path + "javascript/idb-keyval.js",
+    path + "javascript/recents.js",
+    path + "img/fullscreen.svg",
+    path + "img/copy.svg",
+    path + "img/divider.svg",
+    path + "img/logo.svg",
     path + "manifest.webmanifest",
-    path + "img/icons/192.png",
-    path + "img/logo.svg"
+    path + "img/icons/192.png"
 ]
 
 self.addEventListener("install", event => {
