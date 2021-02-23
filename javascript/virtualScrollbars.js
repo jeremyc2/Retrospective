@@ -28,6 +28,11 @@ function controlVirtualScrollbar(scrollbar) {
 
         scrollbar.firstElementChild.style.display = "block";
         e.target.addEventListener("mouseleave", function() {
+
+            if(scrollbar.firstElementChild == null) {
+                return;
+            }
+
             scrollbar.firstElementChild.style.display = "none";
         });
     });
