@@ -54,6 +54,10 @@ function controlVirtualScrollbar(scrollbar) {
 
     scrollbar.addEventListener("mousedown", function(e) {
 
+        if(scrollbar.firstElementChild == null) {
+            return;
+        }
+
         scrollbar.firstElementChild.classList.add("scrollbar-drag");
 
         var y = e.screenY,
@@ -61,6 +65,10 @@ function controlVirtualScrollbar(scrollbar) {
             oldScrollOffset = scrollbar.offsetTop;
         
         function updateScroll(e) {
+
+            if(scrollbar.firstElementChild == null) {
+                return;
+            }
 
             scrollbar.firstElementChild.style.display = "block";
 
@@ -85,6 +93,11 @@ function controlVirtualScrollbar(scrollbar) {
         document.addEventListener("mousemove", updateScroll);
 
         document.addEventListener("mouseup", function(e) {
+
+            if(scrollbar.firstElementChild == null) {
+                return;
+            }
+
             scrollbar.firstElementChild.classList.remove("scrollbar-drag");
             if(e.path.includes(container)) {
                 scrollbar.firstElementChild.style.display = "block";
