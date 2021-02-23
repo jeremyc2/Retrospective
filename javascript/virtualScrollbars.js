@@ -8,6 +8,7 @@ function controlVirtualScrollbar(scrollbar) {
     var container = scrollbar.parentElement;
     var height = container.getBoundingClientRect().height;
 
+    scrollbar.innerHTML = "";
     scrollbar.appendChild(document.createElement("div"));
 
     scrollbar.style.height = 
