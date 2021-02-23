@@ -21,6 +21,11 @@ function controlVirtualScrollbar(scrollbar) {
         height * (height / container.scrollHeight);
 
     scrollbar.parentElement.addEventListener("mouseenter", function(e) {
+
+        if(scrollbar.firstElementChild == null) {
+            return;
+        }
+
         scrollbar.firstElementChild.style.display = "block";
         e.target.addEventListener("mouseleave", function() {
             scrollbar.firstElementChild.style.display = "none";
