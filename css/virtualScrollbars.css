@@ -10,9 +10,12 @@
     box-sizing: border-box;
     border-radius: 20px;
     border: 4.5px solid transparent;
-    margin: 5px;
+    margin: 9px;
     background: #d6dee1 !important;
     display: none;
+    width: 8px;
+    border-left: 0;
+    border-right: 0;
 }
 .scrollbar > div:hover, .scrollbar .scrollbar-drag {
     background: #a8bbbf !important;
