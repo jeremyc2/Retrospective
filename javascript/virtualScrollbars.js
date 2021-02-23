@@ -1,3 +1,9 @@
+function buildScrollbars() {
+    [...document.querySelectorAll(".scrollbar")].forEach(sb => {
+        controlVirtualScrollbar(sb);
+    });
+}
+
 function controlVirtualScrollbar(scrollbar) {
     var container = scrollbar.parentElement;
     var height = container.getBoundingClientRect().height;
