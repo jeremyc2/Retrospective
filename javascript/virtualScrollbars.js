@@ -20,21 +20,27 @@ function controlVirtualScrollbar(scrollbar) {
     scrollbar.style.height = 
         height * (height / container.scrollHeight);
 
-    scrollbar.parentElement.addEventListener("mouseenter", function(e) {
+    container.addEventListener("mouseenter", function(e) {
 
         if(scrollbar.firstElementChild == null) {
             return;
         }
 
-        scrollbar.firstElementChild.style.display = "block";
         e.target.addEventListener("mouseleave", function() {
 
             if(scrollbar.firstElementChild == null) {
                 return;
             }
 
-            scrollbar.firstElementChild.style.display = "none";
+            if(!scrollbar.firstElementChild.classList.contains("scrollbar-drag")) {
+                scrollbar.firstElementChild.style.display = "none";
+            }
+
         });
+    });
+
+    container.addEventListener("mousemove", function() {
+        scrollbar.firstElementChild.style.display = "block";
     });
 
     container.addEventListener("scroll", function() {
@@ -70,8 +76,6 @@ function controlVirtualScrollbar(scrollbar) {
                 return;
             }
 
-            scrollbar.firstElementChild.style.display = "block";
-
             var deltaY = e.screenY - y,
                 scrollRatio = deltaY * container.scrollHeight / height,
                 newScrollTop = oldScrollTop + scrollRatio,
@@ -104,6 +108,7 @@ function controlVirtualScrollbar(scrollbar) {
             } else {
                 scrollbar.firstElementChild.style.display = "none";
             }
+
             document.removeEventListener("mousemove", updateScroll);
         });
 
