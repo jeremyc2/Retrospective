@@ -197,7 +197,7 @@ function loadCards() {
     });
 
     cards.negative.forEach(card => {
-        cards.positiveMaxIndex = card.i;
+        cards.negativeMaxIndex = card.i;
         appendCardToDOM(card.i, 'negative', true);
     });
 
