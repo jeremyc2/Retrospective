@@ -1,0 +1,19 @@
+.scrollbar {
+    position: absolute;
+    height: 100%;
+    width: 20px;
+    top: 0;
+    right: 0;
+}
+.scrollbar > div {
+    height: calc(100% - 9px) !important;
+    box-sizing: border-box;
+    border-radius: 20px;
+    border: 4.5px solid transparent;
+    margin: 5px;
+    background: #d6dee1 !important;
+    display: none;
+}
+.scrollbar > div:hover, .scrollbar .scrollbar-drag {
+    background: #a8bbbf !important;
+}
