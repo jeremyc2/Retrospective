@@ -9,6 +9,12 @@ function controlVirtualScrollbar(scrollbar) {
     var height = container.getBoundingClientRect().height;
 
     scrollbar.innerHTML = "";
+
+    if(container.scrollHeight <= height + 70) {
+        console.log("Not big enough for scrollbars");
+        return;
+    }
+
     scrollbar.appendChild(document.createElement("div"));
 
     scrollbar.style.height = 
