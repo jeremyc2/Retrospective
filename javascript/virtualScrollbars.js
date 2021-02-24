@@ -20,6 +20,7 @@ function controlVirtualScrollbar(scrollbar) {
     scrollbar.style.height = 
         height * (height / container.scrollHeight);
 
+    // TODO FIXME with ScrollMagic
     container.addEventListener("scroll", function() {
         const adjustedHeight = container.scrollHeight - height,
               adjustedScrollHeight = height - scrollbar.getBoundingClientRect().height;
