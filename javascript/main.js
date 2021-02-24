@@ -115,7 +115,6 @@ function appendCardToDOM(index, column, isNewCard) {
 
         card.addEventListener('animationend', () => {
             deleteCard(column, card);
-            buildScrollbars();
         }, {once: true});
     });
 

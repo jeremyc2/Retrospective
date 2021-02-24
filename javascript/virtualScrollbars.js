@@ -21,17 +21,18 @@ function controlVirtualScrollbar(scrollbar) {
         height * (height / container.scrollHeight);
 
     container.addEventListener("scroll", function() {
-        var adjustedHeight = container.scrollHeight - height;
-        var adjustedScrollHeight = height - scrollbar.getBoundingClientRect().height;
+        var adjustedHeight = container.scrollHeight - height,
+            adjustedScrollHeight = height - scrollbar.getBoundingClientRect().height;
 
         var scrollPercent = container.scrollTop / adjustedHeight;
         scrollPercent = scrollPercent > 1? 1: scrollPercent;
 
-        var newOffset = container.scrollTop + scrollPercent * adjustedScrollHeight;
-        if(newOffset > container.scrollHeight - scrollbar.getBoundingClientRect().height) {
-            scrollbar.style.top = container.scrollHeight - scrollbar.getBoundingClientRect().height;
+        var newOffset = container.scrollTop + scrollPercent * adjustedScrollHeight,
+            maxOffset = container.scrollHeight - scrollbar.getBoundingClientRect().height;
+        if(newOffset > maxOffset) {
+            scrollbar.style.top = maxOffset;
         } else {
-            scrollbar.style.top = container.scrollTop + scrollPercent * adjustedScrollHeight;
+            scrollbar.style.top = newOffset;
         }
     });
 
@@ -48,17 +49,15 @@ function controlVirtualScrollbar(scrollbar) {
             var deltaY = e.screenY - y,
                 scrollRatio = deltaY * container.scrollHeight / height,
                 newScrollTop = oldScrollTop + scrollRatio,
-                newScrollOffset = oldScrollOffset + deltaY + scrollRatio;
+                newScrollOffset = oldScrollOffset + deltaY + scrollRatio,
+                maxOffset = container.scrollHeight - scrollbar.getBoundingClientRect().height;
 
             if(newScrollOffset < 0) {
                 container.scrollTop = 0;
-                scrollbar.style.top = 0;
-            } else if(newScrollOffset > container.scrollHeight - scrollbar.getBoundingClientRect().height) {
-                container.scrollTop = container.scrollHeight - scrollbar.getBoundingClientRect().height;
-                scrollbar.style.top = container.scrollHeight - scrollbar.getBoundingClientRect().height;  
+            } else if(newScrollOffset > maxOffset) {
+                container.scrollTop = maxOffset;
             } else {
                 container.scrollTop = newScrollTop;
-                scrollbar.style.top = newScrollOffset;
             }
 
         }
