@@ -21,8 +21,8 @@ function controlVirtualScrollbar(scrollbar) {
         height * (height / container.scrollHeight);
 
     container.addEventListener("scroll", function() {
-        var adjustedHeight = container.scrollHeight - height,
-            adjustedScrollHeight = height - scrollbar.getBoundingClientRect().height;
+        const adjustedHeight = container.scrollHeight - height,
+              adjustedScrollHeight = height - scrollbar.getBoundingClientRect().height;
 
         var scrollPercent = container.scrollTop / adjustedHeight;
         scrollPercent = scrollPercent > 1? 1: scrollPercent;
