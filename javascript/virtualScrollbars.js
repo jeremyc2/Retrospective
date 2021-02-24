@@ -20,29 +20,6 @@ function controlVirtualScrollbar(scrollbar) {
     scrollbar.style.height = 
         height * (height / container.scrollHeight);
 
-    container.addEventListener("mouseenter", function(e) {
-
-        if(scrollbar.firstElementChild == null) {
-            return;
-        }
-
-        e.target.addEventListener("mouseleave", function() {
-
-            if(scrollbar.firstElementChild == null) {
-                return;
-            }
-
-            if(!scrollbar.firstElementChild.classList.contains("scrollbar-drag")) {
-                scrollbar.firstElementChild.style.display = "none";
-            }
-
-        });
-    });
-
-    container.addEventListener("mousemove", function() {
-        scrollbar.firstElementChild.style.display = "block";
-    });
-
     container.addEventListener("scroll", function() {
         var adjustedHeight = container.scrollHeight - height;
         var adjustedScrollHeight = height - scrollbar.getBoundingClientRect().height;
@@ -60,21 +37,13 @@ function controlVirtualScrollbar(scrollbar) {
 
     scrollbar.addEventListener("mousedown", function(e) {
 
-        if(scrollbar.firstElementChild == null) {
-            return;
-        }
-
-        scrollbar.firstElementChild.classList.add("scrollbar-drag");
+        scrollbar.classList.add("scrollbar-drag");
 
         var y = e.screenY,
             oldScrollTop = container.scrollTop,
             oldScrollOffset = scrollbar.offsetTop;
         
         function updateScroll(e) {
-
-            if(scrollbar.firstElementChild == null) {
-                return;
-            }
 
             var deltaY = e.screenY - y,
                 scrollRatio = deltaY * container.scrollHeight / height,
@@ -98,16 +67,7 @@ function controlVirtualScrollbar(scrollbar) {
 
         document.addEventListener("mouseup", function(e) {
 
-            if(scrollbar.firstElementChild == null) {
-                return;
-            }
-
-            scrollbar.firstElementChild.classList.remove("scrollbar-drag");
-            if(e.path.includes(container)) {
-                scrollbar.firstElementChild.style.display = "block";
-            } else {
-                scrollbar.firstElementChild.style.display = "none";
-            }
+            scrollbar.classList.remove("scrollbar-drag");
 
             document.removeEventListener("mousemove", updateScroll);
         });

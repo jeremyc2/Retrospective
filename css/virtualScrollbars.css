@@ -6,17 +6,21 @@
     right: 0;
 }
 .scrollbar > div {
+    display: none;
     height: calc(100% - 9px) !important;
     box-sizing: border-box;
     border-radius: 20px;
     border: 4.5px solid transparent;
     margin: 5px 9px 5px 9px;
     background: var(--background-light) !important;
-    display: none;
     width: 8px;
     border-left: 0;
     border-right: 0;
 }
-.scrollbar > div:hover, .scrollbar .scrollbar-drag {
+div:hover > .scrollbar > div {
+    display: block;
+}
+.scrollbar > div:hover, .scrollbar.scrollbar-drag > div {
     background: var(--background-dark) !important;
+    display: block !important;
 }
