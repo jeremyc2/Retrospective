@@ -64,7 +64,7 @@ function controlVirtualScrollbar(scrollbar) {
 
         document.addEventListener("mousemove", updateScroll);
 
-        document.addEventListener("mouseup", function(e) {
+        document.addEventListener("mouseup", function() {
 
             scrollbar.classList.remove("scrollbar-drag");
 
