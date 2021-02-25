@@ -35,7 +35,7 @@ function getText() {
   return JSON.stringify(cards);
 }
 
-function setFile(fileHandle) {
+function setFile(fileHandle, lastModified) {
   if (fileHandle && fileHandle.name) {
     file.handle = fileHandle;
     file.name = fileHandle.name;
@@ -43,7 +43,11 @@ function setFile(fileHandle) {
     file.handle = null;
     file.name = fileHandle;
   }
-  updateFooter(null, file.name, true);
+
+  if(lastModified != null) {
+    file.lastSave = lastModified;
+  }
+  updateFooter(null, file.name, false);
 };
 
 /**
@@ -111,7 +115,7 @@ var openFile = async (fileHandle) => {
 var read = async (file, fileHandle) => {
   try {
     setData(await readFile(file), false);
-    setFile(fileHandle || file.name);
+    setFile(fileHandle || file.name, new Date(file.lastModified));
     addRecent(fileHandle);
   } catch (ex) {
     const msg = `An error occured reading ${file.name}`;

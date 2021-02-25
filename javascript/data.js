@@ -50,7 +50,13 @@ function calculateTimeDiff(element) {
             } else {
                 element.innerHTML = "Saved less than a minute ago";
             }
-        } else {
+        } else if(diffMin > 60) {
+            if(autosaveEnabled) {
+                element.innerHTML = "AutoSave Enabled (updated over an hour ago)";
+            } else {
+                element.innerHTML = "Saved over an hour ago";
+            }
+        } else{
             if(autosaveEnabled) {
                 element.innerHTML = `AutoSave Enabled (updated ${diffMin} minute${diffMin > 1? "s": ""} ago)`;
             } else {
