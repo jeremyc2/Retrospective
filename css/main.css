@@ -53,7 +53,7 @@ svg.animate > path {
     stroke: white;
     stroke-dasharray: 100;
     stroke-dashoffset: 100;
-    animation: dash 2.5s linear forwards;
+    animation: dash 1.5s linear forwards;
 }
 
 svg.animate > path.secondary {
