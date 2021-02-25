@@ -38,11 +38,11 @@ div:not(.resolved) ~ #divider {
     background: var(--background-light);
 }
 
-.card:nth-last-child(2) {
+.card:last-child {
     animation: margin-bottom-grow 0s ease 0s 1 normal forwards;
 }
 
-#divider:nth-last-child(2) {
+#divider:last-child {
     display: block;
     visibility: hidden;
     height: 30px;

@@ -41,16 +41,12 @@ function insertBefore(column, resolved, container, card) {
     if(column == "negative") {
         if(resolved) {
             var resolvedArray = [...container.querySelectorAll(".card.resolved")];
-            if(resolvedArray.length == 0) {
-                container.insertBefore(card, container.lastElementChild);
-                return;
-            }
             resolvedArray = resolvedArray.sort((a, b) => {
                 return getCardIndex(b) - getCardIndex(a);
             });
             var el = resolvedArray.find((el) => {
                 return getCardIndex(el) < getCardIndex(card);
-            }) || container.lastElementChild;
+            });
             container.insertBefore(card, el);
         } else {
             var resolvedArray = [...container.querySelectorAll(".card:not(.resolved)")];
