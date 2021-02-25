@@ -1,3 +1,7 @@
+if(document.location.host == ""){
+    document.title = "LOCAL " + document.title;
+}
+
 var isFullscreen = false;
 
 function enableFullscreen() {

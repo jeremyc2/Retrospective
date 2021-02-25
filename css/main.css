@@ -203,8 +203,12 @@ footer div {
     border-radius: 5px;
     height: calc(100% - 110px);
     width: 50%;
-    margin: 32 10 10 10;
+    margin: 32 0 10 10;
 
+}
+
+.container:last-child {
+    margin-right: 10;
 }
 
 #positive {
