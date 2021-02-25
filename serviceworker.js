@@ -17,6 +17,7 @@ const cachefiles = [
     path + "img/divider.svg",
     path + "img/fullscreen.svg",
     path + "img/icons/192.png",
+    path + "img/lightning.svg",
     path + "img/logo.svg",
     path + "javascript/animate.js",
     path + "javascript/data.js",
