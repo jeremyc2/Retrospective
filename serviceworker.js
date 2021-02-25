@@ -15,6 +15,7 @@ const cachefiles = [
     path + "fonts/permanentMarker.woff2",
     path + "img/copy.svg",
     path + "img/divider.svg",
+    path + "img/exit-fullscreen.svg",
     path + "img/fullscreen.svg",
     path + "img/icons/192.png",
     path + "img/lightning.svg",
