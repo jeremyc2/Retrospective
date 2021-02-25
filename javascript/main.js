@@ -106,7 +106,6 @@ function appendCardToDOM(index, column, isNewCard) {
 
     content.addEventListener("input", function() {
         updateCard(column, this.parentElement, "c", this.innerHTML);
-        buildScrollbars();
     });
 
     deleteButton.addEventListener("click", function() {
@@ -178,7 +177,6 @@ function appendCardToDOM(index, column, isNewCard) {
         content.focus();
     }
 
-    buildScrollbars();
     return card;
 
 }

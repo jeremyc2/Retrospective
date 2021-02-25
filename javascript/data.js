@@ -185,7 +185,6 @@ function deleteCard(column, card) {
     var i = getCardIndex(card);
 
     card.parentNode.removeChild(card);
-    buildScrollbars();
 
     cards[column].splice(i, 1);
 
