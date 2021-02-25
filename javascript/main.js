@@ -1,5 +1,5 @@
 if(document.location.host == ""){
-    document.title = "LOCAL " + document.title;
+    document.title += " - LOCAL";
 }
 
 var isFullscreen = false;
