@@ -21,7 +21,6 @@ function toggleFullscreen() {
 }
 
 document.addEventListener("fullscreenchange", () => {
-    console.log("Fullscreen change")
     if(document.fullscreenElement) {
         // Is fullscreen
         document.querySelector("header").style.display = "none";

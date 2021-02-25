@@ -73,7 +73,6 @@ var newFile = () => {
  * @param {FileSystemFileHandle} fileHandle File handle to read from.
  */
 var openFile = async (fileHandle) => {
-  console.log("Opening file...");
 
   // If a fileHandle is provided, verify we have permission to read/write it,
   // otherwise, show the file open prompt and allow the user to select the file.
@@ -131,7 +130,6 @@ var saveFile = async () => {
     if (!file.handle) {
       return await saveFileAs();
     }
-    console.log("Saving file...");
     updateFooter("Saving...");
     await writeFile(file.handle, getText());
   } catch (ex) {
@@ -147,7 +145,6 @@ var saveFile = async () => {
  * Saves a new file to disk.
  */
 var saveFileAs = async () => {
-  console.log("Saving file...");
   updateFooter("Saving...");
   let fileHandle;
   try {

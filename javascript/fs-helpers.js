@@ -75,7 +75,6 @@ function getNewFileHandle() {
  * @return {!Promise<string>} A promise that resolves to the parsed string.
  */
 function readFile(file) {
-  console.log("File Opened");
   // If the new .text() reader is available, use it.
   if (file.text) {
     return file.text();
@@ -117,7 +116,6 @@ async function writeFile(fileHandle, contents) {
     await writer.write(0, contents);
     // Close the file and write the contents to disk
     await writer.close();
-    console.log("File Saved", new Date().toLocaleTimeString());
     addRecent(fileHandle);
     updateFooter(null, fileHandle.name, true);
     return;
@@ -129,7 +127,6 @@ async function writeFile(fileHandle, contents) {
   await writable.write(contents);
   // Close the file and write the contents to disk.
   await writable.close();
-  console.log("File Saved", new Date().toLocaleTimeString());
   addRecent(fileHandle);
   updateFooter(null, fileHandle.name, true);
 }

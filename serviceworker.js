@@ -28,8 +28,6 @@ const cachefiles = [
 ]
 
 self.addEventListener("install", event => {
-    console.log("Installing...");
-
     self.skipWaiting();
     
     event.waitUntil(
@@ -41,8 +39,6 @@ self.addEventListener("install", event => {
 });
  
 self.addEventListener("activate", event => {
-    console.log("Activating...");
-
     clients.claim();
 
 });
