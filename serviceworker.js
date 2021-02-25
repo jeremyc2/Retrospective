@@ -1,30 +1,33 @@
 const path = (new URL(self.registration.scope)).pathname;
 
-var cacheName = "Retro-V1.0";
+var cacheName = "Retro-V2.0";
 const cachefiles = [
     path,
-    path + "css/main.css",
-    path + "css/recents.css",
-    path + "css/tooltip.css",
+    path + "css/animate.css",
     path + "css/card.css",
     path + "css/details.css",
+    path + "css/main.css",
+    path + "css/permanentMarker.css",
+    path + "css/recents.css",
     path + "css/scrollbars.css",
     path + "css/slider.css",
-    path + "javascript/mobile-full-height.js",
+    path + "css/tooltip.css",
+    path + "fonts/permanentMarker.woff2",
+    path + "img/copy.svg",
+    path + "img/divider.svg",
+    path + "img/fullscreen.svg",
+    path + "img/icons/192.png",
+    path + "img/logo.svg",
     path + "javascript/animate.js",
     path + "javascript/data.js",
-    path + "javascript/main.js",
     path + "javascript/details.js",
     path + "javascript/fs-helpers.js",
     path + "javascript/fs-menu.js",
     path + "javascript/idb-keyval.js",
+    path + "javascript/main.js",
+    path + "javascript/mobile-full-height.js",
     path + "javascript/recents.js",
-    path + "img/fullscreen.svg",
-    path + "img/copy.svg",
-    path + "img/divider.svg",
-    path + "img/logo.svg",
-    path + "manifest.webmanifest",
-    path + "img/icons/192.png"
+    path + "manifest.webmanifest"
 ]
 
 self.addEventListener("install", event => {
@@ -38,7 +41,7 @@ self.addEventListener("install", event => {
 
 });
  
-self.addEventListener("activate", event => {
+self.addEventListener("activate", () => {
     clients.claim();
 
 });
