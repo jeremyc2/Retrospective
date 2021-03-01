@@ -1,6 +1,7 @@
 if(document.location.host == ""){
     document.title += " - LOCAL";
 }
+var defaultTitle = document.title;
 
 var isFullscreen = false;
 

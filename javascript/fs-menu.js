@@ -44,6 +44,9 @@ function setFile(fileHandle, lastModified) {
     file.name = fileHandle;
   }
 
+  var title = file.name.substring(0, file.name.lastIndexOf(".json"));
+  document.title = document.location.host == ""? title + " - LOCAL": title;
+
   if(lastModified != null) {
     file.lastSave = lastModified;
   }
@@ -60,6 +63,7 @@ var newFile = () => {
     cards.negativeMaxIndex = -1,
 
     loadCards();
+    document.title = defaultTitle;
     updateFooter("Not Saved");
 
     file = {};

@@ -44,16 +44,11 @@ function getNewFileHandle() {
     var opts = {
       types: [{
         description: 'JSON',
-        accept: {'application/json': ['json']},
+        accept: {'application/json': ['.json']},
       }],
     };
     var fileHandle;
       fileHandle = window.showSaveFilePicker(opts);
-      // .catch(ex => {
-        // // TODO FIXME on mac. Only call save file picker on mac errors, not all errors
-        //   opts.types[0].accept['application/json'] = ['.json'];
-        //   return window.showSaveFilePicker(opts);
-      // });
     return fileHandle;
   }
   // For Chrome 85 and earlier...
