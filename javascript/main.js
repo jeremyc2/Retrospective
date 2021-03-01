@@ -1,5 +1,5 @@
 if(document.location.host == ""){
-    document.title += " - LOCAL";
+     document.getElementById("icon").setAttribute("href", "img/dev-logo.svg");
 }
 var defaultTitle = document.title;
 

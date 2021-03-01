@@ -44,8 +44,7 @@ function setFile(fileHandle, lastModified) {
     file.name = fileHandle;
   }
 
-  var title = file.name.substring(0, file.name.lastIndexOf(".json"));
-  document.title = document.location.host == ""? title + " - LOCAL": title;
+  document.title = file.name.substring(0, file.name.lastIndexOf(".json"));
 
   if(lastModified != null) {
     file.lastSave = lastModified;
