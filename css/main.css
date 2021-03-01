@@ -42,7 +42,7 @@ div:hover .corner-tooltip {
     display: block;
 }
 
-header > svg {
+header svg {
     cursor: pointer;
     margin: 0;
     height: 100%;
