@@ -129,10 +129,27 @@ var read = async (file, fileHandle) => {
   enableAutosave();
 };
 
+var saveList;
+var saveFile = async () => {
+  if(saveList == null) {
+    saveList = new Promise(async (resolve) => {
+      await saveFileAsync();
+      resolve();
+    });
+  } else {
+    saveList = saveList.then(async () => {
+      return new Promise(async (resolve) => {
+        await saveFileAsync();
+        resolve();
+      })
+    });
+  }
+}
+
 /**
  * Saves a file to disk.
  */
-var saveFile = async () => {
+var saveFileAsync = async () => {
   try {
     if (!file.handle) {
       return await saveFileAs();
