@@ -1,3 +1,5 @@
+
+var searchParams = new URLSearchParams(document.location.search);
 var cards = {
     positiveMaxIndex: -1,
     negativeMaxIndex: -1,
