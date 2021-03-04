@@ -19,7 +19,6 @@
 /* exported getFileHandle, getNewFileHandle, readFile, verifyPermission,
             writeFile */
 
-var fsWritingInProgress = false;
 /**
  * Open a handle to an existing file on the local file system.
  *
@@ -104,19 +103,6 @@ function _readFileLegacy(file) {
  * @param {string} contents Contents to write.
  */
 async function writeFile(fileHandle, contents) {
-  // We can't have more than one save at the same time or we'll have
-  // problems with the file state
-  if(fsWritingInProgress == true) {
-    await new Promise((resolve, reject) => {
-      var timer = setInterval(() => {
-        if(fsWritingInProgress == false) {
-          clearInterval(timer);
-          resolve(true);
-        }
-      }, 100);
-    });
-  }
-  fsWritingInProgress = true;
   // Support for Chrome 82 and earlier.
   if (fileHandle.createWriter) {
     // Create a writer (request permission if necessary).
@@ -127,7 +113,6 @@ async function writeFile(fileHandle, contents) {
     await writer.close();
     addRecent(fileHandle);
     updateFooter(null, fileHandle.name, true);
-    fsWritingInProgress = false;
     return;
   }
   // For Chrome 83 and later.
@@ -139,7 +124,6 @@ async function writeFile(fileHandle, contents) {
   await writable.close();
   addRecent(fileHandle);
   updateFooter(null, fileHandle.name, true);
-  fsWritingInProgress = false;
 }
 
 /**
