@@ -144,7 +144,7 @@ var saveFile = async () => {
     // InvalidStateError
     if(ex.code == 11) {
       console.error("Invalid State Error:", ex.message);
-      msg = 'Try saving again in a few minutes.';
+      msg = null;
       // TODO Saves are happening too close to eachother 
       // before the first has time to finish. FIXME
     } else {
@@ -152,7 +152,9 @@ var saveFile = async () => {
       console.error(msg, ex);
     }
     disableAutosave();
-    alert(msg);
+    if(msg != null) {
+      alert(msg);
+    }
     updateFooter(null, file.name, false);
   }
 };
