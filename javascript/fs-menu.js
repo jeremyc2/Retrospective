@@ -144,7 +144,6 @@ var saveFile = async () => {
     // InvalidStateError
     if(ex.code == 11) {
       console.error("Invalid State Error:", ex.message);
-      msg = null;
       // TODO Saves are happening too close to eachother 
       // before the first has time to finish. FIXME
     } else {
