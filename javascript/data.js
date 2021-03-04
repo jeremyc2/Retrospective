@@ -1,4 +1,3 @@
-var searchParams = new URLSearchParams(document.location.search);
 var cards = {
     positiveMaxIndex: -1,
     negativeMaxIndex: -1,
@@ -6,27 +5,10 @@ var cards = {
     negative: []
 }
 
-if(searchParams.has("a")) {
-    cards = JSON.parse(searchParams.get("a"));
-}
-
 function reflectChanges() {
     if(autosaveEnabled) {
         saveFile();
     }
-}
-
-function verifyContentLength(url) {
-    var percent = url.length / 8203 * 100;
-    var percentString = `${percent}`.substring(0, `${percent}`.lastIndexOf(".") + 3) + "%";
-
-    if(percent > 100) {
-        alert(`URL max length exceeded. Currently at ${percentString} capacity.`);
-        return false;
-    }
-
-    return true;
-
 }
 
 function calculateTimeDiff(element) {
@@ -115,51 +97,26 @@ function setData(data, save) {
 
 function loadData() {
     var urlInput = document.querySelector("#data-url");
-    var params = new URLSearchParams(urlInput.value.substring(urlInput.value.indexOf("?"), urlInput.length));
+    var string = urlInput.value;
 
-    if(params.has("a")) {
-        setData(params.get("a"), true);
-    }
+    cards = JSON.parse(string);
 
     urlInput.parentElement.parentElement.style.display = "none";
 
 
 }
 
-function condenseURL(string) {
-
-    string = string.replaceAll("%22", "\"");
-    string = string.replaceAll("%7B", "{");
-    string = string.replaceAll("%7D", "}");
-    string = string.replaceAll("%5B", "[");
-    string = string.replaceAll("%5D", "]");
-    string = string.replaceAll("%2C", ",");
-    string = string.replaceAll("%3A", ":");
-
-    return string;
-}
-
-function copyURL() {
-
-    var params = new URLSearchParams();
-    params.append("a", JSON.stringify(cards));
+function copy() {
 
     var input = document.createElement("textarea"),
-        string = condenseURL(window.location.origin + window.location.pathname + `?${params.toString()}`);
+        string = JSON.stringify(cards, null, "\t");
 
-    if(verifyContentLength(string)) {
-
-        input.innerHTML = string;
-        document.body.appendChild(input);
-        input.select();
-        document.execCommand("copy");
-        document.body.removeChild(input);
-        alert("Data URL copied to clipboard");
-        return string;
-        
-    } else {
-        alert("Data too long to copy as URL");
-    }
+    input.innerHTML = string;
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand("copy");
+    document.body.removeChild(input);
+    return string;
 
 }
 

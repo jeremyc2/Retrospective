@@ -239,7 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
             saveFile();
             e.preventDefault();
         } else if (e.altKey && e.key == 'c') {
-            copyURL();
+            copy();
             e.preventDefault();
         } else if (e.altKey && e.key == 'f') {
             toggleFullscreen();
