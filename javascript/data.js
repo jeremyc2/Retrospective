@@ -102,6 +102,7 @@ function loadData() {
     var string = urlInput.value;
 
     cards = JSON.parse(string);
+    loadCards();
 
     urlInput.parentElement.parentElement.style.display = "none";
 
