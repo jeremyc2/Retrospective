@@ -140,8 +140,17 @@ var saveFile = async () => {
     updateFooter("Saving...");
     await writeFile(file.handle, getText());
   } catch (ex) {
-    const msg = 'Unable to save file';
-    console.error(msg, ex);
+    var msg;
+    // InvalidStateError
+    if(ex.code == 11) {
+      console.error("Invalid State Error:", ex.message);
+      msg = 'Try saving again in a few minutes.';
+      // TODO Saves are happening too close to eachother 
+      // before the first has time to finish. FIXME
+    } else {
+      msg = 'Unable to save file.';
+      console.error(msg, ex);
+    }
     disableAutosave();
     alert(msg);
     updateFooter(null, file.name, false);
