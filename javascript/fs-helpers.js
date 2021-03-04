@@ -104,6 +104,8 @@ function _readFileLegacy(file) {
  * @param {string} contents Contents to write.
  */
 async function writeFile(fileHandle, contents) {
+  // We can't have more than one save at the same time or we'll have
+  // problems with the file state
   await new Promise((resolve, reject) => {
     var timer = setInterval(() => {
       if(fsWritingInProgress == false) {
