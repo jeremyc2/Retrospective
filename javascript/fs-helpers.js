@@ -106,14 +106,16 @@ function _readFileLegacy(file) {
 async function writeFile(fileHandle, contents) {
   // We can't have more than one save at the same time or we'll have
   // problems with the file state
-  await new Promise((resolve, reject) => {
-    var timer = setInterval(() => {
-      if(fsWritingInProgress == false) {
-        clearInterval(timer);
-        resolve(true);
-      }
-    }, 100);
-  });
+  if(fsWritingInProgress == true) {
+    await new Promise((resolve, reject) => {
+      var timer = setInterval(() => {
+        if(fsWritingInProgress == false) {
+          clearInterval(timer);
+          resolve(true);
+        }
+      }, 100);
+    });
+  }
   fsWritingInProgress = true;
   // Support for Chrome 82 and earlier.
   if (fileHandle.createWriter) {
