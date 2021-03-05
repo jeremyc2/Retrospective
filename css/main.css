@@ -9,6 +9,10 @@ body {
     height: calc(var(--vh, 100vh));
 }
 
+button {
+    user-select: none;
+}
+
 * {
     outline: none;
 }
