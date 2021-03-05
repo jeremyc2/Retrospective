@@ -101,7 +101,12 @@ function loadData() {
     var urlInput = document.querySelector("#data-url");
     var string = urlInput.value;
 
-    cards = JSON.parse(string);
+    try {
+        cards = JSON.parse(string);
+    } catch (e) {
+        return;
+    }
+    
     loadCards();
 
     urlInput.parentElement.parentElement.style.display = "none";

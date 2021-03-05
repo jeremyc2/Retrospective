@@ -210,10 +210,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     if(searchParams.has("load")) {
-        document.querySelector("#load-data").style.display = "block";
-    }
+        var loadDataPopup = document.querySelector("#load-data");
+        loadDataPopup.style.display = "block";
+        document.querySelector("#data-url").focus();
 
-    loadCards();
+        loadDataPopup.addEventListener("click", (event) => {
+            if(event.path[0] == loadDataPopup) {
+                loadDataPopup.style.display = "none";
+            };
+        });
+    }
 
     var titleSVG = document.querySelector("#title");
 
