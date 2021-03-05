@@ -172,7 +172,7 @@ footer div {
     height: 100%;
 }
 
-.fullscreen, .copy {
+.fullscreen, .copy, .help {
     opacity: 0.7;
     cursor: pointer;
     float: right;
@@ -192,7 +192,17 @@ footer div {
     right: 23px;
 }
 
-.fullscreen:hover, .copy:hover {
+.help {
+    right: 47;
+    top: 2;
+}
+
+.help img {
+    height: 20;
+    width: 20;
+}
+
+.fullscreen:hover, .copy:hover, .help:hover {
     opacity: 1;
 }
 
