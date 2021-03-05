@@ -95,6 +95,7 @@ footer div {
 
     font-size: 12px;
     text-align: center;
+    user-select: none;
 }
 
 .menu div {
@@ -182,6 +183,7 @@ footer div {
     position: absolute;
     z-index: 1;
     top: 4px;
+    user-select: none;
 }
 
 .fullscreen {
@@ -240,6 +242,7 @@ footer div {
     margin: 0px;
 
     font-size: 22px;
+    user-select: none;
 
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
