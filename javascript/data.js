@@ -106,7 +106,7 @@ function loadData() {
     } catch (e) {
         return;
     }
-    
+
     loadCards();
 
     urlInput.parentElement.parentElement.style.display = "none";
@@ -117,7 +117,7 @@ function loadData() {
 function copy() {
 
     var input = document.createElement("textarea"),
-        string = JSON.stringify(cards, null, "\t");
+        string = JSON.stringify(cards);
 
     input.innerHTML = string;
     document.body.appendChild(input);
