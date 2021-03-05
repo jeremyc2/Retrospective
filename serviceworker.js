@@ -1,6 +1,6 @@
 const path = (new URL(self.registration.scope)).pathname;
 
-var cacheName = "Retro-V2.0";
+var cacheName = "Retro-V2.1";
 const cachefiles = [
     path,
     path + "css/animate.css",
@@ -45,8 +45,23 @@ self.addEventListener("install", event => {
 
 });
  
-self.addEventListener("activate", () => {
+self.addEventListener("activate", event => {
     clients.claim();
+    
+    event.waitUntil(
+        caches.keys().then(function(cacheNames) {
+            return Promise.all(
+                cacheNames.filter(function(name) {
+                    // Return true if you want to remove this cache,
+                    // but remember that caches are shared across
+                    // the whole origin
+                    return name != cacheName;
+                }).map(function(name) {
+                    return caches.delete(name);
+                })
+            );
+        })
+    );
 
 });
 
