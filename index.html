@@ -84,7 +84,7 @@
 </div>
 <div id="load-data">
     <div>
-        <input id="data-url" name="data-url" type="text" autocomplete="off">
+        <input id="data-url" name="data-url" type="text" autocomplete="off" onkeyup="if(event.keyCode == 13) loadData();">
         <button onclick="loadData()"></button>
     </div>
 </div>
