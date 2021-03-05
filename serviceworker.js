@@ -18,6 +18,7 @@ const cachefiles = [
     path + "img/east_black_24dp.svg",
     path + "img/exit-fullscreen.svg",
     path + "img/fullscreen.svg",
+    path + "img/help_outline_black_24dp.svg",
     path + "img/icons/192.png",
     path + "img/lightning.svg",
     path + "img/logo.svg",
