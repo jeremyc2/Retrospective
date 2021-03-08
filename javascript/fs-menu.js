@@ -129,22 +129,19 @@ var read = async (file, fileHandle) => {
   enableAutosave();
 };
 
-var saveList = {promise: Promise.resolve(), skipSave: undefined};
+var saveList = {promise: Promise.resolve(), length: 0};
 var saveFile = async () => {
-  // Stop any lingering saves that haven't started
-  // that will just be overridden anyway
-  saveList.skipSave = true;
-
-  // Right before this, the latest save, we're going to stop skipping
-  saveList.promise = saveList.promise.then(() => saveList.skipSave = false);
+  const i = saveList.length++;
 
   // Saving is part of a promise chain since we can't
   // save the same file more than once at the same time
-  // or we get collisions. If it is already saving, let it
-  // finish and then save again.
+  // or we get collisions. And we can't inturrupt a save.
+  // If it is already saving, let it finish and then save again.
   saveList.promise = saveList.promise.then(async () => {
 
-    if(saveList.skipSave) {
+    // Skip this save if there is a more recent save in the queue.
+    if(i < saveList.length - 1) {
+      console.log("Skipping save")
       return;
     }
 
