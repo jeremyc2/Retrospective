@@ -141,7 +141,6 @@ var saveFile = async () => {
 
     // Skip this save if there is a more recent save in the queue.
     if(i < saveList.length - 1) {
-      console.log("Skipping save")
       return;
     }
 
