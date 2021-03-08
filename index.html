@@ -24,7 +24,7 @@
 <script src="javascript/recents.js"></script>
 <script>
     if('serviceWorker' in navigator) {
-        const broadcast;
+        var broadcast;
         navigator.serviceWorker
                 .register('serviceworker.js', {
                     scope: '/Retrospective/'
