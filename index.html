@@ -25,7 +25,9 @@
 <script>
     if('serviceWorker' in navigator) {
         navigator.serviceWorker
-                .register('serviceworker.js')
+                .register('serviceworker.js', {
+                    scope: '/Retrospective/'
+                })
                 .then(function() { console.log("Service Worker Registered"); })
                 .catch(function(error) { console.log("Service Worker Not Registered", error); });
     }
