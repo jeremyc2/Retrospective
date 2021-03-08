@@ -136,13 +136,13 @@ var saveFile = async () => {
   saveList.skipSave = true;
 
   // Right before this, the latest save, we're going to stop skipping
-  saveList = saveList.promise.then(() => saveList.skipSave = false);
+  saveList.promise = saveList.promise.then(() => saveList.skipSave = false);
 
   // Saving is part of a promise chain since we can't
   // save the same file more than once at the same time
   // or we get collisions. If it is already saving, let it
   // finish and then save again.
-  saveList = saveList.promise.then(async () => {
+  saveList.promise = saveList.promise.then(async () => {
 
     if(saveList.skipSave) {
       return;
