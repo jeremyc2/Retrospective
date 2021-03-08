@@ -30,6 +30,14 @@
                 })
                 .then(function() { console.log("Service Worker Registered"); })
                 .catch(function(error) { console.log("Service Worker Not Registered", error); });
+
+        const broadcast = new BroadcastChannel('retro-channel');
+
+        broadcast.onmessage = (event) => {
+            if(event.data.type == 'APP-VERSION') {
+                console.log(`APP-VERSION: ${event.data.payload}`);
+            }
+        };
     }
 </script>
 <header>

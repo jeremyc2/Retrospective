@@ -38,6 +38,9 @@ const cachefiles = [
     path + "manifest.webmanifest"
 ]
 
+const broadcast = new BroadcastChannel('retro-channel');
+broadcast.postMessage({type: 'APP-VERSION', payload: version});
+
 self.addEventListener("install", event => {
     self.skipWaiting();
     
