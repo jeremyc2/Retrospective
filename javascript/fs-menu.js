@@ -129,7 +129,7 @@ var read = async (file, fileHandle) => {
   enableAutosave();
 };
 
-var saveList = {promise: new Promise.resolve(), skipSave: undefined};
+var saveList = {promise: Promise.resolve(), skipSave: undefined};
 var saveFile = async () => {
   // Stop any lingering saves that haven't started
   // that will just be overridden anyway
