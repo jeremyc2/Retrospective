@@ -129,21 +129,14 @@ var read = async (file, fileHandle) => {
   enableAutosave();
 };
 
-var saveList;
+var saveList = new Promise.resolve();
 var saveFile = async () => {
-  if(saveList == null) {
-    saveList = new Promise(async (resolve) => {
+  saveList = saveList.then(async () => {
+    return new Promise(async (resolve) => {
       await saveFileAsync();
       resolve();
-    });
-  } else {
-    saveList = saveList.then(async () => {
-      return new Promise(async (resolve) => {
-        await saveFileAsync();
-        resolve();
-      })
-    });
-  }
+    }).catch(reason => console.error(reason));
+  });
 }
 
 /**
