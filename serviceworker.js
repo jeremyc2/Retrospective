@@ -39,7 +39,11 @@ const cachefiles = [
 ]
 
 const broadcast = new BroadcastChannel('retro-channel');
-broadcast.postMessage({type: 'APP-VERSION', payload: version});
+broadcast.onmessage = (event) => {
+    if(event.data.type == 'REQUEST-VERSION') {
+        broadcast.postMessage({type: 'APP-VERSION', payload: version});
+    }
+}
 
 self.addEventListener("install", event => {
     self.skipWaiting();
