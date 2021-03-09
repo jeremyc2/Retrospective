@@ -5,6 +5,10 @@ var defaultTitle = document.title;
 
 var isFullscreen = false;
 
+function showHelp() {
+    alert(`App Version: ${version}.\nService Worker ${!swRegistered? 'not ': null}registered.`);
+}
+
 function enableFullscreen() {
     document.documentElement.requestFullscreen();
 }

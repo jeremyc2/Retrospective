@@ -24,14 +24,19 @@
 <script src="javascript/idb-keyval.js"></script>
 <script src="javascript/recents.js"></script>
 <script>
-    var version;
+    var version = "Unknown",
+        swRegistered = false;
+
     if('serviceWorker' in navigator) {
         var broadcast;
         navigator.serviceWorker
                 .register('serviceworker.js', {
                     scope: '/Retrospective/'
                 })
-                .then(function() { console.log("Service Worker Registered"); })
+                .then(function() {
+                    swRegistered = true;
+                    console.log("Service Worker Registered");
+                })
                 .then(() => {
                     broadcast = new BroadcastChannel('retro-channel');
                     broadcast.onmessage = (event) => {
@@ -54,7 +59,7 @@
         </svg>
     </a>
 </header>
-<div class="help" onclick="">
+<div class="help" onclick="showHelp()">
     <img src="img/help_outline_black_24dp.svg">
     <div class="corner-tooltip"style="right: -44px;">Help</div>
 </div>
