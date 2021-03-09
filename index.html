@@ -23,6 +23,7 @@
 <script src="javascript/idb-keyval.js"></script>
 <script src="javascript/recents.js"></script>
 <script>
+    var version;
     if('serviceWorker' in navigator) {
         var broadcast;
         navigator.serviceWorker
@@ -34,7 +35,8 @@
                     broadcast = new BroadcastChannel('retro-channel');
                     broadcast.onmessage = (event) => {
                         if(event.data.type == 'APP-VERSION') {
-                            console.log(`APP-VERSION: ${event.data.payload}`);
+                            version = event.data.payload;
+                            console.log(`APP-VERSION: ${version}`);
                         }
                     };
                     broadcast.postMessage({type: 'REQUEST-VERSION'});
