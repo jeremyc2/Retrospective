@@ -149,7 +149,7 @@ function appendCardToDOM(index, column, isNewCard) {
                 container = element.parentElement,
                 resolved = !element.classList.contains("resolved");
 
-            element.style.height = element.getBoundingClientRect().height;
+            element.style.height = `${element.getBoundingClientRect().height}px`;
             element.style.overflow = "hidden";
 
             element.classList.add("close-out");
