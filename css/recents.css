@@ -22,7 +22,7 @@
 
 /* Links inside the dropdown */
 #butRecents > div > div {
-    background-color: rgba(255, 255, 255, 0);
+    background-color: black;
     font-family: helvetica, sans-serif;
     padding: 5px 10px;
     text-transform: none;
@@ -31,7 +31,7 @@
 }
 
 #butRecents > div > div:hover {
-    background-color: black;
+    background-color: rgba(255, 255, 255, 0);
 }
 
 /* Show the dropdown menu on hover */
