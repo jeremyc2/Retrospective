@@ -143,11 +143,12 @@ var saveFile = async () => {
     if(i < saveList.length - 1) {
       return;
     }
-
-    return new Promise(async (resolve) => {
-      await saveFileAsync();
-      resolve();
-    }).catch(reason => console.error(reason));
+    
+    try {
+      return saveFileAsync();
+    } catch (reason) {
+      return console.error(reason);
+    }
 
   });
 }
