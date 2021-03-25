@@ -161,7 +161,7 @@ var saveFileAsync = async () => {
       return await saveFileAs();
     }
     updateFooter("Saving...");
-    await writeFile(file.handle, getText());
+    return await writeFile(file.handle, getText());
   } catch (ex) {
     var msg;
     // InvalidStateError
