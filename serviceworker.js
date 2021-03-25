@@ -1,6 +1,6 @@
 const path = (new URL(self.registration.scope)).pathname;
 
-const version = "3.5",
+const version = "4.0",
       cacheName = `Retro-V${version}`;
 
 const cachefiles = [
