@@ -166,7 +166,8 @@ var saveFileAsync = async () => {
     var msg;
     // InvalidStateError
     if(ex.code == 11) {
-      msg = 'Error: Saves are ovewriting other saves.';
+      // Saves are ovewriting other saves
+      msg = 'There was a problem saving. Please try again in a few minutes.';
       console.error("Invalid State Error:", ex.message);
     } else {
       msg = 'Unable to save file.';
