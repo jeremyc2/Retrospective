@@ -103,6 +103,13 @@ function _readFileLegacy(file) {
  * @param {string} contents Contents to write.
  */
 async function writeFile(fileHandle, contents) {
+
+  // Wait because we're still getting errors
+  // so maybe we're just moving too fast for the 
+  // sytstem to keep up
+
+  await wait(1000);
+
   // Support for Chrome 82 and earlier.
   if (fileHandle.createWriter) {
     // Create a writer (request permission if necessary).
